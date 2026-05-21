@@ -846,6 +846,15 @@
   .coach.ki-coach .coach-initials {
     color: rgba(255, 45, 146, 0.18);
   }
+  .coach-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+  }
   .coach-badge {
     position: absolute;
     top: 16px; left: 16px;
@@ -1600,9 +1609,9 @@
 
       <!-- Coach 1: Claudia Conen -->
       <article class="coach tilt" aria-labelledby="coach-claudia">
-        <div class="coach-portrait" role="img" aria-label="Portrait-Platzhalter Claudia Conen">
+        <div class="coach-portrait">
           <span class="coach-badge">Performance · Stimme</span>
-          <span class="coach-initials" aria-hidden="true">CC</span>
+          <img src="images/claudia-conen.png" alt="Claudia Conen" class="coach-photo">
         </div>
         <div class="coach-body">
           <h3 class="coach-name" id="coach-claudia">Claudia Conen</h3>
@@ -1616,9 +1625,9 @@
 
       <!-- Coach 2: Gabi Lindemann -->
       <article class="coach tilt" aria-labelledby="coach-gabi">
-        <div class="coach-portrait" role="img" aria-label="Portrait-Platzhalter Gabi Lindemann">
+        <div class="coach-portrait">
           <span class="coach-badge">Webseiten · KI</span>
-          <span class="coach-initials" aria-hidden="true">GL</span>
+          <img src="images/gabi-lindemann.png" alt="Gabi Lindemann" class="coach-photo">
         </div>
         <div class="coach-body">
           <h3 class="coach-name" id="coach-gabi">Gabi Lindemann</h3>
