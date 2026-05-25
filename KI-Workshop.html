@@ -464,7 +464,9 @@
     background: linear-gradient(135deg, var(--gold-deep), #B8860B);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
-  section.light .tier-desc { color: rgba(10, 20, 40, 0.72); }
+  section.light .tier-desc { color: rgba(10, 20, 40, 0.82); }
+  section.light .tier-desc .promise-lead { color: #8B6914; }
+  section.light .tier.featured .tier-desc .promise-lead { color: #C2185B; }
   section.light .tier-price { color: #0A1428; }
   section.light .tier-price small { color: rgba(10, 20, 40, 0.6); }
   section.light .tier-vat { color: rgba(10, 20, 40, 0.6); }
@@ -1177,7 +1179,9 @@
     background: linear-gradient(135deg, var(--gold-bright), var(--gold-metal));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
-  .tier-desc { font-family: var(--body); font-size: 14px; color: var(--text-muted); margin-bottom: 32px; min-height: 42px; line-height: 1.55; }
+  .tier-desc { font-family: var(--display); font-style: italic; font-size: 19px; color: var(--cream); margin-bottom: 32px; min-height: 96px; line-height: 1.45; font-weight: 500; }
+  .tier-desc .promise-lead { color: var(--gold-bright); font-weight: 600; display: block; margin-bottom: 6px; font-size: 22px; letter-spacing: -0.01em; }
+  .tier.featured .tier-desc .promise-lead { color: var(--magenta-glow); }
   .tier-price { font-family: var(--display); font-size: 64px; font-weight: 400; letter-spacing: -0.03em; margin-bottom: 4px; line-height: 1; color: var(--cream); }
   .tier-price small { font-size: 22px; color: var(--text-muted); font-weight: 400; }
   .tier-vat { font-family: var(--sans); font-size: 11px; letter-spacing: 0.15em; color: var(--text-faint); text-transform: uppercase; margin-bottom: 32px; font-weight: 600; }
@@ -1870,7 +1874,7 @@
     <div class="pricing-grid stagger">
       <article class="tier" aria-labelledby="tier-basis">
         <div class="tier-name" id="tier-basis">Basis</div>
-        <p class="tier-desc">Mitmachen & mitnehmen. Du gehst mit fertiger Webseite, KI-Setup und Avatar nach Hause.</p>
+        <p class="tier-desc"><span class="promise-lead">Mitmachen & mitnehmen.</span>Du gehst mit fertiger Landingpage, KI-Setup und Avatar nach Hause.</p>
         <div class="tier-price">497<small> €</small></div>
         <div class="tier-vat">zzgl. MwSt. · pro Person</div>
         <ul class="tier-features">
@@ -1885,7 +1889,7 @@
       <article class="tier featured" aria-labelledby="tier-plus">
         <div class="tier-badge">Beliebteste Wahl</div>
         <div class="tier-name" id="tier-plus">Plus</div>
-        <p class="tier-desc">Sichtbar werden. Du gehst zusätzlich mit fertigem Content für deine Social Media.</p>
+        <p class="tier-desc"><span class="promise-lead">Sichtbar werden.</span>Du gehst zusätzlich mit fertigem Content für deine Social Media.</p>
         <div class="tier-price">697<small> €</small></div>
         <div class="tier-vat">zzgl. MwSt. · pro Person</div>
         <ul class="tier-features">
@@ -1900,7 +1904,7 @@
 
       <article class="tier" aria-labelledby="tier-vip">
         <div class="tier-name" id="tier-vip">VIP</div>
-        <p class="tier-desc">Nicht alleine lassen. Du gehst mit Begleitung über den Workshop hinaus.</p>
+        <p class="tier-desc"><span class="promise-lead">Nicht alleine lassen.</span>Du gehst mit Begleitung über den Workshop hinaus.</p>
         <div class="tier-price">997<small> €</small></div>
         <div class="tier-vat">zzgl. MwSt. · pro Person</div>
         <ul class="tier-features">
