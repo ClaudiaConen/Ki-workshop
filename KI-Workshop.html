@@ -505,13 +505,14 @@
   }
   section.light .pricing-cost-title { color: #C2185B; }
   section.light .pricing-cost-text { color: rgba(10, 20, 40, 0.78); }
+  section.light .pricing-cost-cta { color: #C2185B; }
   section.light .pricing-value-block {
     background: rgba(184, 134, 11, 0.05);
     border-color: rgba(184, 134, 11, 0.22);
   }
   section.light .pricing-value-label { color: #8B6914; }
-  section.light .pricing-value-comparison { color: rgba(10, 20, 40, 0.7); }
-  section.light .pricing-value-comparison strong { color: rgba(10, 20, 40, 0.88); }
+  section.light .pricing-value-list li { color: rgba(10, 20, 40, 0.72); border-color: rgba(184, 134, 11, 0.18); }
+  section.light .pricing-value-list li strong { color: #8B6914; }
   section.light .pricing-value-here { color: #8B6914; }
   section.light .pricing-value-here strong { color: #8B6914; }
   section.light .tier-price-old { color: rgba(10, 20, 40, 0.38); }
@@ -1315,7 +1316,12 @@
   }
   .pricing-cost-text {
     font-family: var(--body); font-size: 16px;
-    color: var(--text-soft); line-height: 1.7;
+    color: var(--text-soft); line-height: 1.7; margin-bottom: 14px;
+  }
+  .pricing-cost-cta {
+    font-family: var(--display); font-style: italic;
+    font-size: clamp(18px, 2vw, 22px); font-weight: 600;
+    color: var(--magenta-glow); line-height: 1.4;
   }
   .pricing-value-block {
     max-width: 700px; margin: 0 auto 56px; text-align: center;
@@ -1329,11 +1335,17 @@
     letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--gold); margin-bottom: 12px;
   }
-  .pricing-value-comparison {
-    font-family: var(--body); font-size: 15px;
-    color: var(--text-soft); margin-bottom: 12px; line-height: 1.6;
+  .pricing-value-list {
+    list-style: none; margin-bottom: 20px; text-align: left;
   }
-  .pricing-value-comparison strong { color: var(--text-muted); }
+  .pricing-value-list li {
+    font-family: var(--body); font-size: 15px;
+    color: var(--text-soft); line-height: 1.6;
+    padding: 8px 0; border-bottom: 1px solid rgba(255, 206, 61, 0.12);
+    display: flex; justify-content: space-between; gap: 16px;
+  }
+  .pricing-value-list li:first-child { border-top: 1px solid rgba(255, 206, 61, 0.12); }
+  .pricing-value-list li strong { color: var(--gold-bright); white-space: nowrap; }
   .pricing-value-here {
     font-family: var(--display); font-style: italic;
     font-size: clamp(20px, 2.2vw, 26px); font-weight: 600;
@@ -2025,14 +2037,23 @@
     <!-- Was dich das Abwarten kostet -->
     <div class="pricing-cost-block reveal">
       <p class="pricing-cost-title">Was dich das Abwarten wirklich kostet.</p>
-      <p class="pricing-cost-text">Jeden Monat ohne sichtbare Landingpage, ohne eigenes Freebie und ohne KI-System ist ein Monat, in dem Wunschkundinnen woanders buchen. Nicht weil du schlechter bist — sondern weil sie dich nicht finden. Du weißt, was du kannst. Jetzt wird es sichtbar.</p>
+      <p class="pricing-cost-text">Jeden Monat ohne Landingpage ist ein Monat, in dem dich niemand findet. Jeden Monat ohne Freebie ist ein Monat ohne neue Kontakte. Jeden Monat ohne klare Botschaft ist ein Monat, in dem dein Wunschkunde bei jemand anderem bucht. Nicht weil die besser sind. Sondern weil die sichtbar sind.</p>
+      <p class="pricing-cost-cta">Du kannst weiter planen. Oder du kannst in zwei Tagen fertig sein.</p>
     </div>
 
     <!-- Wertvergleich -->
     <div class="pricing-value-block reveal">
       <p class="pricing-value-label">Was du einzeln zahlen würdest</p>
-      <p class="pricing-value-comparison">Landingpage-Agentur · Freebie-Erstellung · Avatar-Video · Strategie-Call · Community · Coaching — zusammen leicht über <strong>3.900 €</strong>.</p>
-      <p class="pricing-value-here">Hier: ab <strong>397 €</strong>. Und du machst es selbst — und kannst es danach immer wieder nutzen.</p>
+      <ul class="pricing-value-list">
+        <li>Storytelling-Coaching mit erfahrenem Performance Coach: <strong>ab 1.200 €</strong></li>
+        <li>KI-Landingpage erstellen lassen: <strong>ab 1.800 €</strong></li>
+        <li>HeyGen-Avatar-Video mit Skript: <strong>ab 200 €</strong></li>
+        <li>Freebie — Text, Design, Aufbereitung: <strong>ab 120 €</strong></li>
+        <li>KI-Workflow mit persönlicher Begleitung: <strong>ab 200 €</strong></li>
+        <li>Verknüpfung mit Social Media, E-Mail und Video-Hosting: <strong>ab 350 €</strong></li>
+        <li>Platz in der Community für Teilnehmer: <strong>39 €/Monat</strong></li>
+      </ul>
+      <p class="pricing-value-here">Einzeln: über <strong>3.900 €</strong>. Hier bekommst du alles — ab <strong>397 €</strong>.</p>
     </div>
 
     <div class="pricing-grid stagger">
