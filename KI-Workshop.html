@@ -685,6 +685,27 @@
   }
 
   /* ========= OUTCOMES ========= */
+  .outcomes-intro {
+    max-width: 72ch;
+    margin-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 36px 40px;
+    border-left: 3px solid var(--gold);
+    background: linear-gradient(135deg, rgba(255, 206, 61, 0.06) 0%, transparent 70%);
+    border-radius: 0 8px 8px 0;
+  }
+  .outcomes-intro p {
+    font-family: var(--display);
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .outcomes-intro p strong { color: var(--cream); font-weight: 500; }
+  .outcomes-intro p em { color: var(--gold-bright); font-style: italic; }
+
   .outcomes-grid {
     display: grid; grid-template-columns: 1fr; gap: 0;
     margin-top: 64px;
@@ -1555,6 +1576,12 @@
   <div class="section-inner">
     <div class="section-eyebrow reveal">Was am Ende fertig ist</div>
     <h2 class="section-title reveal" id="outcomes-title">Sechs Bausteine.<br>Eine <em>komplette</em> Präsenz.</h2>
+
+    <div class="outcomes-intro reveal">
+      <p>Zwei Tage Vollpower. Danach hast du alles in deiner Hand. Deine <strong>Landingpage</strong> steht, dein <strong>Freebie</strong> ist fertig, dein <strong>Video</strong> läuft.</p>
+      <p>Aber unser Gehirn braucht Wiederholung, um Neues wirklich zu verankern — Neurowissenschaftler nennen es den <em>Spacing-Effekt</em>: Was wir nach einer Pause nochmal aufgreifen, bleibt. Genau deshalb ist nach dem Workshop nicht Schluss.</p>
+      <p>Wenn beim Umsetzen Fragen auftauchen, stehen wir dir zur Seite. In jedem Paket anders — aber in keinem allein.</p>
+    </div>
 
     <div class="outcomes-grid stagger">
       <article class="outcome tilt">
