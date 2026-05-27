@@ -499,6 +499,29 @@
     color: #0A1428;
     box-shadow: 0 4px 16px rgba(184, 134, 11, 0.35);
   }
+  section.light .pricing-cost-block {
+    background: rgba(233, 30, 99, 0.05);
+    border-color: rgba(233, 30, 99, 0.2);
+  }
+  section.light .pricing-cost-title { color: #C2185B; }
+  section.light .pricing-cost-text { color: rgba(10, 20, 40, 0.78); }
+  section.light .pricing-value-block {
+    background: rgba(184, 134, 11, 0.05);
+    border-color: rgba(184, 134, 11, 0.22);
+  }
+  section.light .pricing-value-label { color: #8B6914; }
+  section.light .pricing-value-comparison { color: rgba(10, 20, 40, 0.7); }
+  section.light .pricing-value-comparison strong { color: rgba(10, 20, 40, 0.88); }
+  section.light .pricing-value-here { color: #8B6914; }
+  section.light .pricing-value-here strong { color: #8B6914; }
+  section.light .tier-price-old { color: rgba(10, 20, 40, 0.38); }
+  section.light .early-bird {
+    background: linear-gradient(135deg, rgba(184, 134, 11, 0.08) 0%, rgba(184, 134, 11, 0.03) 100%);
+    border-color: rgba(184, 134, 11, 0.32);
+    box-shadow: 0 4px 20px rgba(184, 134, 11, 0.06);
+  }
+  section.light .early-bird-text { color: rgba(10, 20, 40, 0.78); }
+  section.light .early-bird-text strong { color: #8B6914; }
 
   /* ========= HERO ========= */
   .hero { max-width: 1340px; margin: 0 auto; padding: 100px 32px 140px; position: relative; }
@@ -1277,6 +1300,70 @@
   }
   .tier.featured .tier-cta:hover, .tier.featured .tier-cta:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(218, 165, 32, 0.55); }
 
+  /* ========= PRICING NEW ELEMENTS ========= */
+  .pricing-cost-block {
+    max-width: 700px; margin: 0 auto 36px; text-align: center;
+    padding: 32px 40px;
+    background: rgba(255, 63, 161, 0.06);
+    border: 1px solid rgba(255, 63, 161, 0.2);
+    border-radius: 16px;
+  }
+  .pricing-cost-title {
+    font-family: var(--display); font-style: italic;
+    font-size: clamp(22px, 2.5vw, 30px); font-weight: 600;
+    color: var(--magenta-glow); margin-bottom: 14px; letter-spacing: -0.01em;
+  }
+  .pricing-cost-text {
+    font-family: var(--body); font-size: 16px;
+    color: var(--text-soft); line-height: 1.7;
+  }
+  .pricing-value-block {
+    max-width: 700px; margin: 0 auto 56px; text-align: center;
+    padding: 28px 40px;
+    background: rgba(255, 206, 61, 0.06);
+    border: 1px solid rgba(255, 206, 61, 0.2);
+    border-radius: 16px;
+  }
+  .pricing-value-label {
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .pricing-value-comparison {
+    font-family: var(--body); font-size: 15px;
+    color: var(--text-soft); margin-bottom: 12px; line-height: 1.6;
+  }
+  .pricing-value-comparison strong { color: var(--text-muted); }
+  .pricing-value-here {
+    font-family: var(--display); font-style: italic;
+    font-size: clamp(20px, 2.2vw, 26px); font-weight: 600;
+    color: var(--gold-bright); line-height: 1.3;
+  }
+  .pricing-value-here strong { color: var(--gold-bright); }
+  .tier-price-wrap { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+  .tier-price-old {
+    font-family: var(--display); font-size: 28px; font-weight: 400;
+    color: var(--text-faint); line-height: 1;
+    text-decoration: line-through;
+    text-decoration-color: var(--magenta);
+    text-decoration-thickness: 2px;
+  }
+  .early-bird {
+    display: flex; align-items: center; gap: 20px;
+    max-width: 700px; margin: 48px auto 0;
+    padding: 24px 32px;
+    background: linear-gradient(135deg, rgba(255, 206, 61, 0.12) 0%, rgba(255, 206, 61, 0.05) 100%);
+    border: 1px solid rgba(255, 206, 61, 0.35);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(255, 206, 61, 0.08);
+  }
+  .early-bird-icon { font-size: 36px; flex-shrink: 0; animation: bounceArrow 1.6s ease-in-out infinite; }
+  .early-bird-text { font-family: var(--body); font-size: 15px; color: var(--text-soft); line-height: 1.6; }
+  .early-bird-text strong {
+    color: var(--gold-bright); font-family: var(--sans); font-size: 16px;
+    display: block; margin-bottom: 4px;
+  }
+
   /* ========= FAQ ========= */
   .faq-list { margin-top: 56px; border-top: 1px solid var(--line-strong); }
   details { border-bottom: 1px solid var(--line-strong); padding: 32px 0; transition: padding 0.3s ease; }
@@ -1933,19 +2020,32 @@
 <section id="anmelden" class="light" aria-labelledby="pricing-title">
   <div class="section-inner">
     <div class="section-eyebrow reveal">Anmeldung</div>
-    <h2 class="section-title reveal" id="pricing-title">Drei Wege rein.<br>Ein <em>fertiges Ergebnis</em>.</h2>
-    <p class="pricing-intro reveal">
-      Vor jedem Workshop bekommst du <strong>einen kostenlosen Zoom-Vorbereitungscall</strong>. Während der zwei Tage sind <strong>Fotos mit allen drei Expertinnen erlaubt</strong> — für deine eigene Social-Media-Nutzung.
-    </p>
+    <h2 class="section-title reveal" id="pricing-title">Drei Pakete.<br>Eins passt <em>zu dir</em>.</h2>
+
+    <!-- Was dich das Abwarten kostet -->
+    <div class="pricing-cost-block reveal">
+      <p class="pricing-cost-title">Was dich das Abwarten wirklich kostet.</p>
+      <p class="pricing-cost-text">Jeden Monat ohne sichtbare Landingpage, ohne eigenes Freebie und ohne KI-System ist ein Monat, in dem Wunschkundinnen woanders buchen. Nicht weil du schlechter bist — sondern weil sie dich nicht finden. Du weißt, was du kannst. Jetzt wird es sichtbar.</p>
+    </div>
+
+    <!-- Wertvergleich -->
+    <div class="pricing-value-block reveal">
+      <p class="pricing-value-label">Was du einzeln zahlen würdest</p>
+      <p class="pricing-value-comparison">Landingpage-Agentur · Freebie-Erstellung · Avatar-Video · Strategie-Call · Community · Coaching — zusammen leicht über <strong>3.900 €</strong>.</p>
+      <p class="pricing-value-here">Hier: ab <strong>397 €</strong>. Und du machst es selbst — und kannst es danach immer wieder nutzen.</p>
+    </div>
 
     <div class="pricing-grid stagger">
       <article class="tier" aria-labelledby="tier-basis">
         <div class="tier-name" id="tier-basis">Basis</div>
         <p class="tier-desc"><span class="promise-lead">Mitmachen & mitnehmen.</span>Du gehst mit fertiger Landingpage, KI-Setup und Avatar nach Hause.</p>
-        <div class="tier-price">497<small> €</small></div>
-        <div class="tier-vat">zzgl. MwSt. · pro Person</div>
+        <div class="tier-price-wrap">
+          <div class="tier-price-old">497 €</div>
+          <div class="tier-price">397<small> €</small></div>
+        </div>
+        <div class="tier-vat">zzgl. MwSt. · Frühbucherpreis</div>
         <ul class="tier-features">
-          <li>2 Tage Live-Workshop · alle 7 Module</li>
+          <li>2 Tage Live-Workshop · alle 6 Bausteine</li>
           <li>Gruppen-Vorbereitungscall via Zoom</li>
           <li>Arbeitsunterlagen & Vorlagen</li>
           <li>Foto-Erinnerung mit den Coaches</li>
@@ -1957,8 +2057,11 @@
         <div class="tier-badge">Beliebteste Wahl</div>
         <div class="tier-name" id="tier-plus">Plus</div>
         <p class="tier-desc"><span class="promise-lead">Sichtbar werden.</span>Du gehst zusätzlich mit fertigem Content für deine Social Media.</p>
-        <div class="tier-price">697<small> €</small></div>
-        <div class="tier-vat">zzgl. MwSt. · pro Person</div>
+        <div class="tier-price-wrap">
+          <div class="tier-price-old">597 €</div>
+          <div class="tier-price">497<small> €</small></div>
+        </div>
+        <div class="tier-vat">zzgl. MwSt. · Frühbucherpreis</div>
         <ul class="tier-features">
           <li>Alles aus Basis</li>
           <li>1:1 Interview-Video mit Claudia — ready-to-post</li>
@@ -1972,8 +2075,11 @@
       <article class="tier" aria-labelledby="tier-vip">
         <div class="tier-name" id="tier-vip">VIP</div>
         <p class="tier-desc"><span class="promise-lead">Nicht alleine lassen.</span>Du gehst mit Begleitung über den Workshop hinaus.</p>
-        <div class="tier-price">997<small> €</small></div>
-        <div class="tier-vat">zzgl. MwSt. · pro Person</div>
+        <div class="tier-price-wrap">
+          <div class="tier-price-old">997 €</div>
+          <div class="tier-price">897<small> €</small></div>
+        </div>
+        <div class="tier-vat">zzgl. MwSt. · Frühbucherpreis</div>
         <ul class="tier-features">
           <li>Alles aus Plus</li>
           <li>1:1 Follow-up Call (60 Min) — 2 Wochen danach</li>
@@ -1984,6 +2090,16 @@
         <a href="https://umsatzstimme-claudiaconen.tentary.com/p/56z1BS/checkout" class="tier-cta" target="_blank" rel="noopener">Platz sichern</a>
       </article>
     </div>
+
+    <!-- Frühbucher-Banner -->
+    <div class="early-bird reveal">
+      <span class="early-bird-icon">⚡</span>
+      <div class="early-bird-text">
+        <strong>Frühbucherpreis: erste 5 Buchungen sparen je 100 €.</strong>
+        Nur 9 Plätze insgesamt. Wenn du jetzt buchst, sicherst du dir den günstigsten Preis — und deinen Platz.
+      </div>
+    </div>
+
   </div>
 </section>
 
