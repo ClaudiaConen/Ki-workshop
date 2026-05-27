@@ -1388,6 +1388,70 @@
     50% { opacity: 0.6; text-shadow: 0 0 18px rgba(255, 63, 161, 0.9); }
   }
 
+  /* ========= CONTACT NUDGE ========= */
+  .contact-nudge-section {
+    text-align: center;
+    padding: 96px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-nudge-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 70% at 30% 50%, rgba(255, 63, 161, 0.1) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 60% at 70% 50%, rgba(255, 206, 61, 0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .contact-nudge-inner { position: relative; max-width: 700px; margin: 0 auto; }
+  .contact-nudge-q {
+    font-family: var(--display); font-style: italic;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 500; line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    background: linear-gradient(120deg, var(--gold-bright) 0%, var(--magenta) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .contact-nudge-sub {
+    font-family: var(--display); font-style: italic;
+    font-size: clamp(20px, 2.5vw, 28px); font-weight: 400;
+    color: var(--text-muted); margin-bottom: 48px; line-height: 1.4;
+  }
+  .contact-nudge-links {
+    display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+  }
+  .contact-nudge-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans); font-size: 15px; font-weight: 600;
+    padding: 18px 36px; border-radius: 100px;
+    text-decoration: none; letter-spacing: 0.01em;
+    transition: all 0.3s ease;
+  }
+  .contact-nudge-email {
+    color: var(--gold-bright);
+    border: 1.5px solid rgba(255, 206, 61, 0.5);
+    background: rgba(255, 206, 61, 0.06);
+  }
+  .contact-nudge-email:hover, .contact-nudge-email:focus-visible {
+    background: var(--gold-bright); color: var(--navy);
+    border-color: var(--gold-bright);
+    box-shadow: 0 8px 28px rgba(255, 206, 61, 0.3);
+    transform: translateY(-2px);
+  }
+  .contact-nudge-wa {
+    color: #4ADE80;
+    border: 1.5px solid rgba(74, 222, 128, 0.35);
+    background: rgba(74, 222, 128, 0.07);
+  }
+  .contact-nudge-wa:hover, .contact-nudge-wa:focus-visible {
+    background: rgba(74, 222, 128, 0.18);
+    border-color: #4ADE80;
+    box-shadow: 0 8px 28px rgba(74, 222, 128, 0.2);
+    transform: translateY(-2px);
+  }
+
   /* ========= FAQ ========= */
   .faq-list { margin-top: 56px; border-top: 1px solid var(--line-strong); }
   details { border-bottom: 1px solid var(--line-strong); padding: 32px 0; transition: padding 0.3s ease; }
@@ -2136,6 +2200,22 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- Kontaktblock für Unentschlossene -->
+<section class="contact-nudge-section" aria-labelledby="contact-nudge-heading">
+  <div class="contact-nudge-inner">
+    <p class="contact-nudge-q reveal" id="contact-nudge-heading">Noch unsicher?</p>
+    <p class="contact-nudge-sub reveal">Schreib uns — wir antworten persönlich.</p>
+    <div class="contact-nudge-links reveal">
+      <a href="mailto:claudiaconen@umsatzstimme.de" class="contact-nudge-btn contact-nudge-email">
+        <span>✉</span> claudiaconen@umsatzstimme.de
+      </a>
+      <a href="https://wa.me/4916093102073" class="contact-nudge-btn contact-nudge-wa" target="_blank" rel="noopener">
+        <span>💬</span> 016093102073 · WhatsApp
+      </a>
+    </div>
   </div>
 </section>
 
