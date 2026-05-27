@@ -1049,7 +1049,47 @@
   .no .audience-list li::before { content: '✕'; position: absolute; left: 0; color: var(--text-soft); font-weight: 700; }
 
   /* ========= TOOLS ========= */
-  .tools-intro { font-family: var(--display); font-size: 22px; color: var(--text-muted); max-width: 62ch; margin-bottom: 64px; line-height: 1.55; }
+  .tools-intro { font-family: var(--display); font-size: 22px; color: var(--text-muted); max-width: 62ch; margin-bottom: 32px; line-height: 1.55; }
+  .tools-details {
+    max-width: 72ch;
+    margin-bottom: 56px;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .tools-details summary {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    padding: 20px 28px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 206, 61, 0.06);
+    transition: background 0.3s ease;
+  }
+  .tools-details summary:hover { background: rgba(255, 206, 61, 0.1); }
+  .tools-details summary::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--gold-bright); }
+  .tools-details[open] summary::after { content: '−'; }
+  .tools-details-body {
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .tools-details-body p {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .tools-details-body p strong { color: var(--cream); font-weight: 600; }
   .tools-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
     background: var(--line-strong); border: 1px solid var(--line-strong);
@@ -1838,8 +1878,20 @@
     <div class="section-eyebrow mag reveal">Transparenz · <span class="ki-tag">KI-Tools</span></div>
     <h2 class="section-title reveal" id="tools-title">Womit wir arbeiten.<br>Und was du <span class="mag">brauchst</span>.</h2>
     <p class="tools-intro reveal">
-      Wir verstecken nichts. Hier sind die <span class="ki">KI-Tools</span>, mit denen wir an beiden Tagen arbeiten. Manche kostenlos, manche kostenpflichtig — wir sagen dir vorab genau, was nötig ist.
+      Ein funktionierendes Laptop. Wissenshunger. Und diese Tools:
     </p>
+
+    <details class="tools-details reveal">
+      <summary>WAS DU MITBRINGST — UND WAS ES KOSTET</summary>
+      <div class="tools-details-body">
+        <p><strong>Claude</strong> Es gibt Claude Free — kostenlos, zum Reinschnuppern. Für den Workshop empfehlen wir den Max-Plan (ca. 92 €/Monat). Damit kannst du deine Landingpage visualisieren, dein Freebie erstellen, ungezwungen arbeiten und die KI mit Spaß und Freiheit austesten — ohne an Limits zu stoßen. Ein Monat reicht. Aktuelle Preise findest du auf claude.ai.</p>
+        <p><strong>HeyGen</strong> Gratis. Für das Avatar-Video, das wir gemeinsam erstellen, reicht ein Gratis-Account. Wenn du danach mehr damit machen möchtest, lohnt sich ein bezahlter Account — muss aber nicht.</p>
+        <p><strong>Canva</strong> Gratis. Wenn du möchtest, kannst du damit dein Freebie mit eigenen Fotos und Design verschönern.</p>
+        <p><strong>YouTube</strong> Gratis. Wir nutzen YouTube, um dein Video zu sichern. Ein Gratis-Kanal reicht.</p>
+        <p><strong>Community</strong> Gratis. Als Teilnehmerin ist die Community für dich ein Jahr lang inklusive — für Austausch, Sichtbarkeit und Weiterentwicklung.</p>
+        <p><strong>Alles wird im Vorfeld im Zoom-Call genau durchgegangen.</strong> Und wenn gar nichts geht: Wir bieten eine Stunde vor Workshopbeginn an, alles gemeinsam mit dir einzurichten. Unsere Empfehlung ist natürlich, gut vorbereitet dabei zu sein.</p>
+      </div>
+    </details>
 
     <div class="tools-grid stagger">
       <div class="tool ki-tool"><div class="tool-name">Claude</div><div class="tool-role">Sprache & Klarheit</div></div>
