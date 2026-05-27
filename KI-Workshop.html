@@ -1073,8 +1073,21 @@
     transition: background 0.3s ease;
   }
   .tools-details summary:hover { background: rgba(255, 206, 61, 0.1); }
-  .tools-details summary::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--gold-bright); }
-  .tools-details[open] summary::after { content: '−'; }
+  @keyframes bounceArrow {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+    60% { transform: translateY(-3px); }
+  }
+  .tools-details:not([open]) summary::after {
+    content: '↓';
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--gold-bright);
+    display: inline-block;
+    animation: bounceArrow 1.6s ease-in-out infinite;
+    text-shadow: 0 0 12px rgba(255, 206, 61, 0.6);
+  }
+  .tools-details[open] summary::after { content: '↑'; font-size: 20px; font-weight: 400; color: var(--gold-bright); animation: none; }
   .tools-details-body {
     padding: 28px 28px 32px;
     display: flex;
