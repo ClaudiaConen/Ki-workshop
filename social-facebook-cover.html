@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1920px; height:1005px; overflow:hidden; }
+
+  .canvas {
+    width:1920px; height:1005px;
+    background:#060E1F;
+    position:relative; overflow:hidden;
+    display:flex; align-items:center;
+  }
+
+  .bg1 { position:absolute; top:-300px; left:-200px; width:1100px; height:1100px; background:radial-gradient(ellipse,rgba(255,206,61,.13) 0%,transparent 55%); }
+  .bg2 { position:absolute; bottom:-300px; right:-100px; width:1000px; height:1000px; background:radial-gradient(ellipse,rgba(255,63,161,.1) 0%,transparent 55%); }
+  .bg3 { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:900px; height:600px; background:radial-gradient(ellipse,rgba(183,148,244,.05) 0%,transparent 65%); }
+
+  /* Horizontal accent lines */
+  .h-top { position:absolute; top:60px; left:80px; right:80px; height:1px; background:linear-gradient(90deg,transparent,rgba(255,206,61,.4) 15%,rgba(255,206,61,.4) 85%,transparent); }
+  .h-bot { position:absolute; bottom:60px; left:80px; right:80px; height:1px; background:linear-gradient(90deg,transparent,rgba(255,206,61,.4) 15%,rgba(255,206,61,.4) 85%,transparent); }
+  .corner { position:absolute; width:20px; height:20px; }
+  .c-tl { top:52px; left:72px; border-top:1.5px solid rgba(255,206,61,.55); border-left:1.5px solid rgba(255,206,61,.55); }
+  .c-tr { top:52px; right:72px; border-top:1.5px solid rgba(255,206,61,.55); border-right:1.5px solid rgba(255,206,61,.55); }
+  .c-bl { bottom:52px; left:72px; border-bottom:1.5px solid rgba(255,206,61,.55); border-left:1.5px solid rgba(255,206,61,.55); }
+  .c-br { bottom:52px; right:72px; border-bottom:1.5px solid rgba(255,206,61,.55); border-right:1.5px solid rgba(255,206,61,.55); }
+
+  /* LEFT — big title */
+  .left {
+    width:780px; flex-shrink:0;
+    padding:80px 80px 80px 120px;
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+
+  .eyebrow {
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:13px; font-weight:700; letter-spacing:.26em; text-transform:uppercase;
+    color:rgba(255,206,61,.75); margin-bottom:20px;
+  }
+
+  .title {
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic; font-weight:300;
+    font-size:150px; line-height:.86; letter-spacing:-.03em;
+    margin-bottom:20px;
+  }
+  .title .l1 { display:block; color:#FDFCFA; }
+  .title .l2 {
+    display:block;
+    background:linear-gradient(120deg,#FFCE3D 10%,#FF8C00 55%,#FF3FA1 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .title .l3 { display:block; color:#FDFCFA; }
+
+  .tagline {
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic; font-size:28px; color:rgba(253,252,250,.4);
+    margin-bottom:36px;
+  }
+
+  .date-row {
+    display:flex; align-items:center; gap:14px;
+  }
+  .date-chip {
+    background:rgba(255,206,61,.1); border:1px solid rgba(255,206,61,.35);
+    border-radius:100px; padding:10px 24px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; font-weight:700;
+    color:#FFCE3D; letter-spacing:.04em;
+  }
+  .loc-chip {
+    background:rgba(255,63,161,.08); border:1px solid rgba(255,63,161,.3);
+    border-radius:100px; padding:10px 24px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; font-weight:600;
+    color:#FF3FA1; letter-spacing:.03em;
+  }
+
+  /* DIVIDER */
+  .vdiv {
+    position:absolute; left:780px; top:80px; bottom:80px; width:1px;
+    background:linear-gradient(to bottom,transparent,rgba(255,206,61,.25) 20%,rgba(255,206,61,.25) 80%,transparent);
+    z-index:2;
+  }
+
+  /* CENTER — coaches */
+  .center {
+    width:620px; flex-shrink:0;
+    padding:80px 60px;
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .coaches-label {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:.22em; text-transform:uppercase; color:rgba(255,63,161,.7);
+    margin-bottom:20px;
+  }
+  .coach-list { display:flex; flex-direction:column; gap:12px; }
+  .coach-item {
+    display:flex; align-items:center; gap:16px;
+    border-radius:14px; padding:14px 18px;
+  }
+  .ci1 { background:rgba(255,206,61,.07); border:1px solid rgba(255,206,61,.2); }
+  .ci2 { background:rgba(255,63,161,.06); border:1px solid rgba(255,63,161,.18); }
+  .ci3 { background:rgba(183,148,244,.06); border:1px solid rgba(183,148,244,.18); }
+  .ci-photo { width:72px; height:72px; border-radius:50%; overflow:hidden; flex-shrink:0; }
+  .ci1 .ci-photo { border:2px solid rgba(255,206,61,.4); }
+  .ci2 .ci-photo { border:2px solid rgba(255,63,161,.4); }
+  .ci3 .ci-photo { border:2px solid rgba(183,148,244,.4); }
+  .ci-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .ci-name { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:26px; font-weight:500; color:#FDFCFA; line-height:1; margin-bottom:4px; }
+  .ci-role { font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+  .ci1 .ci-role { color:rgba(255,206,61,.75); }
+  .ci2 .ci-role { color:rgba(255,63,161,.85); }
+  .ci3 .ci-role { color:rgba(183,148,244,.85); }
+
+  /* DIVIDER 2 */
+  .vdiv2 {
+    position:absolute; left:1400px; top:80px; bottom:80px; width:1px;
+    background:linear-gradient(to bottom,transparent,rgba(255,206,61,.2) 20%,rgba(255,206,61,.2) 80%,transparent);
+    z-index:2;
+  }
+
+  /* RIGHT — results & CTA */
+  .right {
+    flex:1;
+    padding:80px 80px 80px 60px;
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; justify-content:center;
+    gap:28px;
+  }
+  .results-label { font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,206,61,.7); }
+  .results-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .r-item { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:14px 16px; }
+  .r-num { font-family:'Plus Jakarta Sans',sans-serif; font-size:9px; font-weight:700; color:rgba(255,63,161,.7); letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px; }
+  .r-text { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:22px; font-weight:500; color:#FDFCFA; line-height:1.1; }
+
+  .cta-block { display:flex; flex-direction:column; gap:12px; }
+  .cta-price { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:36px; color:#FFCE3D; line-height:1; }
+  .cta-price s { font-size:22px; color:rgba(255,206,61,.35); text-decoration:line-through; margin-right:8px; }
+  .cta-btn {
+    display:inline-block;
+    background:linear-gradient(135deg,#FFCE3D,#FFB800);
+    border-radius:100px; padding:16px 40px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; font-weight:700;
+    color:#060E1F; letter-spacing:.03em; width:fit-content;
+  }
+  .spots-line { font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:600; color:#FF3FA1; letter-spacing:.07em; text-transform:uppercase; display:flex; align-items:center; gap:7px; }
+  .sdot { width:7px; height:7px; background:#FF3FA1; border-radius:50%; box-shadow:0 0 8px rgba(255,63,161,.9); }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="bg1"></div><div class="bg2"></div><div class="bg3"></div>
+  <div class="h-top"></div><div class="h-bot"></div>
+  <div class="corner c-tl"></div><div class="corner c-tr"></div>
+  <div class="corner c-bl"></div><div class="corner c-br"></div>
+  <div class="vdiv"></div><div class="vdiv2"></div>
+
+  <!-- LEFT -->
+  <div class="left">
+    <div class="eyebrow">KI-Workshop · Juli 2026</div>
+    <div class="title">
+      <span class="l1">Die</span>
+      <span class="l2">Unver&shy;wechsel</span>
+      <span class="l3">baren</span>
+    </div>
+    <div class="tagline">In 2 Tagen. Unverwechselbar statt unsichtbar.</div>
+    <div class="date-row">
+      <div class="date-chip">📅 3. & 4. Juli 2026</div>
+      <div class="loc-chip">📍 Witten · NRW</div>
+    </div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="center">
+    <div class="coaches-label">Deine drei Trainerinnen</div>
+    <div class="coach-list">
+      <div class="coach-item ci1">
+        <div class="ci-photo"><img src="images/claudia-conen.jpg" alt="Claudia Conen"></div>
+        <div><div class="ci-name">Claudia Conen</div><div class="ci-role">Storytelling · Stimme</div></div>
+      </div>
+      <div class="coach-item ci2">
+        <div class="ci-photo"><img src="images/gabi-lindemann.jpg" alt="Gabi Lindemann"></div>
+        <div><div class="ci-name">Gabi Lindemann</div><div class="ci-role">Webdesign · KI</div></div>
+      </div>
+      <div class="coach-item ci3">
+        <div class="ci-photo"><img src="images/ann-kathrin-andresen.jpg" alt="Ann-Kathrin Andresen"></div>
+        <div><div class="ci-name">Ann-Kathrin Andresen</div><div class="ci-role">HeyGen · Avatar-Video</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div>
+      <div class="results-label" style="margin-bottom:14px;">Du nimmst mit nach Hause</div>
+      <div class="results-grid">
+        <div class="r-item"><div class="r-num">01</div><div class="r-text">Fertige Landingpage</div></div>
+        <div class="r-item"><div class="r-num">02</div><div class="r-text">Dein Freebie</div></div>
+        <div class="r-item"><div class="r-num">03</div><div class="r-text">Avatar-Video</div></div>
+        <div class="r-item"><div class="r-num">04</div><div class="r-text">KI-Workflow</div></div>
+      </div>
+    </div>
+    <div class="cta-block">
+      <div class="cta-price"><s>597 €</s> ab 397 € Frühbucher</div>
+      <div class="cta-btn">Jetzt Platz sichern →</div>
+      <div class="spots-line"><div class="sdot"></div> Nur noch 3 Frühbucherplätze verfügbar</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
