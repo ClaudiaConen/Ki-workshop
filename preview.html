@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: #0A1428; font-family: 'Georgia', serif; }
+
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+  .wrap {
+    width: 1200px; height: 630px;
+    background: #0A1428;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+  }
+
+  /* Background glow layers */
+  .glow1 {
+    position: absolute; top: -180px; left: -100px;
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(255,206,61,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .glow2 {
+    position: absolute; bottom: -200px; right: -80px;
+    width: 650px; height: 650px;
+    background: radial-gradient(ellipse, rgba(255,63,161,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .glow3 {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; height: 400px;
+    background: radial-gradient(ellipse, rgba(183,148,244,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Grid lines subtle */
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,206,61,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,206,61,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  /* LEFT PANEL */
+  .left {
+    width: 580px;
+    padding: 54px 56px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #FFCE3D;
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+
+  .title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 82px;
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: #FDFCFA;
+    margin-bottom: 8px;
+  }
+  .title .gold { color: #FFCE3D; }
+  .title .mag  { color: #FF3FA1; }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 22px;
+    color: rgba(253,252,250,0.55);
+    margin-bottom: 36px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Date / Location pills */
+  .meta-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,206,61,0.1);
+    border: 1px solid rgba(255,206,61,0.3);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFCE3D;
+    letter-spacing: 0.02em;
+  }
+  .pill.mag {
+    background: rgba(255,63,161,0.1);
+    border-color: rgba(255,63,161,0.3);
+    color: #FF3FA1;
+  }
+  .pill-icon { font-size: 13px; }
+
+  /* Coaches */
+  .coaches {
+    display: flex;
+    gap: 8px;
+  }
+  .coach-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .coach-tag-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #FDFCFA;
+    margin-bottom: 2px;
+  }
+  .coach-tag-role {
+    font-size: 10px;
+    color: rgba(253,252,250,0.5);
+    letter-spacing: 0.03em;
+  }
+
+  /* DIVIDER */
+  .divider {
+    position: absolute;
+    left: 580px;
+    top: 40px;
+    bottom: 40px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(255,206,61,0.3) 30%, rgba(255,206,61,0.3) 70%, transparent);
+    z-index: 2;
+  }
+
+  /* RIGHT PANEL */
+  .right {
+    flex: 1;
+    padding: 54px 52px 54px 56px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .right-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,63,161,0.8);
+    margin-bottom: 18px;
+  }
+
+  /* Result cards */
+  .result-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .result-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 10px;
+    padding: 13px 16px;
+  }
+  .result-card.ki {
+    border-color: rgba(255,63,161,0.2);
+    background: rgba(255,63,161,0.04);
+  }
+  .result-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #FFCE3D;
+    letter-spacing: 0.1em;
+    min-width: 28px;
+    opacity: 0.8;
+  }
+  .result-card.ki .result-num { color: #FF3FA1; }
+  .result-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FDFCFA;
+    line-height: 1.2;
+  }
+  .result-sub {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    color: rgba(253,252,250,0.45);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,206,61,0.15);
+    padding-top: 16px;
+  }
+  .spots {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #FF3FA1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .price-badge {
+    background: linear-gradient(135deg, #FFCE3D, #FFB800);
+    border-radius: 100px;
+    padding: 8px 22px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0A1428;
+    letter-spacing: 0.01em;
+  }
+  .brand-sig {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(253,252,250,0.35);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="glow3"></div>
+  <div class="grid"></div>
+
+  <!-- LEFT -->
+  <div class="left">
+    <div>
+      <div class="eyebrow">KI-Workshop · Witten 2026</div>
+      <div class="title">
+        Die<br>
+        <span class="gold">Unver</span><span class="mag">wechsel</span><span class="gold">baren</span>
+      </div>
+      <div class="tagline">In 2 Tagen. Unverwechselbar statt unsichtbar.</div>
+
+      <div class="meta-row">
+        <div class="pill"><span class="pill-icon">📅</span>3. & 4. Juli 2026</div>
+        <div class="pill"><span class="pill-icon">⏰</span>10:00 – 18:00 Uhr</div>
+        <div class="pill mag"><span class="pill-icon">📍</span>Witten · Ringhotel</div>
+      </div>
+    </div>
+
+    <div class="coaches">
+      <div class="coach-tag">
+        <div class="coach-tag-name">Claudia Conen</div>
+        <div class="coach-tag-role">Storytelling · Stimme</div>
+      </div>
+      <div class="coach-tag">
+        <div class="coach-tag-name">Gabi Lindemann</div>
+        <div class="coach-tag-role">Webdesign · KI</div>
+      </div>
+      <div class="coach-tag">
+        <div class="coach-tag-name">Ann-Kathrin Andresen</div>
+        <div class="coach-tag-role">HeyGen · Avatar-Video</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div>
+      <div class="right-eyebrow">Nach Hause gehst du mit</div>
+      <div class="result-cards">
+        <div class="result-card">
+          <div class="result-num">01</div>
+          <div class="result-text">Fertige Landingpage</div>
+          <div class="result-sub">live · online · teilbar</div>
+        </div>
+        <div class="result-card ki">
+          <div class="result-num">02</div>
+          <div class="result-text">Dein Freebie / Leadmagnet</div>
+          <div class="result-sub">PDF · ready to use</div>
+        </div>
+        <div class="result-card ki">
+          <div class="result-num">03</div>
+          <div class="result-text">HeyGen Avatar-Video</div>
+          <div class="result-sub">aus deinem Foto</div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">04</div>
+          <div class="result-text">Dein persönlicher KI-Workflow</div>
+          <div class="result-sub">für danach</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <div class="spots">⚡ Noch 3 Frühbucherplätze</div>
+      <div class="price-badge">ab 397 € · Frühbucherpreis</div>
+      <div class="brand-sig">claudiaconen.com</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
