@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Willkommen · KI-Workshop Die Unverwechselbaren · 3./4. Juli 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1428;
+    --navy-mid: #1E2A52;
+    --gold: #FFCE3D;
+    --gold-deep: #C8960A;
+    --magenta: #FF3FA1;
+    --cream: #FDFCFA;
+    --champagne: #FFF6E0;
+    --display: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    background: #F4F0EA;
+    font-family: var(--sans);
+    font-size: 11pt;
+    color: var(--navy);
+    line-height: 1.55;
+  }
+
+  /* ===== PAGE LAYOUT ===== */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 12mm;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .page-light {
+    background: var(--cream);
+  }
+
+  /* Subtle background texture */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -20%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba(255, 206, 61, 0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .page::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -10%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(ellipse, rgba(255, 63, 161, 0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  /* ===== PAGE 1: COVER / TICKET ===== */
+  .cover {
+    padding: 14mm 16mm 12mm;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-eyebrow {
+    font-family: var(--sans);
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8mm;
+    opacity: 0.9;
+  }
+
+  .cover-title {
+    font-family: var(--display);
+    font-size: 52pt;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 2mm;
+  }
+  .cover-title .highlight {
+    color: var(--gold);
+  }
+  .cover-title .mag {
+    color: var(--magenta);
+  }
+
+  .cover-subtitle {
+    font-family: var(--display);
+    font-size: 18pt;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(253, 252, 250, 0.65);
+    margin-bottom: 10mm;
+    letter-spacing: -0.01em;
+  }
+
+  /* Ticket strip */
+  .ticket-strip {
+    border: 1px solid rgba(255, 206, 61, 0.35);
+    border-radius: 12px;
+    padding: 7mm 8mm;
+    display: flex;
+    gap: 0;
+    margin-bottom: 8mm;
+    background: rgba(255, 206, 61, 0.05);
+    position: relative;
+  }
+  .ticket-strip::before {
+    content: '';
+    position: absolute;
+    left: 33.33%;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(255, 206, 61, 0.2);
+  }
+  .ticket-strip::after {
+    content: '';
+    position: absolute;
+    left: 66.66%;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(255, 206, 61, 0.2);
+  }
+  .ticket-cell {
+    flex: 1;
+    padding: 0 6mm;
+    text-align: center;
+  }
+  .ticket-cell:first-child { padding-left: 2mm; }
+  .ticket-label {
+    font-family: var(--sans);
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+    margin-bottom: 2mm;
+  }
+  .ticket-value {
+    font-family: var(--display);
+    font-size: 16pt;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.15;
+  }
+  .ticket-value-sub {
+    font-family: var(--sans);
+    font-size: 8.5pt;
+    color: rgba(253, 252, 250, 0.6);
+    margin-top: 1mm;
+  }
+
+  /* Coaches row */
+  .coaches-row {
+    display: flex;
+    gap: 4mm;
+    margin-bottom: 9mm;
+  }
+  .coach-card {
+    flex: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 5mm 5mm;
+    background: rgba(255, 255, 255, 0.04);
+    text-align: center;
+  }
+  .coach-card-name {
+    font-family: var(--display);
+    font-size: 12pt;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 1.5mm;
+    line-height: 1.2;
+  }
+  .coach-card-role {
+    font-family: var(--sans);
+    font-size: 7.5pt;
+    color: var(--gold);
+    font-weight: 500;
+    opacity: 0.85;
+    letter-spacing: 0.04em;
+  }
+
+  /* What you take home */
+  .takeaway-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3mm;
+    margin-bottom: 9mm;
+  }
+  .takeaway-item {
+    border: 1px solid rgba(255, 63, 161, 0.25);
+    border-radius: 8px;
+    padding: 4mm 5mm;
+    background: rgba(255, 63, 161, 0.04);
+  }
+  .takeaway-num {
+    font-family: var(--sans);
+    font-size: 7pt;
+    font-weight: 700;
+    color: var(--magenta);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 1.5mm;
+  }
+  .takeaway-text {
+    font-family: var(--display);
+    font-size: 11pt;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.25;
+  }
+
+  /* Included note */
+  .included-note {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    border: 1px solid rgba(255, 206, 61, 0.25);
+    border-radius: 8px;
+    padding: 4mm 6mm;
+    background: rgba(255, 206, 61, 0.05);
+    margin-bottom: 6mm;
+  }
+  .included-icon {
+    font-size: 18pt;
+    flex-shrink: 0;
+  }
+  .included-text {
+    font-family: var(--sans);
+    font-size: 9pt;
+    color: rgba(253, 252, 250, 0.82);
+    line-height: 1.5;
+  }
+  .included-text strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* Perforated bottom */
+  .ticket-perf {
+    border-top: 2px dashed rgba(255, 206, 61, 0.3);
+    padding-top: 5mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2mm;
+  }
+  .perf-brand {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .perf-coaches {
+    font-family: var(--sans);
+    font-size: 8pt;
+    color: rgba(253, 252, 250, 0.5);
+    letter-spacing: 0.05em;
+  }
+  .perf-url {
+    font-family: var(--sans);
+    font-size: 8pt;
+    color: rgba(253, 252, 250, 0.4);
+    letter-spacing: 0.03em;
+  }
+
+  /* ===== PAGE 2: PROGRAMM ===== */
+  .program-page {
+    padding: 12mm 16mm 12mm;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid rgba(255, 206, 61, 0.2);
+    padding-bottom: 4mm;
+    margin-bottom: 8mm;
+  }
+  .page-header-title {
+    font-family: var(--display);
+    font-size: 26pt;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.1;
+  }
+  .page-header-title span { color: var(--gold); }
+  .page-header-meta {
+    font-family: var(--sans);
+    font-size: 8pt;
+    color: rgba(253, 252, 250, 0.5);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .day-section {
+    margin-bottom: 8mm;
+  }
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    margin-bottom: 4mm;
+  }
+  .day-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: var(--sans);
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1.5mm 4mm;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .day-badge.day2 {
+    background: var(--magenta);
+    color: white;
+  }
+  .day-title {
+    font-family: var(--display);
+    font-size: 16pt;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+  .day-time {
+    font-family: var(--sans);
+    font-size: 8pt;
+    color: var(--gold);
+    font-weight: 600;
+    margin-left: auto;
+    letter-spacing: 0.05em;
+  }
+
+  .modules-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+  }
+  .module-block {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 4mm 5mm;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .module-block.ki {
+    border-color: rgba(255, 63, 161, 0.25);
+    background: rgba(255, 63, 161, 0.04);
+  }
+  .module-num {
+    font-family: var(--sans);
+    font-size: 7pt;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5mm;
+  }
+  .module-block.ki .module-num { color: var(--magenta); }
+  .module-name {
+    font-family: var(--display);
+    font-size: 13pt;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 2mm;
+    line-height: 1.2;
+  }
+  .module-items {
+    list-style: none;
+    margin-bottom: 2.5mm;
+  }
+  .module-items li {
+    font-family: var(--sans);
+    font-size: 8pt;
+    color: rgba(253, 252, 250, 0.68);
+    padding: 0.8mm 0;
+    padding-left: 3mm;
+    position: relative;
+    line-height: 1.4;
+  }
+  .module-items li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .module-block.ki .module-items li::before { color: var(--magenta); }
+  .module-result {
+    font-family: var(--sans);
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: var(--gold);
+    border-top: 1px solid rgba(255, 206, 61, 0.15);
+    padding-top: 2mm;
+    line-height: 1.4;
+  }
+  .module-block.ki .module-result { color: var(--magenta); border-color: rgba(255, 63, 161, 0.15); }
+
+  /* result bar */
+  .result-bar {
+    border: 1px solid rgba(255, 206, 61, 0.3);
+    border-radius: 8px;
+    padding: 4mm 6mm;
+    background: rgba(255, 206, 61, 0.06);
+    margin-top: 4mm;
+    text-align: center;
+  }
+  .result-bar p {
+    font-family: var(--display);
+    font-size: 12pt;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1.4;
+  }
+
+  /* ===== PAGE 3: LOCATION & CHECKLISTE ===== */
+  .info-page {
+    padding: 12mm 16mm 12mm;
+    position: relative;
+    z-index: 1;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+    margin-top: 8mm;
+  }
+
+  .info-block {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 6mm 6mm;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .info-block-full {
+    grid-column: 1 / -1;
+  }
+  .info-block-gold {
+    border-color: rgba(255, 206, 61, 0.3);
+    background: rgba(255, 206, 61, 0.04);
+  }
+  .info-block-mag {
+    border-color: rgba(255, 63, 161, 0.3);
+    background: rgba(255, 63, 161, 0.04);
+  }
+
+  .info-block-eyebrow {
+    font-family: var(--sans);
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3mm;
+  }
+  .info-block-mag .info-block-eyebrow { color: var(--magenta); }
+
+  .info-block-title {
+    font-family: var(--display);
+    font-size: 15pt;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 3mm;
+    line-height: 1.2;
+  }
+
+  .info-line {
+    display: flex;
+    gap: 2mm;
+    margin-bottom: 1.8mm;
+    align-items: flex-start;
+  }
+  .info-line-icon {
+    font-size: 9pt;
+    flex-shrink: 0;
+    margin-top: 0.5mm;
+    width: 5mm;
+    text-align: center;
+  }
+  .info-line-text {
+    font-family: var(--sans);
+    font-size: 8.5pt;
+    color: rgba(253, 252, 250, 0.75);
+    line-height: 1.45;
+  }
+  .info-line-text strong {
+    color: var(--cream);
+    font-weight: 600;
+  }
+  .info-line-text a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 3mm;
+    padding: 2mm 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: var(--sans);
+    font-size: 8.5pt;
+    color: rgba(253, 252, 250, 0.78);
+    line-height: 1.4;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box {
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid rgba(255, 206, 61, 0.5);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 0.5mm;
+  }
+  .checklist li strong { color: var(--cream); font-weight: 600; }
+
+  /* Note box */
+  .note-box {
+    border-left: 3px solid var(--gold);
+    padding: 3mm 5mm;
+    background: rgba(255, 206, 61, 0.05);
+    border-radius: 0 6px 6px 0;
+    margin-top: 3mm;
+  }
+  .note-box p {
+    font-family: var(--sans);
+    font-size: 8pt;
+    color: rgba(253, 252, 250, 0.75);
+    line-height: 1.5;
+  }
+  .note-box strong { color: var(--gold); }
+
+  /* Contact strip */
+  .contact-strip {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 206, 61, 0.25);
+    border-radius: 10px;
+    padding: 5mm 7mm;
+    background: rgba(255, 206, 61, 0.04);
+    margin-top: 2mm;
+  }
+  .contact-strip-q {
+    font-family: var(--display);
+    font-size: 13pt;
+    font-style: italic;
+    color: var(--cream);
+    font-weight: 500;
+  }
+  .contact-strip-links {
+    display: flex;
+    gap: 6mm;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    font-family: var(--sans);
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* Footer strip */
+  .page-footer {
+    position: absolute;
+    bottom: 8mm;
+    left: 16mm;
+    right: 16mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 3mm;
+  }
+  .page-footer-brand {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 9pt;
+    color: rgba(255, 206, 61, 0.6);
+  }
+  .page-footer-info {
+    font-family: var(--sans);
+    font-size: 7.5pt;
+    color: rgba(253, 252, 250, 0.3);
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== PRINT STYLES ===== */
+  @media print {
+    body { background: none; }
+    .page { margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: avoid; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======================================= -->
+<!-- PAGE 1: COVER / TICKET                  -->
+<!-- ======================================= -->
+<div class="page">
+  <div class="cover">
+
+    <div class="cover-eyebrow">Dein Ticket · KI-Workshop 2026</div>
+
+    <h1 class="cover-title">
+      Die<br>
+      <span class="highlight">Unver</span><span class="mag">wechsel</span><span class="highlight">baren</span>
+    </h1>
+    <p class="cover-subtitle">In 2 Tagen. Unverwechselbar statt unsichtbar.</p>
+
+    <!-- Ticket Strip -->
+    <div class="ticket-strip">
+      <div class="ticket-cell">
+        <div class="ticket-label">Tag 1 — Anreisetag</div>
+        <div class="ticket-value">3. Juli 2026</div>
+        <div class="ticket-value-sub">Beginn 10:00 Uhr</div>
+      </div>
+      <div class="ticket-cell">
+        <div class="ticket-label">Tag 2</div>
+        <div class="ticket-value">4. Juli 2026</div>
+        <div class="ticket-value-sub">Beginn 09:00 Uhr</div>
+      </div>
+      <div class="ticket-cell">
+        <div class="ticket-label">Location</div>
+        <div class="ticket-value" style="font-size:12pt;">Ringhotel<br>Parkhotel Witten</div>
+        <div class="ticket-value-sub">Bergerstr. 23 · 58452 Witten</div>
+      </div>
+    </div>
+
+    <!-- Coaches -->
+    <div class="coaches-row">
+      <div class="coach-card">
+        <div class="coach-card-name">Claudia Conen</div>
+        <div class="coach-card-role">Performance Coach · Storytelling & Stimme</div>
+      </div>
+      <div class="coach-card">
+        <div class="coach-card-name">Gabi Lindemann</div>
+        <div class="coach-card-role">Webdesign & KI · Landingpage</div>
+      </div>
+      <div class="coach-card">
+        <div class="coach-card-name">Ann-Kathrin Andresen</div>
+        <div class="coach-card-role">Technik & HeyGen · Avatar-Video</div>
+      </div>
+    </div>
+
+    <!-- What you take home -->
+    <div class="takeaway-grid">
+      <div class="takeaway-item">
+        <div class="takeaway-num">Nach Hause mit</div>
+        <div class="takeaway-text">Deiner fertigen Landingpage — live und anklickbar</div>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-num">Nach Hause mit</div>
+        <div class="takeaway-text">Deinem Freebie / Leadmagnet</div>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-num">Nach Hause mit</div>
+        <div class="takeaway-text">Deinem HeyGen-Avatar-Video</div>
+      </div>
+    </div>
+
+    <!-- Included -->
+    <div class="included-note">
+      <div class="included-icon">☕</div>
+      <div class="included-text">
+        <strong>Getränkepauschale inklusive.</strong> Wasser, Kaffee und Tee stehen während beider Tage bereit. Mittagessen ist optional und kann vor Ort hinzugebucht werden.
+      </div>
+    </div>
+
+    <!-- Perforated bottom -->
+    <div class="ticket-perf">
+      <div class="perf-brand">Die Unverwechselbaren</div>
+      <div class="perf-coaches">Claudia · Gabi · Ann-Kathrin</div>
+      <div class="perf-url">3. & 4. Juli 2026 · Witten</div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand">Die Unverwechselbaren · KI-Workshop</div>
+    <div class="page-footer-info">Seite 1 von 3</div>
+  </div>
+</div>
+
+
+<!-- ======================================= -->
+<!-- PAGE 2: PROGRAMM                        -->
+<!-- ======================================= -->
+<div class="page">
+  <div class="program-page">
+
+    <div class="page-header">
+      <div class="page-header-title">Dein <span>Programm</span><br>auf zwei Tage.</div>
+      <div class="page-header-meta">
+        3. &amp; 4. Juli 2026<br>
+        Ringhotel Parkhotel Witten<br>
+        Kleine Gruppe · max. 9 Personen
+      </div>
+    </div>
+
+    <!-- Tag 1 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-badge">Tag 1 · 3. Juli 2026</div>
+        <div class="day-title">Klarheit &amp; Konzept</div>
+        <div class="day-time">Beginn 10:00 Uhr</div>
+      </div>
+      <div class="modules-row">
+
+        <div class="module-block">
+          <div class="module-num">Baustein 01</div>
+          <div class="module-name">Storytelling</div>
+          <ul class="module-items">
+            <li>Entdecke deine Markenbotschaft</li>
+            <li>Wer bist du wirklich?</li>
+            <li>Welches Problem löst du?</li>
+            <li>Was macht dich einzigartig?</li>
+            <li>Deine Audioaufnahme für deinen Avatar</li>
+          </ul>
+          <div class="module-result">→ Klare Markenbotschaft für deine Landingpage + dein Audio</div>
+        </div>
+
+        <div class="module-block ki">
+          <div class="module-num">Baustein 02</div>
+          <div class="module-name">Claude · Landingpage-Vorbereitung</div>
+          <ul class="module-items">
+            <li>Lerne die Sprache, die deine KI versteht</li>
+            <li>Wie du Claude richtig briefst</li>
+            <li>KI für kreative Texte und dein Design nutzen</li>
+          </ul>
+          <div class="module-result">→ Du weißt, wie du mit der KI sprichst, damit sie deine Seite visualisiert</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tag 2 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-badge day2">Tag 2 · 4. Juli 2026</div>
+        <div class="day-title">Umsetzung &amp; Sichtbarkeit</div>
+        <div class="day-time">Beginn 09:00 Uhr</div>
+      </div>
+      <div class="modules-row">
+
+        <div class="module-block ki">
+          <div class="module-num">Baustein 03</div>
+          <div class="module-name">Landingpage-Erstellung</div>
+          <ul class="module-items">
+            <li>Struktur &amp; Aufbau</li>
+            <li>Visuelle Gestaltung</li>
+            <li>Textaufbau, der verkauft</li>
+            <li>Kontaktformular einbauen</li>
+            <li>Veröffentlichung live</li>
+          </ul>
+          <div class="module-result">→ Deine Landingpage ist online — sichtbar, anklickbar, teilbar</div>
+        </div>
+
+        <div class="module-block">
+          <div class="module-num">Baustein 04</div>
+          <div class="module-name">Freebie / Leadmagnet</div>
+          <ul class="module-items">
+            <li>Mehrwert definieren</li>
+            <li>Nutzen klar kommunizieren</li>
+            <li>PDF-Erstellung</li>
+            <li>Visuelle Aufbereitung</li>
+          </ul>
+          <div class="module-result">→ Ein fertiges Freebie, das echten Mehrwert liefert</div>
+        </div>
+
+        <div class="module-block ki">
+          <div class="module-num">Baustein 05</div>
+          <div class="module-name">Avatar-Video mit HeyGen</div>
+          <ul class="module-items">
+            <li>Video mit Foto-Avatar und Audio erstellen</li>
+            <li>Einbindung in deine Landingpage</li>
+          </ul>
+          <div class="module-result">→ Dein persönliches Video — direkt in der Landingpage</div>
+        </div>
+
+        <div class="module-block">
+          <div class="module-num">Baustein 06</div>
+          <div class="module-name">Dein Workflow</div>
+          <ul class="module-items">
+            <li>Orientierung für die Zeit danach</li>
+            <li>WhatsApp-Begleitung &amp; Zoom-Call zur Unterstützung</li>
+          </ul>
+          <div class="module-result">→ Du gehst nicht alleine — wir sind noch an deiner Seite</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Result bar -->
+    <div class="result-bar">
+      <p>Am Ende von Tag 2 hast du: eine fertige Landingpage online · ein Freebie · ein Avatar-Video · deinen Workflow für danach</p>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand">Die Unverwechselbaren · KI-Workshop</div>
+    <div class="page-footer-info">Seite 2 von 3</div>
+  </div>
+</div>
+
+
+<!-- ======================================= -->
+<!-- PAGE 3: LOCATION, ANFAHRT, CHECKLISTE   -->
+<!-- ======================================= -->
+<div class="page">
+  <div class="info-page">
+
+    <div class="page-header">
+      <div class="page-header-title">Location, <span style="color:var(--gold)">Anfahrt</span><br>&amp; Vorbereitung.</div>
+      <div class="page-header-meta">
+        Ringhotel Parkhotel Witten<br>
+        Bergerstr. 23 · 58452 Witten
+      </div>
+    </div>
+
+    <div class="info-grid">
+
+      <!-- Location -->
+      <div class="info-block info-block-gold">
+        <div class="info-block-eyebrow">📍 Location</div>
+        <div class="info-block-title">Ringhotel<br>Parkhotel Witten</div>
+
+        <div class="info-line">
+          <div class="info-line-icon">🏨</div>
+          <div class="info-line-text"><strong>Bergerstraße 23</strong><br>58452 Witten</div>
+        </div>
+        <div class="info-line">
+          <div class="info-line-icon">📞</div>
+          <div class="info-line-text">+49 (0)2302 588-0</div>
+        </div>
+        <div class="info-line">
+          <div class="info-line-icon">✉</div>
+          <div class="info-line-text">parkhotel-witten@riepe.com</div>
+        </div>
+        <div class="info-line" style="margin-top:3mm;">
+          <div class="info-line-icon">🛏</div>
+          <div class="info-line-text"><strong>Zimmer buchbar:</strong> Du kannst direkt im Hotel übernachten. Buchung unter obiger Telefonnummer oder E-Mail.</div>
+        </div>
+      </div>
+
+      <!-- Anfahrt -->
+      <div class="info-block">
+        <div class="info-block-eyebrow">🚗 Anfahrt</div>
+        <div class="info-block-title">So kommst<br>du hin.</div>
+
+        <div class="info-line">
+          <div class="info-line-icon">🚗</div>
+          <div class="info-line-text"><strong>Mit dem Auto</strong><br>Parkplätze in großer Zahl rund ums Haus. 30 Stellplätze auf dem Hof hinter dem Hotel.</div>
+        </div>
+        <div class="info-line">
+          <div class="info-line-icon">🚆</div>
+          <div class="info-line-text"><strong>Mit der Bahn</strong><br>5 Minuten Fußweg vom Bahnhof Witten Hauptbahnhof.</div>
+        </div>
+        <div class="info-line">
+          <div class="info-line-icon">🗺</div>
+          <div class="info-line-text">Google Maps: <strong>„Ringhotel Parkhotel Witten"</strong></div>
+        </div>
+
+        <div class="note-box">
+          <p><strong>Tipp:</strong> Wenn du von weiter anreist, buche ein Zimmer direkt im Hotel — so kannst du entspannt starten und nach Tag 1 direkt vor Ort bleiben.</p>
+        </div>
+      </div>
+
+      <!-- Checkliste -->
+      <div class="info-block info-block-mag">
+        <div class="info-block-eyebrow" style="color:var(--magenta);">✓ Checkliste — Das bringst du mit</div>
+        <div class="info-block-title">Deine Vorbereitung.</div>
+        <ul class="checklist">
+          <li><div class="check-box"></div><span><strong>Laptop</strong> (vollständig aufgeladen, Ladekabel dabei)</span></li>
+          <li><div class="check-box"></div><span><strong>Smartphone</strong> (für Audioaufnahme &amp; HeyGen)</span></li>
+          <li><div class="check-box"></div><span><strong>Fotos von dir</strong> — professionell oder gute Handy-Fotos</span></li>
+          <li><div class="check-box"></div><span><strong>Gedanken zu deinen Brandfarben &amp; Schriften</strong> (je klarer, desto schneller steht deine Seite)</span></li>
+          <li><div class="check-box"></div><span><strong>Claude-Account</strong> — wir empfehlen den Max-Plan (ca. 92 €/Monat, ein Monat reicht)</span></li>
+          <li><div class="check-box"></div><span><strong>HeyGen-Account</strong> anlegen (Gratisversion reicht zum Start)</span></li>
+          <li><div class="check-box"></div><span><strong>Canva-Account</strong> (kostenlos) — für dein Freebie</span></li>
+          <li><div class="check-box"></div><span>Alle Zugänge werden im <strong>Vorbereitungs-Call via Zoom</strong> gemeinsam eingerichtet</span></li>
+        </ul>
+      </div>
+
+      <!-- Vorbereitung Tipps -->
+      <div class="info-block">
+        <div class="info-block-eyebrow">💡 Gut zu wissen</div>
+        <div class="info-block-title">Vor dem<br>Workshop.</div>
+
+        <div class="info-line">
+          <div class="info-line-icon">📹</div>
+          <div class="info-line-text"><strong>Vorbereitungs-Call via Zoom</strong><br>Vor dem Workshop richten wir gemeinsam alle Zugänge ein.</div>
+        </div>
+        <div class="info-line">
+          <div class="info-line-icon">⏰</div>
+          <div class="info-line-text"><strong>Früher ankommen?</strong><br>Wer am Starttag eine Stunde früher kommt, wird vor Ort startklar gemacht.</div>
+        </div>
+        <div class="info-line">
+          <div class="info-line-icon">☕</div>
+          <div class="info-line-text"><strong>Getränke inklusive</strong><br>Wasser, Kaffee, Tee — an beiden Tagen dabei. Mittagessen optional.</div>
+        </div>
+        <div class="info-line">
+          <div class="info-line-icon">👥</div>
+          <div class="info-line-text"><strong>Kleine Gruppe</strong><br>Maximal 9 Teilnehmerinnen — persönlich, fokussiert, effektiv.</div>
+        </div>
+      </div>
+
+      <!-- Contact strip -->
+      <div class="contact-strip">
+        <div class="contact-strip-q">Noch Fragen? Schreib uns — wir antworten persönlich.</div>
+        <div class="contact-strip-links">
+          <div class="contact-link">✉ claudiaconen@umsatzstimme.de</div>
+          <div class="contact-link">💬 016093102073 · WhatsApp</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand">Die Unverwechselbaren · KI-Workshop</div>
+    <div class="page-footer-info">Wir freuen uns auf dich. Claudia · Gabi · Ann-Kathrin</div>
+  </div>
+</div>
+
+</body>
+</html>
