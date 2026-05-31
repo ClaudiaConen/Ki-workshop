@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1080px; overflow:visible; background:#060E1F; }
+
+  .slide {
+    width:1080px; height:1080px;
+    background:#060E1F;
+    position:relative; overflow:hidden;
+  }
+
+  /* Glows */
+  .g1 { position:absolute; border-radius:50%; width:800px; height:800px; top:-300px; left:-200px; background:radial-gradient(ellipse,rgba(255,206,61,.15) 0%,transparent 60%); }
+  .g2 { position:absolute; border-radius:50%; width:700px; height:700px; bottom:-250px; right:-150px; background:radial-gradient(ellipse,rgba(255,63,161,.12) 0%,transparent 60%); }
+  .g3 { position:absolute; border-radius:50%; width:500px; height:500px; top:50%; left:50%; transform:translate(-50%,-50%); background:radial-gradient(ellipse,rgba(183,148,244,.06) 0%,transparent 65%); }
+  .gp { position:absolute; border-radius:50%; width:900px; height:900px; top:-350px; right:-250px; background:radial-gradient(ellipse,rgba(255,63,161,.1) 0%,transparent 60%); }
+  .gv { position:absolute; border-radius:50%; width:700px; height:700px; bottom:-200px; left:-200px; background:radial-gradient(ellipse,rgba(183,148,244,.12) 0%,transparent 60%); }
+
+  /* Frame */
+  .frame { position:absolute; inset:42px; border:1px solid rgba(255,206,61,.18); pointer-events:none; }
+  .corner { position:absolute; width:22px; height:22px; }
+  .c-tl { top:-1px; left:-1px; border-top:2px solid rgba(255,206,61,.6); border-left:2px solid rgba(255,206,61,.6); }
+  .c-tr { top:-1px; right:-1px; border-top:2px solid rgba(255,206,61,.6); border-right:2px solid rgba(255,206,61,.6); }
+  .c-bl { bottom:-1px; left:-1px; border-bottom:2px solid rgba(255,206,61,.6); border-left:2px solid rgba(255,206,61,.6); }
+  .c-br { bottom:-1px; right:-1px; border-bottom:2px solid rgba(255,206,61,.6); border-right:2px solid rgba(255,206,61,.6); }
+
+  /* Counter */
+  .counter {
+    position:absolute; top:64px; right:76px; z-index:5;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:.22em; color:rgba(255,206,61,.38);
+  }
+
+  /* Brand */
+  .brand {
+    position:absolute; bottom:60px; z-index:5;
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic;
+    font-size:16px; color:rgba(253,252,250,.22); letter-spacing:.04em;
+  }
+  .brand-left { left:76px; }
+  .brand-center { left:50%; transform:translateX(-50%); }
+
+  /* Ghost number */
+  .ghost-n {
+    position:absolute; right:-30px; bottom:-100px;
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-weight:300;
+    font-size:560px; line-height:1; color:rgba(255,206,61,.045);
+    pointer-events:none; z-index:1; user-select:none;
+  }
+  .ghost-n.pink { color:rgba(255,63,161,.04); }
+  .ghost-n.violet { color:rgba(183,148,244,.05); }
+
+  /* Accent bar */
+  .accentbar {
+    position:absolute; left:76px; top:180px; bottom:160px; width:3px;
+    background:linear-gradient(to bottom, transparent, rgba(255,206,61,.7) 20%, rgba(255,206,61,.7) 80%, transparent);
+    z-index:3;
+  }
+  .accentbar.pink { background:linear-gradient(to bottom, transparent, rgba(255,63,161,.8) 20%, rgba(255,63,161,.8) 80%, transparent); }
+  .accentbar.violet { background:linear-gradient(to bottom, transparent, rgba(183,148,244,.8) 20%, rgba(183,148,244,.8) 80%, transparent); }
+
+  /* ============ SLIDE 1 — HOOK ============ */
+  .s1-inner {
+    position:absolute; z-index:3;
+    top:50%; left:50%; transform:translate(-50%,-50%);
+    width:100%; padding:0 80px;
+    text-align:center;
+  }
+  .s1-tag {
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,63,161,.12); border:1px solid rgba(255,63,161,.3);
+    border-radius:100px; padding:8px 22px; margin-bottom:48px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:#FF3FA1;
+  }
+  .s1-dot { width:6px; height:6px; background:#FF3FA1; border-radius:50%; box-shadow:0 0 8px rgba(255,63,161,.9); }
+  .s1-num {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-weight:300;
+    font-size:200px; line-height:.85; letter-spacing:-.04em; margin-bottom:8px;
+    background:linear-gradient(120deg,#FFCE3D 20%,#FF8C00 60%,#FF3FA1 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .s1-title {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-weight:300;
+    font-size:58px; line-height:1; letter-spacing:-.02em; color:#FDFCFA; margin-bottom:16px;
+  }
+  .s1-sub {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic;
+    font-size:28px; color:rgba(253,252,250,.38); margin-bottom:52px;
+  }
+  .s1-swipe {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:600;
+    letter-spacing:.2em; text-transform:uppercase; color:rgba(255,206,61,.45);
+    position:absolute; bottom:64px; right:76px; z-index:5;
+  }
+
+  /* ============ POINT SLIDES 2–6 ============ */
+  .pt-inner {
+    position:absolute; z-index:3;
+    left:116px; right:76px;
+    top:50%; transform:translateY(-50%);
+  }
+  .pt-num-badge {
+    display:inline-block;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:.24em; text-transform:uppercase; margin-bottom:28px;
+    padding:6px 18px; border-radius:100px;
+  }
+  .gold-badge { background:rgba(255,206,61,.1); border:1px solid rgba(255,206,61,.3); color:rgba(255,206,61,.9); }
+  .pink-badge { background:rgba(255,63,161,.1); border:1px solid rgba(255,63,161,.3); color:rgba(255,63,161,.9); }
+  .violet-badge { background:rgba(183,148,244,.1); border:1px solid rgba(183,148,244,.3); color:rgba(183,148,244,.9); }
+
+  .pt-main {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-weight:300;
+    font-size:82px; line-height:.92; letter-spacing:-.025em;
+    color:#FDFCFA; margin-bottom:24px;
+  }
+  .pt-main.gradient {
+    background:linear-gradient(120deg,#FFCE3D 10%,#FF8C00 55%,#FF3FA1 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .pt-main.pink-grad {
+    background:linear-gradient(120deg,#FF3FA1 10%,#FF8C00 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .pt-main.violet-grad {
+    background:linear-gradient(120deg,#B794F4 10%,#FF3FA1 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .pt-sub {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic;
+    font-size:38px; color:rgba(253,252,250,.48); line-height:1.2;
+  }
+
+  /* ============ CTA SLIDE 7 ============ */
+  .cta-inner {
+    position:absolute; z-index:3;
+    top:50%; left:50%; transform:translate(-50%,-50%);
+    width:100%; padding:0 80px; text-align:center;
+  }
+  .cta-pre {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:.28em; text-transform:uppercase; color:rgba(255,206,61,.6);
+    margin-bottom:28px;
+  }
+  .cta-title {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-weight:300;
+    font-size:80px; line-height:.92; letter-spacing:-.025em; color:#FDFCFA;
+    margin-bottom:10px;
+  }
+  .cta-title span {
+    background:linear-gradient(120deg,#FFCE3D 20%,#FF8C00 55%,#FF3FA1 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .cta-sub {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic;
+    font-size:28px; color:rgba(253,252,250,.38); margin-bottom:52px;
+  }
+  .gold-divider { width:120px; height:1px; background:linear-gradient(90deg,transparent,rgba(255,206,61,.7),transparent); margin:0 auto 48px; }
+  .cta-chips { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:48px; }
+  .cta-chip {
+    border-radius:100px; padding:12px 28px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; font-weight:700;
+    letter-spacing:.04em;
+  }
+  .chip-gold { background:rgba(255,206,61,.1); border:1px solid rgba(255,206,61,.4); color:#FFCE3D; }
+  .chip-pink { background:rgba(255,63,161,.1); border:1px solid rgba(255,63,161,.35); color:#FF3FA1; }
+  .chip-light { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.15); color:rgba(253,252,250,.75); }
+  .cta-spots {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; font-weight:600;
+    color:#FF3FA1; letter-spacing:.1em; text-transform:uppercase;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .sdot { width:7px; height:7px; background:#FF3FA1; border-radius:50%; box-shadow:0 0 10px rgba(255,63,161,.9); }
+</style>
+</head>
+<body>
+
+<!-- ========== SLIDE 1: HOOK ========== -->
+<div class="slide">
+  <div class="g1"></div><div class="g2"></div><div class="g3"></div>
+  <div class="frame"><div class="corner c-tl"></div><div class="corner c-tr"></div><div class="corner c-bl"></div><div class="corner c-br"></div></div>
+  <div class="counter">01 / 07</div>
+  <div class="brand brand-center">claudiaconen.com</div>
+  <div class="s1-swipe">Weiter →</div>
+
+  <div class="s1-inner">
+    <div class="s1-tag"><div class="s1-dot"></div> KI-Workshop · Witten · 2026 <div class="s1-dot"></div></div>
+    <div class="s1-num">5</div>
+    <div class="s1-title">Zeichen, dass du bereit bist —</div>
+    <div class="s1-sub">unverwechselbar zu werden.</div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 2: ZEICHEN 01 ========== -->
+<div class="slide">
+  <div class="g1"></div><div class="g3"></div>
+  <div class="ghost-n">1</div>
+  <div class="accentbar"></div>
+  <div class="frame"><div class="corner c-tl"></div><div class="corner c-tr"></div><div class="corner c-bl"></div><div class="corner c-br"></div></div>
+  <div class="counter">02 / 07</div>
+  <div class="brand brand-left">claudiaconen.com</div>
+
+  <div class="pt-inner">
+    <div class="pt-num-badge gold-badge">Zeichen 01</div>
+    <div class="pt-main gradient">Du weißt,<br>was du kannst.</div>
+    <div class="pt-sub">Aber du weißt nicht,<br>wie du es sagst.</div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 3: ZEICHEN 02 ========== -->
+<div class="slide">
+  <div class="gp"></div><div class="g3"></div>
+  <div class="ghost-n pink">2</div>
+  <div class="accentbar pink"></div>
+  <div class="frame"><div class="corner c-tl"></div><div class="corner c-tr"></div><div class="corner c-bl"></div><div class="corner c-br"></div></div>
+  <div class="counter">03 / 07</div>
+  <div class="brand brand-left">claudiaconen.com</div>
+
+  <div class="pt-inner">
+    <div class="pt-num-badge pink-badge">Zeichen 02</div>
+    <div class="pt-main pink-grad">Du schaust<br>anderen zu.</div>
+    <div class="pt-sub">Und denkst:<br>Das sollte eigentlich ich sein.</div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 4: ZEICHEN 03 ========== -->
+<div class="slide">
+  <div class="gv"></div><div class="g3"></div>
+  <div class="ghost-n violet">3</div>
+  <div class="accentbar violet"></div>
+  <div class="frame"><div class="corner c-tl"></div><div class="corner c-tr"></div><div class="corner c-bl"></div><div class="corner c-br"></div></div>
+  <div class="counter">04 / 07</div>
+  <div class="brand brand-left">claudiaconen.com</div>
+
+  <div class="pt-inner">
+    <div class="pt-num-badge violet-badge">Zeichen 03</div>
+    <div class="pt-main violet-grad">Du hast genug<br>gelernt.</div>
+    <div class="pt-sub">Jetzt willst du<br>endlich umsetzen.</div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 5: ZEICHEN 04 ========== -->
+<div class="slide">
+  <div class="g1"></div><div class="g3"></div>
+  <div class="ghost-n">4</div>
+  <div class="accentbar"></div>
+  <div class="frame"><div class="corner c-tl"></div><div class="corner c-tr"></div><div class="corner c-bl"></div><div class="corner c-br"></div></div>
+  <div class="counter">05 / 07</div>
+  <div class="brand brand-left">claudiaconen.com</div>
+
+  <div class="pt-inner">
+    <div class="pt-num-badge gold-badge">Zeichen 04</div>
+    <div class="pt-main gradient">Du willst nicht<br>mehr warten.</div>
+    <div class="pt-sub">Du willst sichtbar werden.<br>Jetzt.</div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 6: ZEICHEN 05 ========== -->
+<div class="slide">
+  <div class="gp"></div><div class="g3"></div>
+  <div class="ghost-n pink">5</div>
+  <div class="accentbar pink"></div>
+  <div class="frame"><div class="corner c-tl"></div><div class="corner c-tr"></div><div class="corner c-bl"></div><div class="corner c-br"></div></div>
+  <div class="counter">06 / 07</div>
+  <div class="brand brand-left">claudiaconen.com</div>
+
+  <div class="pt-inner">
+    <div class="pt-num-badge pink-badge">Zeichen 05</div>
+    <div class="pt-main pink-grad">Du bist bereit,<br>dich zu zeigen —</div>
+    <div class="pt-sub">wie du wirklich bist.</div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 7: CTA ========== -->
+<div class="slide">
+  <div class="g1"></div><div class="g2"></div><div class="g3"></div>
+  <div class="frame"><div class="corner c-tl"></div><div class="corner c-tr"></div><div class="corner c-bl"></div><div class="corner c-br"></div></div>
+  <div class="counter">07 / 07</div>
+  <div class="brand brand-center">claudiaconen.com</div>
+
+  <div class="cta-inner">
+    <div class="cta-pre">Dann bist du eine von uns.</div>
+    <div class="cta-title">Die <span>Unver&shy;wechsel</span>baren</div>
+    <div class="cta-sub">KI-Workshop · Witten</div>
+    <div class="gold-divider"></div>
+    <div class="cta-chips">
+      <div class="cta-chip chip-gold">📅 3. & 4. Juli 2026</div>
+      <div class="cta-chip chip-light">📍 Witten · NRW</div>
+      <div class="cta-chip chip-pink">ab 397 € Frühbucher</div>
+    </div>
+    <div class="cta-spots"><div class="sdot"></div> Nur noch 3 Frühbucherplätze verfügbar</div>
+  </div>
+</div>
+
+</body>
+</html>

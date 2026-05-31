@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1200px; height:628px; overflow:hidden; }
+
+  .canvas {
+    width:1200px; height:628px;
+    background:#060E1F;
+    position:relative; overflow:hidden;
+    display:flex;
+  }
+
+  .bg1 { position:absolute; top:-250px; left:-100px; width:700px; height:700px; background:radial-gradient(ellipse,rgba(255,206,61,.12) 0%,transparent 58%); }
+  .bg2 { position:absolute; bottom:-200px; right:-80px; width:620px; height:620px; background:radial-gradient(ellipse,rgba(255,63,161,.09) 0%,transparent 58%); }
+  .bg3 { position:absolute; top:50%; left:55%; transform:translate(-50%,-50%); width:500px; height:500px; background:radial-gradient(ellipse,rgba(183,148,244,.05) 0%,transparent 65%); }
+
+  .rule-top    { position:absolute; top:36px; left:44px; right:44px; height:1px; background:linear-gradient(90deg,transparent,rgba(255,206,61,.4) 15%,rgba(255,206,61,.4) 85%,transparent); }
+  .rule-bottom { position:absolute; bottom:36px; left:44px; right:44px; height:1px; background:linear-gradient(90deg,transparent,rgba(255,206,61,.4) 15%,rgba(255,206,61,.4) 85%,transparent); }
+  .corner { position:absolute; width:14px; height:14px; }
+  .c-tl { top:30px; left:38px; border-top:1.5px solid rgba(255,206,61,.55); border-left:1.5px solid rgba(255,206,61,.55); }
+  .c-tr { top:30px; right:38px; border-top:1.5px solid rgba(255,206,61,.55); border-right:1.5px solid rgba(255,206,61,.55); }
+  .c-bl { bottom:30px; left:38px; border-bottom:1.5px solid rgba(255,206,61,.55); border-left:1.5px solid rgba(255,206,61,.55); }
+  .c-br { bottom:30px; right:38px; border-bottom:1.5px solid rgba(255,206,61,.55); border-right:1.5px solid rgba(255,206,61,.55); }
+
+  /* LEFT — headline */
+  .left {
+    width:520px; flex-shrink:0;
+    padding:56px 48px 56px 68px;
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+
+  .eyebrow {
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:10px; font-weight:700; letter-spacing:.28em; text-transform:uppercase;
+    color:rgba(255,206,61,.75); margin-bottom:18px;
+  }
+
+  .headline {
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic; font-weight:300;
+    font-size:88px; line-height:.88; letter-spacing:-.03em;
+    margin-bottom:18px;
+  }
+  .headline .h1 { display:block; color:#FDFCFA; }
+  .headline .h2 {
+    display:block;
+    background:linear-gradient(120deg,#FFCE3D 10%,#FF8C00 55%,#FF3FA1 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .headline .h3 { display:block; color:#FDFCFA; }
+
+  .sub {
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic; font-size:19px; color:rgba(253,252,250,.38);
+    margin-bottom:32px; line-height:1.3;
+  }
+
+  .meta { display:flex; flex-direction:column; gap:9px; margin-bottom:28px; }
+  .meta-row { display:flex; align-items:center; gap:10px; }
+  .meta-icon { font-size:12px; width:16px; opacity:.75; flex-shrink:0; }
+  .meta-txt {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; font-weight:500;
+    color:rgba(253,252,250,.68); line-height:1.3;
+  }
+  .meta-txt strong { color:#FFCE3D; font-weight:700; }
+
+  .bottom-row { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .price-pill {
+    background:linear-gradient(135deg,rgba(255,206,61,.15),rgba(255,206,61,.07));
+    border:1px solid rgba(255,206,61,.45); border-radius:100px;
+    padding:9px 22px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; font-weight:700;
+    color:#FFCE3D; letter-spacing:.02em; display:flex; align-items:center; gap:9px;
+  }
+  .price-old { font-size:10px; color:rgba(255,206,61,.32); text-decoration:line-through; font-weight:400; }
+  .spots {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; font-weight:600;
+    color:#FF3FA1; letter-spacing:.07em; text-transform:uppercase;
+    display:flex; align-items:center; gap:6px;
+  }
+  .dot { width:6px; height:6px; background:#FF3FA1; border-radius:50%; box-shadow:0 0 7px rgba(255,63,161,.9); }
+
+  /* DIVIDER */
+  .vline {
+    position:absolute; left:520px; top:56px; bottom:56px; width:1px;
+    background:linear-gradient(to bottom, transparent, rgba(255,206,61,.22) 20%, rgba(255,206,61,.22) 80%, transparent);
+    z-index:2;
+  }
+
+  /* RIGHT — coaches + takeaways */
+  .right {
+    flex:1;
+    padding:56px 52px 56px 48px;
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+
+  /* Coaches */
+  .coaches-lbl {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:9px; font-weight:700;
+    letter-spacing:.24em; text-transform:uppercase; color:rgba(255,63,161,.7);
+    margin-bottom:14px;
+  }
+  .coach-list { display:flex; flex-direction:column; gap:9px; margin-bottom:22px; }
+  .coach-row {
+    display:flex; align-items:center; gap:12px;
+    border-radius:10px; padding:9px 12px;
+  }
+  .cr1 { background:rgba(255,206,61,.06); border:1px solid rgba(255,206,61,.18); }
+  .cr2 { background:rgba(255,63,161,.05); border:1px solid rgba(255,63,161,.16); }
+  .cr3 { background:rgba(183,148,244,.05); border:1px solid rgba(183,148,244,.18); }
+  .coach-photo { width:46px; height:46px; border-radius:50%; overflow:hidden; flex-shrink:0; }
+  .cr1 .coach-photo { border:1.5px solid rgba(255,206,61,.4); }
+  .cr2 .coach-photo { border:1.5px solid rgba(255,63,161,.4); }
+  .cr3 .coach-photo { border:1.5px solid rgba(183,148,244,.4); }
+  .coach-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .coach-name { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:18px; font-weight:500; color:#FDFCFA; line-height:1; margin-bottom:3px; }
+  .coach-role { font-family:'Plus Jakarta Sans',sans-serif; font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+  .cr1 .coach-role { color:rgba(255,206,61,.75); }
+  .cr2 .coach-role { color:rgba(255,63,161,.85); }
+  .cr3 .coach-role { color:rgba(183,148,244,.85); }
+
+  /* Takeaways */
+  .take-lbl {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:9px; font-weight:700;
+    letter-spacing:.24em; text-transform:uppercase; color:rgba(255,206,61,.7);
+    margin-bottom:10px;
+  }
+  .take-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+  .take-item {
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+    border-radius:8px; padding:8px 11px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .take-n { font-family:'Plus Jakarta Sans',sans-serif; font-size:8px; font-weight:700; color:rgba(255,63,161,.65); letter-spacing:.08em; flex-shrink:0; }
+  .take-t { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px; font-weight:500; color:#FDFCFA; line-height:1.1; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="bg1"></div><div class="bg2"></div><div class="bg3"></div>
+  <div class="rule-top"></div><div class="rule-bottom"></div>
+  <div class="corner c-tl"></div><div class="corner c-tr"></div>
+  <div class="corner c-bl"></div><div class="corner c-br"></div>
+  <div class="vline"></div>
+
+  <!-- LEFT -->
+  <div class="left">
+    <div>
+      <div class="eyebrow">KI-Workshop · Witten · Juli 2026</div>
+      <div class="headline">
+        <span class="h1">Die</span>
+        <span class="h2">Unver&shy;wechsel</span>
+        <span class="h3">baren</span>
+      </div>
+      <div class="sub">In 2 Tagen. Unverwechselbar statt unsichtbar.</div>
+      <div class="meta">
+        <div class="meta-row"><div class="meta-icon">📅</div><div class="meta-txt"><strong>3. & 4. Juli 2026</strong> · 10:00–18:00 Uhr</div></div>
+        <div class="meta-row"><div class="meta-icon">📍</div><div class="meta-txt"><strong>Ringhotel Parkhotel Witten</strong> · NRW</div></div>
+        <div class="meta-row"><div class="meta-icon">👥</div><div class="meta-txt">Exklusiv: <strong>max. 9 Teilnehmerinnen</strong></div></div>
+      </div>
+    </div>
+    <div class="bottom-row">
+      <div class="price-pill"><span class="price-old">597 €</span> ab 397 € Frühbucher</div>
+      <div class="spots"><div class="dot"></div>Nur 3 Plätze frei</div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div>
+      <div class="coaches-lbl">Deine drei Trainerinnen</div>
+      <div class="coach-list">
+        <div class="coach-row cr1">
+          <div class="coach-photo"><img src="images/claudia-conen.jpg" alt="Claudia Conen"></div>
+          <div><div class="coach-name">Claudia Conen</div><div class="coach-role">Storytelling · Stimme</div></div>
+        </div>
+        <div class="coach-row cr2">
+          <div class="coach-photo"><img src="images/gabi-lindemann.jpg" alt="Gabi Lindemann"></div>
+          <div><div class="coach-name">Gabi Lindemann</div><div class="coach-role">Webdesign · KI</div></div>
+        </div>
+        <div class="coach-row cr3">
+          <div class="coach-photo"><img src="images/ann-kathrin-andresen.jpg" alt="Ann-Kathrin Andresen"></div>
+          <div><div class="coach-name">Ann-Kathrin Andresen</div><div class="coach-role">HeyGen · Avatar-Video</div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="take-lbl">Du nimmst mit nach Hause</div>
+      <div class="take-grid">
+        <div class="take-item"><span class="take-n">01</span><span class="take-t">Fertige Landingpage</span></div>
+        <div class="take-item"><span class="take-n">02</span><span class="take-t">Dein Freebie</span></div>
+        <div class="take-item"><span class="take-n">03</span><span class="take-t">Avatar-Video</span></div>
+        <div class="take-item"><span class="take-n">04</span><span class="take-t">KI-Workflow</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
