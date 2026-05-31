@@ -1528,16 +1528,56 @@
     color: var(--text-soft); line-height: 1.4;
   }
 
-  footer {
-    background: var(--navy); color: var(--text-faint);
-    padding: 56px 32px; border-top: 1px solid var(--line);
-    font-size: 13px; text-align: center; font-family: var(--sans);
-    letter-spacing: 0.06em; font-weight: 500;
+  /* ========= FOOTER ========= */
+  .site-footer {
+    background: #060E1F;
+    border-top: 1px solid rgba(255,206,61,.18);
+    font-family: var(--sans);
   }
-  footer a { color: var(--gold-bright); text-decoration: underline; text-underline-offset: 4px; transition: color 0.2s; }
-  footer a:hover, footer a:focus-visible { color: var(--magenta); }
-  .footer-brand { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--cream); margin-bottom: 16px; font-weight: 500; }
-  .footer-brand em { color: var(--gold-bright); }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 64px 40px 48px;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+  .footer-brand-title {
+    font-family: var(--display); font-style: italic; font-weight: 500;
+    font-size: 22px; color: var(--gold-bright);
+    margin-bottom: 14px; line-height: 1.2;
+  }
+  .footer-brand-desc {
+    font-size: 13px; color: rgba(253,252,250,.42);
+    line-height: 1.65; font-weight: 400;
+  }
+  .footer-col-head {
+    font-size: 10px; font-weight: 700; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(253,252,250,.35);
+    margin-bottom: 18px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-col ul a {
+    font-size: 14px; font-weight: 500; color: rgba(253,252,250,.65);
+    text-decoration: none; transition: color .2s;
+  }
+  .footer-col ul a:hover { color: var(--gold-bright); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.07);
+    max-width: 1200px; margin: 0 auto;
+    padding: 20px 40px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .footer-copy {
+    font-size: 12px; color: rgba(253,252,250,.25);
+    letter-spacing: .05em; font-weight: 500;
+  }
+  @media (max-width: 900px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; padding: 48px 24px 36px; }
+  }
+  @media (max-width: 560px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px 28px; }
+    .footer-bottom { padding: 16px 20px; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -2298,9 +2338,53 @@
 
 </main>
 
-<footer>
-  <div class="footer-brand">Die <em>Unverwechselbaren</em></div>
-  © 2026 · Claudia Conen · Gabi Lindemann · Ann-Kathrin Andresen · <a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">Barrierefreiheit</a>
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <!-- Brand -->
+    <div class="footer-brand-col">
+      <div class="footer-brand-title">Die Unverwechselbaren</div>
+      <p class="footer-brand-desc">Die exklusive Community von Claudia Conen. Vernetze dich, wachse und mache einen Unterschied.</p>
+    </div>
+
+    <!-- Plattform -->
+    <div class="footer-col">
+      <div class="footer-col-head">Plattform</div>
+      <ul>
+        <li><a href="https://community.claudiaconen.com/feed">Entdecken</a></li>
+        <li><a href="https://community.claudiaconen.com/courses">Kurse</a></li>
+        <li><a href="https://community.claudiaconen.com/shop">Shop</a></li>
+        <li><a href="https://community.claudiaconen.com/events">Events</a></li>
+        <li><a href="https://community.claudiaconen.com/chat">Chat &amp; Gruppen</a></li>
+      </ul>
+    </div>
+
+    <!-- Community -->
+    <div class="footer-col">
+      <div class="footer-col-head">Community</div>
+      <ul>
+        <li><a href="https://community.claudiaconen.com/pricing">Preise</a></li>
+        <li><a href="https://community.claudiaconen.com/gemeinsam-gutes-tun">Gemeinsam Gutes Tun</a></li>
+        <li><a href="https://community.claudiaconen.com/affiliate">Affiliate-Partner</a></li>
+        <li><a href="https://community.claudiaconen.com/prompts">Prompts</a></li>
+        <li><a href="https://claudiaconen.com" target="_blank" rel="noopener">ClaudiaConen.com</a></li>
+      </ul>
+    </div>
+
+    <!-- Rechtliches -->
+    <div class="footer-col">
+      <div class="footer-col-head">Rechtliches</div>
+      <ul>
+        <li><a href="https://claudiaconen.com/impressum" target="_blank" rel="noopener">Impressum</a></li>
+        <li><a href="https://claudiaconen.com/datenschutz" target="_blank" rel="noopener">Datenschutz</a></li>
+        <li><a href="https://claudiaconen.com/agb" target="_blank" rel="noopener">AGB</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Claudia Conen · Alle Rechte vorbehalten</span>
+  </div>
 </footer>
 
 <script>
