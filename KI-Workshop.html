@@ -304,13 +304,16 @@
   }
   @keyframes floatVideo { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
   .hero-video-screen {
-    aspect-ratio: 4/5;
+    aspect-ratio: 9/16;
     position: relative;
-    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-soft) 100%);
+    background: #000;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+  .hero-vimeo {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
   }
   .hero-video-screen::before {
     content: '';
@@ -1727,10 +1730,13 @@
   <aside class="hero-video" aria-label="Workshop-Trailer">
     <div class="hero-video-card">
       <div class="hero-video-screen">
-        <span class="hero-video-corner"><span class="hero-video-dot" aria-hidden="true"></span>Trailer · 90 Sek.</span>
-        <button class="hero-video-play" type="button" aria-label="Workshop-Trailer abspielen">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-        </button>
+        <iframe
+          class="hero-vimeo"
+          src="https://player.vimeo.com/video/1197093292?badge=0&autopause=0&title=0&byline=0&portrait=0&dnt=1"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          allowfullscreen
+          title="Workshop-Trailer">
+        </iframe>
       </div>
       <div class="hero-video-foot">
         <div class="hero-video-foot-title">Was in 2 Tagen entsteht</div>
@@ -2093,7 +2099,7 @@
 
     <div class="tools-grid stagger">
       <div class="tool ki-tool"><div class="tool-name">Claude</div><div class="tool-role">Sprache & Klarheit</div></div>
-      <div class="tool ki-tool"><div class="tool-name">Claude Design</div><div class="tool-role">Eigenes KI-GPT</div></div>
+      <div class="tool ki-tool"><div class="tool-name">Claude Design</div><div class="tool-role">Eigenes Markenbranding</div></div>
       <div class="tool"><div class="tool-name">Canva</div><div class="tool-role">Design & Freebie</div></div>
       <div class="tool ki-tool"><div class="tool-name">HeyGen</div><div class="tool-role">Avatar-Video</div></div>
       <div class="tool"><div class="tool-name">YouTube</div><div class="tool-role">Video-Hosting</div></div>

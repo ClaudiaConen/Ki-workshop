@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { width:1584px; height:396px; overflow:hidden; }
+
+  .canvas {
+    width:1584px; height:396px;
+    background:#060E1F;
+    position:relative; overflow:hidden;
+    display:flex; align-items:center;
+  }
+
+  .bg1 { position:absolute; top:-200px; left:-100px; width:700px; height:700px; background:radial-gradient(ellipse,rgba(255,206,61,.14) 0%,transparent 55%); }
+  .bg2 { position:absolute; bottom:-200px; right:-60px; width:650px; height:650px; background:radial-gradient(ellipse,rgba(255,63,161,.11) 0%,transparent 55%); }
+  .bg3 { position:absolute; top:50%; left:58%; transform:translate(-50%,-50%); width:500px; height:500px; background:radial-gradient(ellipse,rgba(183,148,244,.05) 0%,transparent 65%); }
+
+  .rule-top    { position:absolute; top:24px; left:48px; right:48px; height:1px; background:linear-gradient(90deg,transparent,rgba(255,206,61,.38) 15%,rgba(255,206,61,.38) 85%,transparent); }
+  .rule-bottom { position:absolute; bottom:24px; left:48px; right:48px; height:1px; background:linear-gradient(90deg,transparent,rgba(255,206,61,.38) 15%,rgba(255,206,61,.38) 85%,transparent); }
+  .corner { position:absolute; width:12px; height:12px; }
+  .c-tl { top:18px; left:42px; border-top:1.5px solid rgba(255,206,61,.5); border-left:1.5px solid rgba(255,206,61,.5); }
+  .c-tr { top:18px; right:42px; border-top:1.5px solid rgba(255,206,61,.5); border-right:1.5px solid rgba(255,206,61,.5); }
+  .c-bl { bottom:18px; left:42px; border-bottom:1.5px solid rgba(255,206,61,.5); border-left:1.5px solid rgba(255,206,61,.5); }
+  .c-br { bottom:18px; right:42px; border-bottom:1.5px solid rgba(255,206,61,.5); border-right:1.5px solid rgba(255,206,61,.5); }
+
+  /* TITLE BLOCK — far left */
+  .title-block {
+    flex-shrink:0; width:480px;
+    padding:44px 40px 44px 72px;
+    position:relative; z-index:2;
+  }
+  .eyebrow {
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:9px; font-weight:700; letter-spacing:.3em; text-transform:uppercase;
+    color:rgba(255,206,61,.7); margin-bottom:10px;
+  }
+  .title {
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic; font-weight:300;
+    font-size:80px; line-height:.88; letter-spacing:-.03em;
+  }
+  .title .t1 { display:block; color:#FDFCFA; }
+  .title .t2 {
+    display:block;
+    background:linear-gradient(120deg,#FFCE3D 10%,#FF8C00 55%,#FF3FA1 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .title .t3 { display:block; color:#FDFCFA; }
+
+  /* DIVIDER 1 */
+  .vd1 {
+    flex-shrink:0; width:1px; align-self:stretch;
+    margin:44px 0;
+    background:linear-gradient(to bottom,transparent,rgba(255,206,61,.25) 25%,rgba(255,206,61,.25) 75%,transparent);
+    position:relative; z-index:2;
+  }
+
+  /* CENTRE — meta + tagline */
+  .centre {
+    flex:1;
+    padding:44px 40px;
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; justify-content:center; gap:14px;
+  }
+  .tagline {
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic; font-size:22px; font-weight:400;
+    color:rgba(253,252,250,.48); line-height:1.25;
+  }
+  .meta { display:flex; flex-direction:column; gap:8px; }
+  .meta-row { display:flex; align-items:center; gap:9px; }
+  .meta-icon { font-size:11px; width:14px; flex-shrink:0; opacity:.75; }
+  .meta-txt {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; font-weight:500;
+    color:rgba(253,252,250,.68);
+  }
+  .meta-txt strong { color:#FFCE3D; font-weight:700; }
+
+  /* DIVIDER 2 */
+  .vd2 {
+    flex-shrink:0; width:1px; align-self:stretch;
+    margin:44px 0;
+    background:linear-gradient(to bottom,transparent,rgba(255,206,61,.2) 25%,rgba(255,206,61,.2) 75%,transparent);
+    position:relative; z-index:2;
+  }
+
+  /* RIGHT — coaches strip */
+  .right {
+    flex-shrink:0; width:440px;
+    padding:44px 60px 44px 36px;
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; justify-content:center; gap:10px;
+  }
+  .coaches-lbl {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:8px; font-weight:700;
+    letter-spacing:.24em; text-transform:uppercase; color:rgba(255,63,161,.7);
+    margin-bottom:6px;
+  }
+  .coach-row {
+    display:flex; align-items:center; gap:10px;
+    border-radius:8px; padding:7px 10px;
+  }
+  .cr1 { background:rgba(255,206,61,.06); border:1px solid rgba(255,206,61,.18); }
+  .cr2 { background:rgba(255,63,161,.05); border:1px solid rgba(255,63,161,.16); }
+  .cr3 { background:rgba(183,148,244,.05); border:1px solid rgba(183,148,244,.18); }
+  .coach-photo { width:38px; height:38px; border-radius:50%; overflow:hidden; flex-shrink:0; }
+  .cr1 .coach-photo { border:1.5px solid rgba(255,206,61,.4); }
+  .cr2 .coach-photo { border:1.5px solid rgba(255,63,161,.4); }
+  .cr3 .coach-photo { border:1.5px solid rgba(183,148,244,.4); }
+  .coach-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .coach-name { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; font-weight:500; color:#FDFCFA; line-height:1; margin-bottom:2px; }
+  .coach-role { font-family:'Plus Jakarta Sans',sans-serif; font-size:8px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+  .cr1 .coach-role { color:rgba(255,206,61,.75); }
+  .cr2 .coach-role { color:rgba(255,63,161,.85); }
+  .cr3 .coach-role { color:rgba(183,148,244,.85); }
+
+  .price-strip {
+    margin-top:4px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .price-pill {
+    background:linear-gradient(135deg,rgba(255,206,61,.14),rgba(255,206,61,.07));
+    border:1px solid rgba(255,206,61,.4); border-radius:100px;
+    padding:6px 16px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700;
+    color:#FFCE3D;
+  }
+  .spots-txt {
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:9px; font-weight:600;
+    color:#FF3FA1; letter-spacing:.07em; text-transform:uppercase;
+    display:flex; align-items:center; gap:5px;
+  }
+  .dot { width:5px; height:5px; background:#FF3FA1; border-radius:50%; box-shadow:0 0 6px rgba(255,63,161,.9); }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="bg1"></div><div class="bg2"></div><div class="bg3"></div>
+  <div class="rule-top"></div><div class="rule-bottom"></div>
+  <div class="corner c-tl"></div><div class="corner c-tr"></div>
+  <div class="corner c-bl"></div><div class="corner c-br"></div>
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <div class="eyebrow">KI-Workshop · Juli 2026</div>
+    <div class="title">
+      <span class="t1">Die</span>
+      <span class="t2">Unver&shy;wechsel</span>
+      <span class="t3">baren</span>
+    </div>
+  </div>
+
+  <div class="vd1"></div>
+
+  <!-- CENTRE -->
+  <div class="centre">
+    <div class="tagline">In 2 Tagen.<br>Unverwechselbar statt unsichtbar.</div>
+    <div class="meta">
+      <div class="meta-row"><div class="meta-icon">📅</div><div class="meta-txt"><strong>3. & 4. Juli 2026</strong> · 10:00–18:00 Uhr</div></div>
+      <div class="meta-row"><div class="meta-icon">📍</div><div class="meta-txt"><strong>Ringhotel Parkhotel Witten</strong> · NRW</div></div>
+      <div class="meta-row"><div class="meta-icon">👥</div><div class="meta-txt">Max. <strong>9 Teilnehmerinnen</strong> — exklusive Kleingruppe</div></div>
+    </div>
+  </div>
+
+  <div class="vd2"></div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="coaches-lbl">Deine drei Trainerinnen</div>
+    <div class="coach-row cr1">
+      <div class="coach-photo"><img src="images/claudia-conen.jpg" alt="Claudia Conen"></div>
+      <div><div class="coach-name">Claudia Conen</div><div class="coach-role">Storytelling · Stimme</div></div>
+    </div>
+    <div class="coach-row cr2">
+      <div class="coach-photo"><img src="images/gabi-lindemann.jpg" alt="Gabi Lindemann"></div>
+      <div><div class="coach-name">Gabi Lindemann</div><div class="coach-role">Webdesign · KI</div></div>
+    </div>
+    <div class="coach-row cr3">
+      <div class="coach-photo"><img src="images/ann-kathrin-andresen.jpg" alt="Ann-Kathrin Andresen"></div>
+      <div><div class="coach-name">Ann-Kathrin Andresen</div><div class="coach-role">HeyGen · Avatar-Video</div></div>
+    </div>
+    <div class="price-strip">
+      <div class="price-pill">ab 397 € Frühbucher</div>
+      <div class="spots-txt"><div class="dot"></div>Nur 3 Plätze frei</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
