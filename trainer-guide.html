@@ -30,7 +30,6 @@
     display: flex;
     flex-direction: column;
   }
-  /* Banner-Bild oben */
   .cover-banner-wrap {
     width: 100%;
     line-height: 0;
@@ -45,7 +44,6 @@
     object-fit: cover;
     object-position: center top;
   }
-  /* Goldene Trennlinie */
   .cover-accent-bar {
     width: 100%;
     height: 3px;
@@ -175,7 +173,7 @@
     color: #9A6F00;
   }
   .page-body {
-    padding: 8mm 14mm 6mm;
+    padding: 7mm 14mm 6mm;
   }
 
   /* Section title pages */
@@ -276,7 +274,7 @@
     font-weight: 500;
     font-size: 22px;
     color: #060E1F;
-    margin-bottom: 4mm;
+    margin-bottom: 3mm;
     line-height: 1.1;
   }
   h2 em { color: #FF3FA1; font-style: normal; }
@@ -287,7 +285,7 @@
     text-transform: uppercase;
     color: #060E1F;
     margin-bottom: 3mm;
-    margin-top: 5mm;
+    margin-top: 4mm;
   }
   h3.gold { color: #B8860B; }
   h3.pink { color: #CC1F70; }
@@ -300,17 +298,17 @@
   .lead {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 15px;
+    font-size: 14px;
     color: #5a5a7a;
     line-height: 1.45;
-    margin-bottom: 5mm;
+    margin-bottom: 4mm;
   }
 
   /* Boxes */
   .box {
     border-radius: 6px;
-    padding: 4mm 5mm;
-    margin-bottom: 4mm;
+    padding: 3.5mm 4.5mm;
+    margin-bottom: 3mm;
   }
   .box-gold {
     background: rgba(255,206,61,.08);
@@ -343,48 +341,12 @@
   .box-pink .box-title { color: #CC1F70; }
   .box-violet .box-title { color: #7B5EA7; }
 
-  /* Lists */
-  ul.styled, ol.styled {
-    padding-left: 0;
-    list-style: none;
-    margin-bottom: 4mm;
-  }
-  ul.styled li, ol.styled li {
-    font-size: 10.5px;
-    line-height: 1.55;
-    color: #3a3a5c;
-    padding: 2mm 0 2mm 5mm;
-    border-bottom: 1px solid rgba(0,0,0,.06);
-    display: flex;
-    align-items: flex-start;
-    gap: 3mm;
-    counter-increment: item;
-  }
-  ul.styled li::before {
-    content: '→';
-    color: #FFCE3D;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  ol.styled { counter-reset: item; }
-  ol.styled li::before {
-    content: counter(item, decimal-leading-zero);
-    color: #FF3FA1;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .06em;
-    flex-shrink: 0;
-    padding-top: 2px;
-  }
-  ul.check li::before { content: '✓'; color: #22c55e; }
-
   /* Grid */
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4mm;
-    margin-bottom: 4mm;
+    gap: 3.5mm;
+    margin-bottom: 3.5mm;
   }
   .grid-3 {
     display: grid;
@@ -396,7 +358,7 @@
     background: #f8f8fc;
     border: 1px solid #e8e8f0;
     border-radius: 6px;
-    padding: 4mm;
+    padding: 3.5mm;
   }
   .card-title {
     font-size: 9px;
@@ -407,22 +369,19 @@
     margin-bottom: 2mm;
   }
   .card p { font-size: 9.5px; margin-bottom: 0; }
-  .card.accent-gold { border-top: 2px solid #FFCE3D; }
-  .card.accent-pink { border-top: 2px solid #FF3FA1; }
-  .card.accent-violet { border-top: 2px solid #B794F4; }
 
   /* Trainer note */
   .trainer-note {
     background: #060E1F;
     border-radius: 6px;
-    padding: 4mm 5mm;
-    margin-bottom: 4mm;
+    padding: 3.5mm 4.5mm;
+    margin-bottom: 3.5mm;
     display: flex;
-    gap: 4mm;
+    gap: 3.5mm;
     align-items: flex-start;
   }
   .trainer-note-icon {
-    font-size: 16px;
+    font-size: 15px;
     flex-shrink: 0;
     margin-top: 1px;
   }
@@ -435,7 +394,7 @@
     color: #FFCE3D;
     margin-bottom: 1.5mm;
   }
-  .trainer-note p { color: rgba(253,252,250,.75); font-size: 10px; }
+  .trainer-note p { color: rgba(253,252,250,.75); font-size: 9.5px; margin-bottom: 0; }
 
   /* Time badge */
   .time-badge {
@@ -458,7 +417,7 @@
     background: #0D1830;
     border: 1px solid rgba(255,206,61,.2);
     border-radius: 6px;
-    padding: 4mm 5mm;
+    padding: 3.5mm 4.5mm;
     margin-bottom: 3mm;
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
@@ -471,7 +430,7 @@
     margin-bottom: 2mm;
   }
   .prompt-text {
-    font-size: 9.5px;
+    font-size: 9px;
     color: #FDFCFA;
     line-height: 1.55;
   }
@@ -495,49 +454,35 @@
   .page-foot .pink { color: #FF3FA1; font-weight: 600; }
 
   /* Divider */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,206,61,.4) 30%, rgba(255,206,61,.4) 70%, transparent);
-    margin: 5mm 0;
-  }
   .divider-light {
     height: 1px;
     background: #eee;
-    margin: 4mm 0;
+    margin: 3.5mm 0;
   }
 
-  /* Talking point */
-  .talking {
+  /* ul check */
+  ul.check {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 3mm;
+  }
+  ul.check li {
+    font-size: 10px;
+    line-height: 1.55;
+    color: #3a3a5c;
+    padding: 1.5mm 0 1.5mm 5mm;
+    border-bottom: 1px solid rgba(0,0,0,.06);
     display: flex;
-    gap: 3mm;
-    padding: 3mm 0;
-    border-bottom: 1px solid #f0f0f5;
     align-items: flex-start;
+    gap: 3mm;
   }
-  .talking:last-child { border-bottom: none; }
-  .talking-icon {
-    width: 16px; height: 16px;
-    background: #060E1F;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 8px;
-    color: #FFCE3D;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .talking p { margin: 0; font-size: 10px; }
-
-  /* Spacer */
-  .spacer-sm { height: 3mm; }
-  .spacer { height: 5mm; }
+  ul.check li::before { content: '✓'; color: #22c55e; font-weight: 700; flex-shrink: 0; }
 </style>
 </head>
 <body>
 
 <!-- ===== PAGE 1: COVER ===== -->
 <div class="page cover">
-  <!-- Banner-Bild (lade deine Datei als images/header-banner.jpg hoch) -->
   <div class="cover-banner-wrap">
     <img src="images/header-banner.jpg" alt="KI-Workshop · Die Unverwechselbaren">
   </div>
@@ -566,6 +511,7 @@
   </div>
 </div>
 
+
 <!-- ===== PAGE 2: ÜBERBLICK & LERNZIELE ===== -->
 <div class="page content-page">
   <div class="page-header">
@@ -576,38 +522,56 @@
     <h2>Dein Modul im <em>Überblick</em></h2>
     <p class="lead">Du begleitest die Teilnehmerinnen durch zwei der wichtigsten praktischen Bausteine: das Freebie als Werkzeug zur Kontaktgewinnung und die Landingpage als digitale Visitenkarte.</p>
 
-    <div class="grid-2">
-      <div class="box box-gold">
-        <div class="box-title">Modul 3 — Das Freebie</div>
-        <p>Was ein Freebie ist, warum es wichtiger ist als eine klassische Lead-Liste und wie man es mit Claude in 30 Minuten erstellt.</p>
+    <div class="grid-2" style="margin-bottom:5mm;">
+      <div style="border:1.5px solid rgba(255,206,61,.45); border-radius:10px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,rgba(255,206,61,.15),rgba(255,206,61,.05)); padding:3mm 5mm; border-bottom:1px solid rgba(255,206,61,.25); display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-size:7pt; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#9A6F00;">Modul 3</div>
+          <div style="background:rgba(255,206,61,.15); border:1px solid rgba(255,206,61,.4); border-radius:100px; padding:2px 9px; font-size:7pt; font-weight:700; color:#9A6F00;">⏱ 120 Min</div>
+        </div>
+        <div style="padding:3.5mm 5mm;">
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15pt; color:#060E1F; line-height:1; margin-bottom:2mm;">Das Freebie</div>
+          <p style="font-size:8.5pt; color:rgba(26,26,46,.7); margin:0 0 2.5mm; line-height:1.5;">Was ein Freebie ist, warum es wichtiger ist als eine klassische Lead-Liste und wie man es mit Claude in 30 Minuten erstellt.</p>
+          <div style="font-size:7.5pt; font-weight:600; color:#9A6F00;">Tag 1 · Nachmittag · 13:00–15:00</div>
+        </div>
       </div>
-      <div class="box box-pink">
-        <div class="box-title">Modul 4 — Die Landingpage</div>
-        <p>Aufbau, Psychologie, Copy und die Elemente die wirklich konvertieren — alles mit KI-Unterstützung.</p>
+      <div style="border:1.5px solid rgba(255,63,161,.3); border-radius:10px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,rgba(255,63,161,.1),rgba(255,63,161,.03)); padding:3mm 5mm; border-bottom:1px solid rgba(255,63,161,.2); display:flex; align-items:center; justify-content:space-between;">
+          <div style="font-size:7pt; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#C2185B;">Modul 4</div>
+          <div style="background:rgba(255,63,161,.1); border:1px solid rgba(255,63,161,.3); border-radius:100px; padding:2px 9px; font-size:7pt; font-weight:700; color:#C2185B;">⏱ 150 Min</div>
+        </div>
+        <div style="padding:3.5mm 5mm;">
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15pt; color:#060E1F; line-height:1; margin-bottom:2mm;">Die Landingpage</div>
+          <p style="font-size:8.5pt; color:rgba(26,26,46,.7); margin:0 0 2.5mm; line-height:1.5;">Aufbau, Psychologie, Copy und die Elemente die wirklich konvertieren — alles mit KI-Unterstützung.</p>
+          <div style="font-size:7.5pt; font-weight:600; color:#C2185B;">Tag 2 · Vormittag · 10:00–12:30</div>
+        </div>
       </div>
     </div>
 
     <h3>Lernziele — Was die Teilnehmerinnen können sollen</h3>
-    <ul class="styled check">
-      <li>Verstehen, was ein Freebie ist und welche Formate es gibt</li>
-      <li>Ein eigenes Freebie-Konzept entwickeln und mit Claude texten</li>
-      <li>Kontakte über moderne Wege sammeln (nicht nur E-Mail)</li>
-      <li>Den Aufbau einer Landingpage verstehen und anwenden</li>
-      <li>Psychologische Elemente kennen die zur Entscheidung führen</li>
-      <li>Eine eigene Landingpage-Struktur mit Claude entwickeln</li>
-    </ul>
-
-    <div class="divider-light"></div>
-
-    <h3>Zeitplan</h3>
-    <div class="grid-2">
-      <div class="card accent-gold">
-        <div class="card-title">Tag 1 · Nachmittag</div>
-        <p><strong>13:00 – 15:00</strong> · Modul 3: Das Freebie<br>Theorie (30 Min) + Hands-on mit Claude (90 Min)</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2mm; margin-bottom:4mm;">
+      <div style="display:flex; align-items:flex-start; gap:3mm; padding:2.5mm 3mm; background:rgba(255,206,61,.05); border-radius:6px;">
+        <div style="width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,#FFCE3D,#E5A500); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;"><span style="font-size:7pt; font-weight:800; color:#060E1F;">✓</span></div>
+        <span style="font-size:9pt; color:rgba(26,26,46,.75); line-height:1.45;">Verstehen, was ein Freebie ist und welche Formate es gibt</span>
       </div>
-      <div class="card accent-pink">
-        <div class="card-title">Tag 2 · Vormittag</div>
-        <p><strong>10:00 – 12:30</strong> · Modul 4: Landingpage<br>Aufbau & Psychologie (45 Min) + Umsetzung (105 Min)</p>
+      <div style="display:flex; align-items:flex-start; gap:3mm; padding:2.5mm 3mm; background:rgba(255,63,161,.05); border-radius:6px;">
+        <div style="width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,#FF3FA1,#C2185B); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;"><span style="font-size:7pt; font-weight:800; color:#fff;">✓</span></div>
+        <span style="font-size:9pt; color:rgba(26,26,46,.75); line-height:1.45;">Ein eigenes Freebie-Konzept entwickeln und mit Claude texten</span>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:3mm; padding:2.5mm 3mm; background:rgba(183,148,244,.05); border-radius:6px;">
+        <div style="width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,#B794F4,#6B46C1); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;"><span style="font-size:7pt; font-weight:800; color:#fff;">✓</span></div>
+        <span style="font-size:9pt; color:rgba(26,26,46,.75); line-height:1.45;">Kontakte über moderne Wege sammeln (nicht nur E-Mail)</span>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:3mm; padding:2.5mm 3mm; background:rgba(255,206,61,.05); border-radius:6px;">
+        <div style="width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,#FFCE3D,#E5A500); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;"><span style="font-size:7pt; font-weight:800; color:#060E1F;">✓</span></div>
+        <span style="font-size:9pt; color:rgba(26,26,46,.75); line-height:1.45;">Den Aufbau einer Landingpage verstehen und anwenden</span>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:3mm; padding:2.5mm 3mm; background:rgba(255,63,161,.05); border-radius:6px;">
+        <div style="width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,#FF3FA1,#C2185B); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;"><span style="font-size:7pt; font-weight:800; color:#fff;">✓</span></div>
+        <span style="font-size:9pt; color:rgba(26,26,46,.75); line-height:1.45;">Psychologische Elemente kennen die zur Entscheidung führen</span>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:3mm; padding:2.5mm 3mm; background:rgba(183,148,244,.05); border-radius:6px;">
+        <div style="width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,#B794F4,#6B46C1); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;"><span style="font-size:7pt; font-weight:800; color:#fff;">✓</span></div>
+        <span style="font-size:9pt; color:rgba(26,26,46,.75); line-height:1.45;">Eine eigene Landingpage-Struktur mit Claude entwickeln</span>
       </div>
     </div>
 
@@ -620,18 +584,31 @@
     </div>
 
     <h3>Was du vorbereiten solltest</h3>
-    <ul class="styled">
-      <li>Claude-Account (Claude.ai) auf dem Laptop offen</li>
-      <li>Ein Beispiel-Freebie (fertig) um es live zu zeigen</li>
-      <li>Eine Beispiel-Landingpage mit und ohne Optimierung</li>
-      <li>Die Prompt-Bibliothek aus Seite 7 dieses Dokuments</li>
-    </ul>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2mm;">
+      <div style="display:flex; gap:3mm; align-items:flex-start; padding:2mm 3mm; border-bottom:1px solid rgba(26,26,46,.06);">
+        <span style="color:#FFCE3D; font-weight:700; flex-shrink:0;">→</span>
+        <span style="font-size:9pt; color:rgba(26,26,46,.7);">Claude-Account (Claude.ai) auf dem Laptop offen</span>
+      </div>
+      <div style="display:flex; gap:3mm; align-items:flex-start; padding:2mm 3mm; border-bottom:1px solid rgba(26,26,46,.06);">
+        <span style="color:#FFCE3D; font-weight:700; flex-shrink:0;">→</span>
+        <span style="font-size:9pt; color:rgba(26,26,46,.7);">Ein Beispiel-Freebie (fertig) um es live zu zeigen</span>
+      </div>
+      <div style="display:flex; gap:3mm; align-items:flex-start; padding:2mm 3mm;">
+        <span style="color:#FFCE3D; font-weight:700; flex-shrink:0;">→</span>
+        <span style="font-size:9pt; color:rgba(26,26,46,.7);">Beispiel-Landingpage mit und ohne Optimierung</span>
+      </div>
+      <div style="display:flex; gap:3mm; align-items:flex-start; padding:2mm 3mm;">
+        <span style="color:#FFCE3D; font-weight:700; flex-shrink:0;">→</span>
+        <span style="font-size:9pt; color:rgba(26,26,46,.7);">Die Prompt-Bibliothek aus Seite 9 dieses Dokuments</span>
+      </div>
+    </div>
   </div>
   <div class="page-foot">
     <span>Die Unverwechselbaren · KI-Workshop 2026</span>
     <span class="pink">Trainer-Leitfaden · Intern</span>
   </div>
 </div>
+
 
 <!-- ===== PAGE 3: SECTION COVER — FREEBIE ===== -->
 <div class="page section-cover">
@@ -646,70 +623,94 @@
   </div>
 </div>
 
+
 <!-- ===== PAGE 4: WAS IST EIN FREEBIE ===== -->
 <div class="page content-page">
   <div class="page-header">
     <span class="page-header-title">Modul 3 · Das Freebie</span>
-    <span class="page-header-num">4 / 8</span>
+    <span class="page-header-num">4 / 9</span>
   </div>
   <div class="page-body">
     <div class="time-badge">⏱ 30 Minuten · Theorie-Einstieg</div>
 
     <h2>Was ist ein <em>Freebie</em>?</h2>
-    <p class="lead">Ein Freebie ist ein kostenloses Angebot, das einen echten Mehrwert liefert — und als Gegenleistung Vertrauen, Kontakt oder Zugehörigkeit schafft. Nicht Aufmerksamkeit kaufen, sondern Vertrauen verdienen.</p>
+    <p class="lead">Ein Freebie ist ein kostenloses Angebot, das einen echten Mehrwert liefert — und als Gegenleistung Vertrauen, Kontakt oder Zugehörigkeit schafft.</p>
 
-    <div class="talking">
-      <div class="talking-icon">1</div>
-      <p><strong>Einstieg-Frage ans Plenum:</strong> „Habt ihr selbst schon mal etwas kostenlos heruntergeladen oder euch für etwas kostenlos eingetragen? Was war das und warum habt ihr es gemacht?"</p>
-    </div>
-    <div class="talking">
-      <div class="talking-icon">2</div>
-      <p><strong>Kernaussage herausarbeiten:</strong> Ein Freebie funktioniert, wenn es ein konkretes, unmittelbares Problem löst — oder eine neugierige Frage beantwortet. Nicht Werbung. Echter Wert.</p>
-    </div>
-    <div class="talking">
-      <div class="talking-icon">3</div>
-      <p><strong>Den Zusammenhang erklären:</strong> Das Freebie ist die erste Berührung mit dir. Es zeigt: So arbeite ich. So denke ich. So fühlt es sich an, mit mir zu arbeiten.</p>
+    <div style="display:flex; flex-direction:column; gap:2.5mm; margin-bottom:4mm;">
+      <div style="display:flex; gap:3.5mm; padding:3mm 4mm; background:rgba(255,206,61,.06); border-radius:8px; border-left:3px solid rgba(255,206,61,.5); align-items:flex-start;">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FFCE3D,#E5A500); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#060E1F; flex-shrink:0;">1</div>
+        <div>
+          <div style="font-size:8pt; font-weight:700; color:#060E1F; margin-bottom:1mm;">Einstieg-Frage ans Plenum</div>
+          <p style="margin:0; font-size:8.5pt; color:rgba(26,26,46,.75); line-height:1.5;">„Habt ihr selbst schon mal etwas kostenlos heruntergeladen oder euch für etwas eingetragen? Was war das und warum habt ihr es gemacht?"</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:3.5mm; padding:3mm 4mm; background:rgba(255,63,161,.06); border-radius:8px; border-left:3px solid rgba(255,63,161,.4); align-items:flex-start;">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FF3FA1,#C2185B); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#fff; flex-shrink:0;">2</div>
+        <div>
+          <div style="font-size:8pt; font-weight:700; color:#060E1F; margin-bottom:1mm;">Kernaussage herausarbeiten</div>
+          <p style="margin:0; font-size:8.5pt; color:rgba(26,26,46,.75); line-height:1.5;">Ein Freebie funktioniert, wenn es ein konkretes, unmittelbares Problem löst — oder eine neugierige Frage beantwortet. Nicht Werbung. Echter Wert.</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:3.5mm; padding:3mm 4mm; background:rgba(183,148,244,.06); border-radius:8px; border-left:3px solid rgba(183,148,244,.4); align-items:flex-start;">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#B794F4,#6B46C1); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#fff; flex-shrink:0;">3</div>
+        <div>
+          <div style="font-size:8pt; font-weight:700; color:#060E1F; margin-bottom:1mm;">Den Zusammenhang erklären</div>
+          <p style="margin:0; font-size:8.5pt; color:rgba(26,26,46,.75); line-height:1.5;">Das Freebie ist die erste Berührung mit dir. Es zeigt: So arbeite ich. So denke ich. So fühlt es sich an, mit mir zu arbeiten.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="divider-light"></div>
     <h3>Freebie-Formate im Überblick</h3>
-    <div class="grid-3">
-      <div class="card accent-gold">
-        <div class="card-title">PDF / Checkliste</div>
-        <p>Schnell erstellbar, einfach teilbar. Perfekt als Einstieg. Löst ein konkretes Problem in 5–10 Minuten.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; margin-bottom:4mm;">
+      <div style="border:1.5px solid rgba(255,206,61,.4); border-radius:8px; overflow:hidden;">
+        <div style="background:rgba(255,206,61,.1); padding:2.5mm 3mm; display:flex; align-items:center; gap:2.5mm; border-bottom:1px solid rgba(255,206,61,.25);">
+          <div style="width:8mm; height:8mm; border-radius:50%; background:linear-gradient(135deg,#FFCE3D,#E5A500); display:flex; align-items:center; justify-content:center; font-size:7pt; font-weight:800; color:#060E1F; flex-shrink:0;">01</div>
+          <div style="font-size:7.5pt; font-weight:700; color:#060E1F;">PDF / Checkliste</div>
+        </div>
+        <div style="padding:2.5mm 3mm;"><p style="font-size:8pt; color:rgba(26,26,46,.7); margin:0; line-height:1.45;">Schnell erstellbar, einfach teilbar. Löst ein konkretes Problem in 5–10 Minuten.</p></div>
       </div>
-      <div class="card accent-pink">
-        <div class="card-title">Challenge</div>
-        <p>5–7 Tage. Täglich ein Impuls. Erzeugt Gewohnheit und schafft tiefe Bindung. Hoher wahrgenommener Wert.</p>
+      <div style="border:1.5px solid rgba(255,63,161,.3); border-radius:8px; overflow:hidden;">
+        <div style="background:rgba(255,63,161,.08); padding:2.5mm 3mm; display:flex; align-items:center; gap:2.5mm; border-bottom:1px solid rgba(255,63,161,.2);">
+          <div style="width:8mm; height:8mm; border-radius:50%; background:linear-gradient(135deg,#FF3FA1,#C2185B); display:flex; align-items:center; justify-content:center; font-size:7pt; font-weight:800; color:#fff; flex-shrink:0;">02</div>
+          <div style="font-size:7.5pt; font-weight:700; color:#060E1F;">Challenge</div>
+        </div>
+        <div style="padding:2.5mm 3mm;"><p style="font-size:8pt; color:rgba(26,26,46,.7); margin:0; line-height:1.45;">5–7 Tage, täglich ein Impuls. Erzeugt Gewohnheit und tiefe Bindung.</p></div>
       </div>
-      <div class="card accent-violet">
-        <div class="card-title">Mini-Kurs / Video</div>
-        <p>Zeigt Expertise. Ideal für Menschen die lieber schauen als lesen. Erfordert mehr Aufwand.</p>
+      <div style="border:1.5px solid rgba(183,148,244,.35); border-radius:8px; overflow:hidden;">
+        <div style="background:rgba(183,148,244,.08); padding:2.5mm 3mm; display:flex; align-items:center; gap:2.5mm; border-bottom:1px solid rgba(183,148,244,.2);">
+          <div style="width:8mm; height:8mm; border-radius:50%; background:linear-gradient(135deg,#B794F4,#6B46C1); display:flex; align-items:center; justify-content:center; font-size:7pt; font-weight:800; color:#fff; flex-shrink:0;">03</div>
+          <div style="font-size:7.5pt; font-weight:700; color:#060E1F;">Mini-Kurs / Video</div>
+        </div>
+        <div style="padding:2.5mm 3mm;"><p style="font-size:8pt; color:rgba(26,26,46,.7); margin:0; line-height:1.45;">Zeigt Expertise. Ideal für Menschen die lieber schauen als lesen.</p></div>
       </div>
-      <div class="card accent-gold">
-        <div class="card-title">Quiz / Analyse</div>
-        <p>Hohe Interaktion. Die Person bekommt ein persönliches Ergebnis — sehr gute Conversion.</p>
+      <div style="border:1.5px solid rgba(26,26,46,.15); border-radius:8px; overflow:hidden;">
+        <div style="background:rgba(26,26,46,.04); padding:2.5mm 3mm; display:flex; align-items:center; gap:2.5mm; border-bottom:1px solid rgba(26,26,46,.1);">
+          <div style="width:8mm; height:8mm; border-radius:50%; background:linear-gradient(135deg,#4A5568,#2D3748); display:flex; align-items:center; justify-content:center; font-size:7pt; font-weight:800; color:#fff; flex-shrink:0;">04</div>
+          <div style="font-size:7.5pt; font-weight:700; color:#060E1F;">Quiz / Analyse</div>
+        </div>
+        <div style="padding:2.5mm 3mm;"><p style="font-size:8pt; color:rgba(26,26,46,.7); margin:0; line-height:1.45;">Hohe Interaktion. Persönliches Ergebnis — sehr gute Conversion.</p></div>
       </div>
-      <div class="card accent-pink">
-        <div class="card-title">Vorlage / Template</div>
-        <p>Spart Zeit — sofort nutzbar. Besonders beliebt bei Selbstständigen und Coaches.</p>
+      <div style="border:1.5px solid rgba(255,140,0,.35); border-radius:8px; overflow:hidden;">
+        <div style="background:rgba(255,140,0,.08); padding:2.5mm 3mm; display:flex; align-items:center; gap:2.5mm; border-bottom:1px solid rgba(255,140,0,.2);">
+          <div style="width:8mm; height:8mm; border-radius:50%; background:linear-gradient(135deg,#FFCE3D,#FF8C00); display:flex; align-items:center; justify-content:center; font-size:7pt; font-weight:800; color:#060E1F; flex-shrink:0;">05</div>
+          <div style="font-size:7.5pt; font-weight:700; color:#060E1F;">Vorlage / Template</div>
+        </div>
+        <div style="padding:2.5mm 3mm;"><p style="font-size:8pt; color:rgba(26,26,46,.7); margin:0; line-height:1.45;">Spart Zeit — sofort nutzbar. Beliebt bei Coaches und Selbstständigen.</p></div>
       </div>
-      <div class="card accent-violet">
-        <div class="card-title">Community-Zugang</div>
-        <p>Kein klassischer Lead-Magnet — man landet in einer Gruppe, nicht nur in einer E-Mail-Liste.</p>
+      <div style="border:1.5px solid rgba(255,107,184,.3); border-radius:8px; overflow:hidden;">
+        <div style="background:rgba(255,107,184,.07); padding:2.5mm 3mm; display:flex; align-items:center; gap:2.5mm; border-bottom:1px solid rgba(255,107,184,.18);">
+          <div style="width:8mm; height:8mm; border-radius:50%; background:linear-gradient(135deg,#FF6BB8,#FF3FA1); display:flex; align-items:center; justify-content:center; font-size:7pt; font-weight:800; color:#fff; flex-shrink:0;">06</div>
+          <div style="font-size:7.5pt; font-weight:700; color:#060E1F;">Community-Zugang</div>
+        </div>
+        <div style="padding:2.5mm 3mm;"><p style="font-size:8pt; color:rgba(26,26,46,.7); margin:0; line-height:1.45;">Kein klassischer Lead-Magnet — man landet in einer Gruppe, nicht einer Liste.</p></div>
       </div>
-    </div>
-
-    <div class="box box-pink">
-      <div class="box-title">Moderations-Tipp</div>
-      <p>Frag die Gruppe: „Was wäre das wertvollste, was ihr eurer Zielgruppe in 10 Minuten beibringen könntet?" — Das ist oft der Kern ihres Freebies. Lass sie kurz schreiben, dann teilen.</p>
     </div>
 
     <div class="trainer-note">
       <div class="trainer-note-icon">🎯</div>
       <div class="trainer-note-body">
-        <div class="trainer-note-label">Wichtige Differenzierung</div>
-        <p>Ein Freebie muss keine E-Mail-Adresse als Gegenleistung haben. Die Teilnehmerinnen können Interessenten auch in eine WhatsApp-Community, eine Telegram-Gruppe oder eine geschlossene Facebook-Gruppe leiten. Das ist oft persönlicher und baut mehr Vertrauen auf — sprich dies aktiv an.</p>
+        <div class="trainer-note-label">Moderations-Tipp & Wichtige Differenzierung</div>
+        <p>Frag die Gruppe: „Was wäre das wertvollste, was ihr eurer Zielgruppe in 10 Minuten beibringen könntet?" — Das ist oft der Kern ihres Freebies. Lass sie kurz schreiben, dann teilen. Ein Freebie muss keine E-Mail-Adresse als Gegenleistung haben — auch WhatsApp-Community, Telegram oder Facebook-Gruppe funktionieren. Sprich das aktiv an.</p>
       </div>
     </div>
   </div>
@@ -719,11 +720,12 @@
   </div>
 </div>
 
+
 <!-- ===== PAGE 5: FREEBIE MIT CLAUDE ERSTELLEN ===== -->
 <div class="page content-page">
   <div class="page-header">
     <span class="page-header-title">Modul 3 · Freebie mit Claude erstellen</span>
-    <span class="page-header-num">5 / 8</span>
+    <span class="page-header-num">5 / 9</span>
   </div>
   <div class="page-body">
     <div class="time-badge">⏱ 90 Minuten · Hands-on</div>
@@ -731,15 +733,33 @@
     <h2>Schritt für Schritt mit <em>Claude</em></h2>
     <p class="lead">Die Teilnehmerinnen erstellen ihr Freebie live während des Workshops. Du zeigst es zuerst an deinem Beispiel — dann arbeiten alle selbst.</p>
 
-    <h3>Schritt-für-Schritt Anleitung (live zeigen)</h3>
-    <ol class="styled">
-      <li>Claude.ai öffnen. Neuen Chat starten.</li>
-      <li>Kontext geben: Wer bin ich, wen spreche ich an, was ist das Thema?</li>
-      <li>Freebie-Format wählen lassen oder vorgeben</li>
-      <li>Ersten Entwurf generieren und gemeinsam überarbeiten</li>
-      <li>Titel optimieren (3 Varianten generieren lassen)</li>
-      <li>Ggf. in Canva oder als PDF exportieren</li>
-    </ol>
+    <h3>Live-Demo Ablauf</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3mm; margin-bottom:4mm;">
+      <div style="display:flex; gap:3mm; align-items:flex-start; border:1px solid rgba(255,206,61,.3); border-radius:8px; padding:3mm;">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FFCE3D,#E5A500); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:9pt; color:#060E1F; flex-shrink:0;">1</div>
+        <div><div style="font-size:8pt; font-weight:700; color:#060E1F; margin-bottom:0.5mm;">Claude öffnen</div><p style="margin:0; font-size:8pt; color:rgba(26,26,46,.7); line-height:1.4;">Claude.ai aufrufen. Neuen Chat starten.</p></div>
+      </div>
+      <div style="display:flex; gap:3mm; align-items:flex-start; border:1px solid rgba(255,63,161,.25); border-radius:8px; padding:3mm;">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FF3FA1,#C2185B); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:9pt; color:#fff; flex-shrink:0;">2</div>
+        <div><div style="font-size:8pt; font-weight:700; color:#060E1F; margin-bottom:0.5mm;">Kontext geben</div><p style="margin:0; font-size:8pt; color:rgba(26,26,46,.7); line-height:1.4;">Wer bin ich, wen spreche ich an, was ist das Thema?</p></div>
+      </div>
+      <div style="display:flex; gap:3mm; align-items:flex-start; border:1px solid rgba(183,148,244,.3); border-radius:8px; padding:3mm;">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#B794F4,#6B46C1); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:9pt; color:#fff; flex-shrink:0;">3</div>
+        <div><div style="font-size:8pt; font-weight:700; color:#060E1F; margin-bottom:0.5mm;">Format wählen</div><p style="margin:0; font-size:8pt; color:rgba(26,26,46,.7); line-height:1.4;">Freebie-Format wählen lassen oder vorgeben</p></div>
+      </div>
+      <div style="display:flex; gap:3mm; align-items:flex-start; border:1px solid rgba(26,26,46,.15); border-radius:8px; padding:3mm;">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#4A5568,#2D3748); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:9pt; color:#fff; flex-shrink:0;">4</div>
+        <div><div style="font-size:8pt; font-weight:700; color:#060E1F; margin-bottom:0.5mm;">Entwurf überarbeiten</div><p style="margin:0; font-size:8pt; color:rgba(26,26,46,.7); line-height:1.4;">Ersten Entwurf generieren und gemeinsam überarbeiten</p></div>
+      </div>
+      <div style="display:flex; gap:3mm; align-items:flex-start; border:1px solid rgba(255,140,0,.3); border-radius:8px; padding:3mm;">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FFCE3D,#FF8C00); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:9pt; color:#060E1F; flex-shrink:0;">5</div>
+        <div><div style="font-size:8pt; font-weight:700; color:#060E1F; margin-bottom:0.5mm;">Titel optimieren</div><p style="margin:0; font-size:8pt; color:rgba(26,26,46,.7); line-height:1.4;">3 Varianten generieren lassen und die beste wählen</p></div>
+      </div>
+      <div style="display:flex; gap:3mm; align-items:flex-start; border:1px solid rgba(255,107,184,.25); border-radius:8px; padding:3mm;">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FF6BB8,#FF3FA1); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:9pt; color:#fff; flex-shrink:0;">6</div>
+        <div><div style="font-size:8pt; font-weight:700; color:#060E1F; margin-bottom:0.5mm;">Exportieren</div><p style="margin:0; font-size:8pt; color:rgba(26,26,46,.7); line-height:1.4;">In Canva gestalten oder direkt als PDF exportieren</p></div>
+      </div>
+    </div>
 
     <div class="prompt-box">
       <div class="prompt-label">🤖 Prompt 1 — Freebie-Konzept entwickeln</div>
@@ -755,28 +775,20 @@
       </div>
     </div>
 
-    <div class="prompt-box">
-      <div class="prompt-label">🤖 Prompt 3 — Titel und Untertitel optimieren</div>
-      <div class="prompt-text">
-        Schreibe 5 verschiedene Titel-Varianten für mein Freebie. Jeder Titel soll: neugierig machen, das konkrete Ergebnis versprechen, nicht länger als 8 Wörter sein. Zielgruppe: <em>[Zielgruppe]</em>. Thema: <em>[Thema]</em>.
-      </div>
-    </div>
-
-    <h3 class="gold">Kontaktgewinnung — Modern denken</h3>
     <div class="grid-2">
       <div class="box box-gold">
         <div class="box-title">Klassisch: E-Mail-Liste</div>
-        <p>Eintragungsformular auf der Landingpage. E-Mail als Gegenleistung für das Freebie. Setzt DSGVO-konformes Tool voraus (z.B. Mailerlite, ActiveCampaign).</p>
+        <p>Eintragungsformular auf der Landingpage. E-Mail als Gegenleistung. Setzt DSGVO-konformes Tool voraus (Mailerlite, ActiveCampaign).</p>
       </div>
       <div class="box box-violet">
         <div class="box-title">Modern: Community-Zugang</div>
-        <p>WhatsApp-Community, Telegram-Gruppe, Slack oder geschlossene Facebook-Gruppe. Persönlicher, interaktiver — kein E-Mail-Tool nötig.</p>
+        <p>WhatsApp-Community, Telegram-Gruppe oder geschlossene Facebook-Gruppe. Persönlicher, interaktiver — kein E-Mail-Tool nötig.</p>
       </div>
     </div>
 
     <div class="box box-pink">
       <div class="box-title">Die Challenge als Freebie — Besonders wirkungsvoll</div>
-      <p>Eine 5-Tage-Challenge gibt täglich einen wertvollen Impuls. Sie erzeugt Gewohnheit, tägliche Berührungspunkte und ein Gefühl von Gemeinschaft. Am Ende der Challenge ist die Person emotional deutlich näher an einem Kauf als nach einem statischen PDF. Zeig den Teilnehmerinnen wie Claude eine komplette Challenge-Serie entwickeln kann.</p>
+      <p>Eine 5-Tage-Challenge gibt täglich einen wertvollen Impuls. Sie erzeugt Gewohnheit, tägliche Berührungspunkte und Gemeinschaft. Am Ende ist die Person emotional deutlich näher an einem Kauf als nach einem statischen PDF.</p>
     </div>
   </div>
   <div class="page-foot">
@@ -784,6 +796,7 @@
     <span class="pink">Trainer-Leitfaden · Intern</span>
   </div>
 </div>
+
 
 <!-- ===== PAGE 6: SECTION COVER — LANDINGPAGE ===== -->
 <div class="page section-cover">
@@ -798,67 +811,103 @@
   </div>
 </div>
 
-<!-- ===== PAGE 7: LANDINGPAGE AUFBAU ===== -->
+
+<!-- ===== PAGE 7: LANDINGPAGE BAUSTEINE 01 – 04 ===== -->
 <div class="page content-page">
   <div class="page-header">
-    <span class="page-header-title">Modul 4 · Landingpage Aufbau & Psychologie</span>
-    <span class="page-header-num">7 / 8</span>
+    <span class="page-header-title">Modul 4 · Landingpage — Bausteine 1–4</span>
+    <span class="page-header-num">7 / 9</span>
   </div>
   <div class="page-body">
-    <div class="time-badge">⏱ 45 Minuten · Theorie</div>
+    <div class="time-badge">⏱ 45 Minuten · Theorie-Einstieg</div>
+    <h2>Die 7 Bausteine — <em>dein Leitfaden</em></h2>
+    <p style="font-size:9.5pt; color:rgba(26,26,46,.65); margin-bottom:4mm; line-height:1.55;">Geh die Bausteine der Reihe nach durch. Links siehst du was du erklärst — rechts den Trainer-Tipp. Die Teilnehmerinnen füllen parallel ihr Workbook aus.</p>
 
-    <h2>Was eine <em>Landingpage</em> wirklich braucht</h2>
-    <p class="lead">Eine Landingpage hat nur eine Aufgabe: Die Besucherin davon zu überzeugen, jetzt zu handeln. Alles andere ist Ablenkung.</p>
-
-    <h3>Die 7 Must-have Elemente</h3>
-    <ol class="styled">
-      <li><strong>Headline:</strong> Das stärkste Versprechen in einem Satz. Das Ergebnis — nicht der Weg.</li>
-      <li><strong>Subheadline:</strong> Die Brücke zur Zielgruppe. „Für Menschen die..." oder „Damit du..."</li>
-      <li><strong>Hero-Bild / Video:</strong> Ein echtes Foto oder Video der Person. Kein Stock-Bild.</li>
-      <li><strong>Freebie-Vorschau:</strong> Was bekommt die Person genau? Mockup oder Screenshot.</li>
-      <li><strong>Bullet-Points:</strong> Was ändert sich nach dem Download / nach der Anmeldung?</li>
-      <li><strong>Eintragungsformular / CTA:</strong> Maximal 2 Felder (Name + E-Mail oder nur E-Mail).</li>
-      <li><strong>Vertrauen:</strong> Foto, Name, 1 Satz wer du bist. Kein langer Lebenslauf.</li>
-    </ol>
-
-    <div class="divider-light"></div>
-    <h3>Psychologie: Was Menschen zum Handeln bringt</h3>
-    <div class="grid-2">
-      <div class="box box-gold">
-        <div class="box-title">Konkretes Ergebnis versprechen</div>
-        <p>Nicht „Tipps für mehr Sichtbarkeit" — sondern „In 5 Tagen weißt du genau was du postest".</p>
+    <!-- BAUSTEIN 01 -->
+    <div style="border:1.5px solid rgba(255,206,61,.45); border-radius:10px; margin-bottom:3.5mm; overflow:hidden;">
+      <div style="background:linear-gradient(135deg,rgba(255,206,61,.15),rgba(255,206,61,.05)); padding:3mm 5mm; display:flex; align-items:center; gap:3.5mm; border-bottom:1px solid rgba(255,206,61,.25);">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FFCE3D,#E5A500); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#060E1F; flex-shrink:0; font-family:'Plus Jakarta Sans',sans-serif;">01</div>
+        <div style="flex:1;">
+          <div style="font-size:7pt; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#9A6F00; margin-bottom:.5mm;">Baustein 1</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13pt; font-weight:500; color:#060E1F; line-height:1;">Headline &amp; Hero</div>
+        </div>
+        <div style="background:rgba(255,206,61,.15); border:1px solid rgba(255,206,61,.4); border-radius:100px; padding:2px 9px; font-size:7pt; font-weight:700; color:#9A6F00; white-space:nowrap;">3 Sek. Entscheidung</div>
       </div>
-      <div class="box box-pink">
-        <div class="box-title">Verlust vermeiden (Loss Aversion)</div>
-        <p>„Was du verpasst wenn du es nicht nutzt" wirkt stärker als „Was du gewinnst".</p>
-      </div>
-      <div class="box box-violet">
-        <div class="box-title">Soziale Bewährtheit</div>
-        <p>„Bereits 347 Personen haben sich eingetragen" oder Kommentare/Reaktionen zeigen.</p>
-      </div>
-      <div class="box box-gold">
-        <div class="box-title">Dringlichkeit / Knappheit</div>
-        <p>„Nur diese Woche kostenlos" oder „Challenge startet am Montag" lösen schnelle Entscheidungen aus.</p>
+      <div style="padding:3mm 5mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm;">
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Was du erklärst</div>
+          <p style="font-size:8.5pt; line-height:1.5; color:rgba(26,26,46,.75); margin:0;">Die Headline ist die wichtigste Zeile der Seite. In 3 Sekunden muss die Besucherin wissen: Bin ich hier richtig? Für wen ist das? Was bekomme ich? Zeig die Formel: <em style="font-style:italic;">„Ich helfe [Zielgruppe], [Ergebnis] zu erreichen — ohne [Hindernis]."</em></p>
+        </div>
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Trainer-Tipp</div>
+          <div style="background:#060E1F; border-radius:6px; padding:3mm; font-size:8pt; color:rgba(253,252,250,.8); line-height:1.5;">Lass jede TN ihre aktuelle Tagline aufschreiben und dann gemeinsam optimieren. Claude liefert 7 Varianten in 30 Sekunden — zeig das live.</div>
+        </div>
       </div>
     </div>
 
-    <h3>Farben & Ansprache</h3>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-title">Farb-Psychologie</div>
-        <p><strong>Gold/Orange:</strong> Premium, Wärme, Erfolg · <strong>Magenta/Pink:</strong> Energie, weiblich, modern · <strong>Dunkelblau/Navy:</strong> Vertrauen, Tiefe · <strong>Weiß/Creme:</strong> Klarheit, Raum</p>
+    <!-- BAUSTEIN 02 -->
+    <div style="border:1.5px solid rgba(255,63,161,.3); border-radius:10px; margin-bottom:3.5mm; overflow:hidden;">
+      <div style="background:linear-gradient(135deg,rgba(255,63,161,.1),rgba(255,63,161,.03)); padding:3mm 5mm; display:flex; align-items:center; gap:3.5mm; border-bottom:1px solid rgba(255,63,161,.2);">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FF3FA1,#C2185B); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#fff; flex-shrink:0; font-family:'Plus Jakarta Sans',sans-serif;">02</div>
+        <div style="flex:1;">
+          <div style="font-size:7pt; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#C2185B; margin-bottom:.5mm;">Baustein 2</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13pt; font-weight:500; color:#060E1F; line-height:1;">Problem &amp; Schmerz</div>
+        </div>
+        <div style="background:rgba(255,63,161,.1); border:1px solid rgba(255,63,161,.3); border-radius:100px; padding:2px 9px; font-size:7pt; font-weight:700; color:#C2185B; white-space:nowrap;">Empathie erzeugen</div>
       </div>
-      <div class="card">
-        <div class="card-title">Ansprache</div>
-        <p>Direkt: „Du" statt „Sie". Konkret: Was ändert sich — nicht was du anbietest. Emotional: Wie fühlt sich das Problem an? Lösungsorientiert: Was ist nach dem Download anders?</p>
+      <div style="padding:3mm 5mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm;">
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Was du erklärst</div>
+          <p style="font-size:8.5pt; line-height:1.5; color:rgba(26,26,46,.75); margin:0;">Nach der Headline kommt der Spiegel. Beschreibe den inneren Monolog der Leserin — so konkret, dass sie denkt: <em style="font-style:italic;">„Das bin ich!"</em> Nicht klagen, sondern verstehen. Der Schmerz wird gespiegelt, nicht ausgenutzt.</p>
+        </div>
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Trainer-Tipp</div>
+          <div style="background:#060E1F; border-radius:6px; padding:3mm; font-size:8pt; color:rgba(253,252,250,.8); line-height:1.5;">Frag die Gruppe: <span style="color:#FFCE3D;">"Was sagt euer Wunschkunde morgens unter der Dusche?"</span> Die Antwort ist oft der perfekte Problem-Satz.</div>
+        </div>
       </div>
     </div>
 
-    <div class="trainer-note">
-      <div class="trainer-note-icon">🤖</div>
-      <div class="trainer-note-body">
-        <div class="trainer-note-label">KI als Vorreiter — Das sagst du ans Plenum</div>
-        <p>KI-Systeme wie Claude analysieren Millionen von Landingpages und wissen statistisch welche Elemente, Formulierungen und Strukturen bei welchen Zielgruppen funktionieren. Wenn wir Claude fragen „Was konvertiert bei meiner Zielgruppe?" bekommen wir keine Meinung — wir bekommen Muster aus riesigen Datenmengen. Das ist unser unfairer Vorteil.</p>
+    <!-- BAUSTEIN 03 -->
+    <div style="border:1.5px solid rgba(183,148,244,.4); border-radius:10px; margin-bottom:3.5mm; overflow:hidden;">
+      <div style="background:linear-gradient(135deg,rgba(183,148,244,.1),rgba(183,148,244,.03)); padding:3mm 5mm; display:flex; align-items:center; gap:3.5mm; border-bottom:1px solid rgba(183,148,244,.25);">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#B794F4,#6B46C1); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#fff; flex-shrink:0; font-family:'Plus Jakarta Sans',sans-serif;">03</div>
+        <div style="flex:1;">
+          <div style="font-size:7pt; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#6B46C1; margin-bottom:.5mm;">Baustein 3</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13pt; font-weight:500; color:#060E1F; line-height:1;">Lösung &amp; Angebot</div>
+        </div>
+        <div style="background:rgba(183,148,244,.1); border:1px solid rgba(183,148,244,.35); border-radius:100px; padding:2px 9px; font-size:7pt; font-weight:700; color:#6B46C1; white-space:nowrap;">Das Versprechen</div>
+      </div>
+      <div style="padding:3mm 5mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm;">
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Was du erklärst</div>
+          <p style="font-size:8.5pt; line-height:1.5; color:rgba(26,26,46,.75); margin:0;">Nach dem Schmerz kommt die Hoffnung. Zeige klar: Was ist das Angebot? Welches Ergebnis entsteht? Was ist konkret enthalten? Je greifbarer das Angebot, desto besser die Conversion.</p>
+        </div>
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Trainer-Tipp</div>
+          <div style="background:#060E1F; border-radius:6px; padding:3mm; font-size:8pt; color:rgba(253,252,250,.8); line-height:1.5;">Formel live zeigen: <span style="color:#FFCE3D;">"Hol dir [Titel] und in [Zeitraum] wirst du [Ergebnis] haben."</span> Lass sie das direkt mit Claude tippen.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAUSTEIN 04 -->
+    <div style="border:1.5px solid rgba(26,26,46,.2); border-radius:10px; overflow:hidden;">
+      <div style="background:rgba(26,26,46,.04); padding:3mm 5mm; display:flex; align-items:center; gap:3.5mm; border-bottom:1px solid rgba(26,26,46,.1);">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#4A5568,#2D3748); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#fff; flex-shrink:0; font-family:'Plus Jakarta Sans',sans-serif;">04</div>
+        <div style="flex:1;">
+          <div style="font-size:7pt; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:.5mm;">Baustein 4</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13pt; font-weight:500; color:#060E1F; line-height:1;">Über mich — deine Geschichte</div>
+        </div>
+        <div style="font-size:7pt; font-weight:700; color:rgba(26,26,46,.35); white-space:nowrap;">Vertrauen aufbauen</div>
+      </div>
+      <div style="padding:3mm 5mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm;">
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Was du erklärst</div>
+          <p style="font-size:8.5pt; line-height:1.5; color:rgba(26,26,46,.75); margin:0;">Kurz, persönlich, relevant. Nicht der Lebenslauf — der eine Moment, der erklärt warum genau sie die Richtige ist. Die Geschichte verbindet ihr Profil mit dem Problem der Wunschkunden.</p>
+        </div>
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Trainer-Tipp</div>
+          <div style="background:#060E1F; border-radius:6px; padding:3mm; font-size:8pt; color:rgba(253,252,250,.8); line-height:1.5;">Übungsformel: <span style="color:#FFCE3D;">"Ich bin [Name]. Seit [Zeit] helfe ich [Zielgruppe] — weil ich selbst [persönliche Erfahrung]."</span> Claude kann das ausformulieren.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -868,11 +917,121 @@
   </div>
 </div>
 
-<!-- ===== PAGE 8: PROMPTS & RESSOURCEN ===== -->
+
+<!-- ===== PAGE 8: LANDINGPAGE BAUSTEINE 05 – 07 ===== -->
+<div class="page content-page">
+  <div class="page-header">
+    <span class="page-header-title">Modul 4 · Landingpage — Bausteine 5–7</span>
+    <span class="page-header-num">8 / 9</span>
+  </div>
+  <div class="page-body">
+
+    <!-- BAUSTEIN 05 -->
+    <div style="border:1.5px solid rgba(255,206,61,.4); border-radius:10px; margin-bottom:3.5mm; overflow:hidden;">
+      <div style="background:rgba(255,206,61,.07); padding:3mm 5mm; display:flex; align-items:center; gap:3.5mm; border-bottom:1px solid rgba(255,206,61,.25);">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FFCE3D,#FF8C00); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#060E1F; flex-shrink:0; font-family:'Plus Jakarta Sans',sans-serif;">05</div>
+        <div style="flex:1;">
+          <div style="font-size:7pt; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#9A6F00; margin-bottom:.5mm;">Baustein 5</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13pt; font-weight:500; color:#060E1F; line-height:1;">Social Proof &amp; Beweis</div>
+        </div>
+        <div style="font-size:7pt; font-weight:700; color:#9A6F00; white-space:nowrap;">Andere bestätigen dich</div>
+      </div>
+      <div style="padding:3mm 5mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm;">
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Was du erklärst</div>
+          <p style="font-size:8.5pt; line-height:1.5; color:rgba(26,26,46,.75); margin:0;">Menschen kaufen was andere schon gut fanden. Zahlen, Testimonials (Ergebnis + Name + Kontext), Screenshot-Reaktionen — jede Art von Beweis zählt. Konkret schlägt allgemein immer.</p>
+        </div>
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Trainer-Tipp</div>
+          <div style="background:#060E1F; border-radius:6px; padding:3mm; font-size:8pt; color:rgba(253,252,250,.8); line-height:1.5;">Für Anfänger ohne Kunden: Beta-Nutzer befragen. Auch ein WhatsApp-Screenshot mit positiver Reaktion ist Social Proof — das nimmt die Hemmschwelle.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAUSTEIN 06 -->
+    <div style="border:1.5px solid rgba(255,63,161,.28); border-radius:10px; margin-bottom:3.5mm; overflow:hidden;">
+      <div style="background:rgba(255,63,161,.06); padding:3mm 5mm; display:flex; align-items:center; gap:3.5mm; border-bottom:1px solid rgba(255,63,161,.18);">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#FF6BB8,#FF3FA1); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#fff; flex-shrink:0; font-family:'Plus Jakarta Sans',sans-serif;">06</div>
+        <div style="flex:1;">
+          <div style="font-size:7pt; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#C2185B; margin-bottom:.5mm;">Baustein 6</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13pt; font-weight:500; color:#060E1F; line-height:1;">FAQ — Einwände entkräften</div>
+        </div>
+        <div style="font-size:7pt; font-weight:700; color:#C2185B; white-space:nowrap;">Letzte Hürden nehmen</div>
+      </div>
+      <div style="padding:3mm 5mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm;">
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Was du erklärst</div>
+          <p style="font-size:8.5pt; line-height:1.5; color:rgba(26,26,46,.75); margin:0;">Beantworte 3–5 Einwände die einen Abbruch auslösen: Preis, Zeit, „Ist das auch für mich?", „Was passiert danach?", Garantie. Kurz und direkt formulieren.</p>
+        </div>
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Trainer-Tipp</div>
+          <div style="background:#060E1F; border-radius:6px; padding:3mm; font-size:8pt; color:rgba(253,252,250,.8); line-height:1.5;">Claude-Prompt live zeigen: <span style="color:#FFCE3D;">"Nenne mir die 5 häufigsten Einwände von [Zielgruppe] bei [Angebot] — mit Antwort-Vorschlägen."</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAUSTEIN 07 -->
+    <div style="border:2px solid rgba(255,206,61,.65); border-radius:10px; margin-bottom:4mm; background:linear-gradient(135deg,rgba(255,206,61,.08),rgba(255,206,61,.02)); overflow:hidden;">
+      <div style="background:rgba(255,206,61,.12); padding:3mm 5mm; display:flex; align-items:center; gap:3.5mm; border-bottom:1.5px solid rgba(255,206,61,.35);">
+        <div style="width:9mm; height:9mm; border-radius:50%; background:linear-gradient(135deg,#060E1F,#1A2742); display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:800; color:#FFCE3D; flex-shrink:0; font-family:'Plus Jakarta Sans',sans-serif;">07</div>
+        <div style="flex:1;">
+          <div style="font-size:7pt; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#9A6F00; margin-bottom:.5mm;">Baustein 7 ✦ Der wichtigste</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13pt; font-weight:500; color:#060E1F; line-height:1;">Call to Action — der eine Schritt</div>
+        </div>
+        <div style="background:#060E1F; border-radius:100px; padding:2px 9px; font-size:7pt; font-weight:700; color:#FFCE3D; white-space:nowrap;">Kein Wenn und Aber</div>
+      </div>
+      <div style="padding:3mm 5mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm;">
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Was du erklärst</div>
+          <p style="font-size:8.5pt; line-height:1.5; color:rgba(26,26,46,.75); margin:0;">Ein einziger, glasklarer Button. Kein Menü, keine drei Buttons. Alles auf der Seite führt auf diesen einen Moment hin. Aktiv, konkret, einladend — nicht „Hier klicken", sondern <em style="font-style:italic;">„Jetzt Platz sichern"</em> oder <em style="font-style:italic;">„Freebie kostenlos holen"</em>.</p>
+        </div>
+        <div>
+          <div style="font-size:6.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,26,46,.4); margin-bottom:1.5mm;">Trainer-Tipp</div>
+          <div style="background:#060E1F; border-radius:6px; padding:3mm; font-size:8pt; color:rgba(253,252,250,.8); line-height:1.5;">Goldene Regel groß zeigen: <span style="color:#FFCE3D;">Nur EINER.</span> Lass alle TN ihren CTA-Text entwerfen und vorlesen — direkte Praxis, sofortiges Feedback.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Psychologie in 30 Sekunden — Das sagst du ans Plenum</h3>
+    <div class="grid-2" style="margin-bottom:3mm;">
+      <div class="box box-gold">
+        <div class="box-title">Konkretes Ergebnis</div>
+        <p>Nicht „Tipps für Sichtbarkeit" — sondern „In 5 Tagen weißt du genau was du postest".</p>
+      </div>
+      <div class="box box-pink">
+        <div class="box-title">Loss Aversion</div>
+        <p>„Was du verpasst wenn du es nicht nutzt" wirkt stärker als „Was du gewinnst".</p>
+      </div>
+      <div class="box box-violet">
+        <div class="box-title">Soziale Bewährtheit</div>
+        <p>„Bereits 347 Personen haben sich eingetragen" oder echte Kommentare zeigen.</p>
+      </div>
+      <div class="box box-gold">
+        <div class="box-title">Dringlichkeit</div>
+        <p>„Nur diese Woche kostenlos" oder „Challenge startet am Montag" lösen schnelle Entscheidungen aus.</p>
+      </div>
+    </div>
+
+    <div class="trainer-note">
+      <div class="trainer-note-icon">🤖</div>
+      <div class="trainer-note-body">
+        <div class="trainer-note-label">KI als unfairer Vorteil — Das sagst du ans Plenum</div>
+        <p>Claude analysiert Millionen von Landingpages und weiß statistisch welche Elemente und Formulierungen bei welchen Zielgruppen funktionieren. Wenn wir Claude fragen „Was konvertiert bei meiner Zielgruppe?" bekommen wir keine Meinung — wir bekommen Muster aus riesigen Datenmengen. Das ist unser unfairer Vorteil.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot">
+    <span>Die Unverwechselbaren · KI-Workshop 2026</span>
+    <span class="pink">Trainer-Leitfaden · Intern</span>
+  </div>
+</div>
+
+
+<!-- ===== PAGE 9: PROMPTS & RESSOURCEN ===== -->
 <div class="page content-page">
   <div class="page-header">
     <span class="page-header-title">Prompt-Bibliothek & Ressourcen</span>
-    <span class="page-header-num">8 / 8</span>
+    <span class="page-header-num">9 / 9</span>
   </div>
   <div class="page-body">
     <h2>Deine <em>Prompt-Bibliothek</em></h2>
@@ -908,7 +1067,7 @@
 
     <div class="divider-light"></div>
     <h3>Abschluss-Checkliste für dein Modul</h3>
-    <ul class="styled check">
+    <ul class="check">
       <li>Alle Teilnehmerinnen haben ein Freebie-Konzept entwickelt</li>
       <li>Mindestens ein erster Claude-generierter Entwurf existiert</li>
       <li>Jede weiß, wie sie Kontakte sammeln will (E-Mail oder Community)</li>
