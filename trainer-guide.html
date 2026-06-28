@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  @page { size: A4; margin: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    color: #1a1a2e;
+    background: #fff;
+    width: 210mm;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  /* ====== COVER ====== */
+  .cover {
+    background: #060E1F;
+    display: flex;
+    flex-direction: column;
+  }
+  .cover-header-img {
+    width: 100%;
+    height: 68mm;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .cover-coaches {
+    width: 100%;
+    height: 68mm;
+    display: flex;
+    overflow: hidden;
+    background: #0A1428;
+  }
+  .cover-coaches img {
+    width: 33.33%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .cover-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 68mm;
+    background: linear-gradient(to bottom, rgba(6,14,31,.3) 0%, rgba(6,14,31,.85) 100%);
+  }
+  .cover-body {
+    flex: 1;
+    padding: 10mm 14mm 10mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,63,161,.15);
+    border: 1px solid rgba(255,63,161,.4);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #FF3FA1;
+    margin-bottom: 6mm;
+    width: fit-content;
+  }
+  .cover-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255,206,61,.7);
+    margin-bottom: 4mm;
+  }
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: .92;
+    letter-spacing: -.02em;
+    color: #FDFCFA;
+    margin-bottom: 5mm;
+  }
+  .cover-title span {
+    background: linear-gradient(120deg, #FFCE3D 10%, #FF8C00 55%, #FF3FA1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(253,252,250,.45);
+    margin-bottom: 8mm;
+  }
+  .cover-divider {
+    width: 50mm;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,206,61,.6), transparent);
+    margin-bottom: 8mm;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 6mm;
+    flex-wrap: wrap;
+  }
+  .cover-chip {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(253,252,250,.65);
+    letter-spacing: .05em;
+  }
+  .cover-chip.gold { background: rgba(255,206,61,.1); border-color: rgba(255,206,61,.35); color: #FFCE3D; }
+  .cover-footer {
+    padding: 6mm 14mm;
+    border-top: 1px solid rgba(255,255,255,.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cover-footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(253,252,250,.3);
+  }
+  .cover-footer-tag {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,63,161,.5);
+  }
+
+  /* ====== CONTENT PAGES ====== */
+  .content-page {
+    background: #fff;
+    padding: 0;
+  }
+  .page-header {
+    background: #060E1F;
+    padding: 6mm 14mm 5mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(253,252,250,.5);
+  }
+  .page-header-num {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    color: rgba(255,206,61,.5);
+  }
+  .page-body {
+    padding: 8mm 14mm 6mm;
+  }
+
+  /* Section title pages */
+  .section-cover {
+    background: linear-gradient(135deg, #060E1F 0%, #0D1830 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20mm 14mm;
+    position: relative;
+  }
+  .section-cover::before {
+    content: '';
+    position: absolute;
+    top: -30mm; left: -20mm;
+    width: 120mm; height: 120mm;
+    background: radial-gradient(ellipse, rgba(255,206,61,.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .section-cover::after {
+    content: '';
+    position: absolute;
+    bottom: -20mm; right: -20mm;
+    width: 100mm; height: 100mm;
+    background: radial-gradient(ellipse, rgba(255,63,161,.09) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .section-num {
+    font-size: 80px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: rgba(255,206,61,.08);
+    position: absolute;
+    right: 10mm;
+    bottom: 5mm;
+    line-height: 1;
+  }
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: rgba(255,206,61,.65);
+    margin-bottom: 5mm;
+    position: relative; z-index: 2;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 42px;
+    line-height: .9;
+    letter-spacing: -.02em;
+    color: #FDFCFA;
+    margin-bottom: 6mm;
+    position: relative; z-index: 2;
+  }
+  .section-title em {
+    background: linear-gradient(120deg, #FFCE3D 10%, #FF8C00 55%, #FF3FA1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: normal;
+  }
+  .section-desc {
+    font-size: 12px;
+    color: rgba(253,252,250,.42);
+    line-height: 1.6;
+    max-width: 120mm;
+    position: relative; z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+  .section-chips {
+    display: flex;
+    gap: 3mm;
+    flex-wrap: wrap;
+    margin-top: 8mm;
+    position: relative; z-index: 2;
+  }
+  .section-chip {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 8px;
+    font-weight: 600;
+    color: rgba(253,252,250,.55);
+    letter-spacing: .06em;
+  }
+
+  /* Content elements */
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: #060E1F;
+    margin-bottom: 4mm;
+    line-height: 1.1;
+  }
+  h2 em { color: #FF3FA1; font-style: normal; }
+  h3 {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #060E1F;
+    margin-bottom: 3mm;
+    margin-top: 5mm;
+  }
+  h3.gold { color: #B8860B; }
+  h3.pink { color: #CC1F70; }
+  p {
+    font-size: 10.5px;
+    line-height: 1.65;
+    color: #3a3a5c;
+    margin-bottom: 3mm;
+  }
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #5a5a7a;
+    line-height: 1.45;
+    margin-bottom: 5mm;
+  }
+
+  /* Boxes */
+  .box {
+    border-radius: 6px;
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+  }
+  .box-gold {
+    background: rgba(255,206,61,.08);
+    border-left: 3px solid #FFCE3D;
+  }
+  .box-pink {
+    background: rgba(255,63,161,.07);
+    border-left: 3px solid #FF3FA1;
+  }
+  .box-violet {
+    background: rgba(183,148,244,.08);
+    border-left: 3px solid #B794F4;
+  }
+  .box-navy {
+    background: #060E1F;
+    border-radius: 6px;
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+  }
+  .box-navy p { color: rgba(253,252,250,.7); }
+  .box-navy h3 { color: rgba(255,206,61,.8); }
+  .box-title {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+  .box-gold .box-title { color: #B8860B; }
+  .box-pink .box-title { color: #CC1F70; }
+  .box-violet .box-title { color: #7B5EA7; }
+
+  /* Lists */
+  ul.styled, ol.styled {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 4mm;
+  }
+  ul.styled li, ol.styled li {
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: #3a3a5c;
+    padding: 2mm 0 2mm 5mm;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 3mm;
+    counter-increment: item;
+  }
+  ul.styled li::before {
+    content: '→';
+    color: #FFCE3D;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  ol.styled { counter-reset: item; }
+  ol.styled li::before {
+    content: counter(item, decimal-leading-zero);
+    color: #FF3FA1;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  ul.check li::before { content: '✓'; color: #22c55e; }
+
+  /* Grid */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin-bottom: 4mm;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3mm;
+    margin-bottom: 4mm;
+  }
+  .card {
+    background: #f8f8fc;
+    border: 1px solid #e8e8f0;
+    border-radius: 6px;
+    padding: 4mm;
+  }
+  .card-title {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #060E1F;
+    margin-bottom: 2mm;
+  }
+  .card p { font-size: 9.5px; margin-bottom: 0; }
+  .card.accent-gold { border-top: 2px solid #FFCE3D; }
+  .card.accent-pink { border-top: 2px solid #FF3FA1; }
+  .card.accent-violet { border-top: 2px solid #B794F4; }
+
+  /* Trainer note */
+  .trainer-note {
+    background: #060E1F;
+    border-radius: 6px;
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+    display: flex;
+    gap: 4mm;
+    align-items: flex-start;
+  }
+  .trainer-note-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .trainer-note-body {}
+  .trainer-note-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #FFCE3D;
+    margin-bottom: 1.5mm;
+  }
+  .trainer-note p { color: rgba(253,252,250,.75); font-size: 10px; }
+
+  /* Time badge */
+  .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 2mm;
+    background: rgba(255,206,61,.1);
+    border: 1px solid rgba(255,206,61,.3);
+    border-radius: 100px;
+    padding: 3px 10px;
+    font-size: 8px;
+    font-weight: 700;
+    color: #B8860B;
+    letter-spacing: .08em;
+    margin-bottom: 3mm;
+  }
+
+  /* Prompt box */
+  .prompt-box {
+    background: #0D1830;
+    border: 1px solid rgba(255,206,61,.2);
+    border-radius: 6px;
+    padding: 4mm 5mm;
+    margin-bottom: 3mm;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .prompt-label {
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(255,206,61,.6);
+    margin-bottom: 2mm;
+  }
+  .prompt-text {
+    font-size: 9.5px;
+    color: #FDFCFA;
+    line-height: 1.55;
+  }
+  .prompt-text em { color: #FFCE3D; font-style: normal; }
+
+  /* Page footer */
+  .page-foot {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 3mm 14mm;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-foot span {
+    font-size: 7.5px;
+    color: #aaa;
+    letter-spacing: .08em;
+  }
+  .page-foot .pink { color: #FF3FA1; font-weight: 600; }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,206,61,.4) 30%, rgba(255,206,61,.4) 70%, transparent);
+    margin: 5mm 0;
+  }
+  .divider-light {
+    height: 1px;
+    background: #eee;
+    margin: 4mm 0;
+  }
+
+  /* Talking point */
+  .talking {
+    display: flex;
+    gap: 3mm;
+    padding: 3mm 0;
+    border-bottom: 1px solid #f0f0f5;
+    align-items: flex-start;
+  }
+  .talking:last-child { border-bottom: none; }
+  .talking-icon {
+    width: 16px; height: 16px;
+    background: #060E1F;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px;
+    color: #FFCE3D;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .talking p { margin: 0; font-size: 10px; }
+
+  /* Spacer */
+  .spacer-sm { height: 3mm; }
+  .spacer { height: 5mm; }
+</style>
+</head>
+<body>
+
+<!-- ===== PAGE 1: COVER ===== -->
+<div class="page cover">
+  <div class="cover-coaches">
+    <img src="images/claudia-conen.jpg" alt="Claudia Conen">
+    <img src="images/ann-kathrin-andresen.jpg" alt="Ann-Kathrin Andresen">
+    <img src="images/gabi-lindemann.jpg" alt="Gabi Lindemann">
+  </div>
+  <div class="cover-overlay"></div>
+
+  <div class="cover-body">
+    <div class="cover-badge">Interne Trainer-Unterlagen · Vertraulich</div>
+    <div class="cover-eyebrow">KI-Workshop · Die Unverwechselbaren · Witten 2026</div>
+    <div class="cover-title">
+      <span>Freebie & Landingpage</span><br>
+      mit KI erstellen
+    </div>
+    <div class="cover-subtitle">Trainer-Leitfaden für Gabi Lindemann</div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div class="cover-chip gold">3. & 4. Juli 2026</div>
+      <div class="cover-chip">Witten · NRW</div>
+      <div class="cover-chip">Modul 3 & 4</div>
+      <div class="cover-chip">max. 9 Teilnehmerinnen</div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <span class="cover-footer-brand">claudiaconen.com · ki-workshop.claudiaconen.com</span>
+    <span class="cover-footer-tag">Trainer-Guide · Version 1.0</span>
+  </div>
+</div>
+
+<!-- ===== PAGE 2: ÜBERBLICK & LERNZIELE ===== -->
+<div class="page content-page">
+  <div class="page-header">
+    <span class="page-header-title">Die Unverwechselbaren · Trainer-Leitfaden</span>
+    <span class="page-header-num">ÜBERBLICK</span>
+  </div>
+  <div class="page-body">
+    <h2>Dein Modul im <em>Überblick</em></h2>
+    <p class="lead">Du begleitest die Teilnehmerinnen durch zwei der wichtigsten praktischen Bausteine: das Freebie als Werkzeug zur Kontaktgewinnung und die Landingpage als digitale Visitenkarte.</p>
+
+    <div class="grid-2">
+      <div class="box box-gold">
+        <div class="box-title">Modul 3 — Das Freebie</div>
+        <p>Was ein Freebie ist, warum es wichtiger ist als eine klassische Lead-Liste und wie man es mit Claude in 30 Minuten erstellt.</p>
+      </div>
+      <div class="box box-pink">
+        <div class="box-title">Modul 4 — Die Landingpage</div>
+        <p>Aufbau, Psychologie, Copy und die Elemente die wirklich konvertieren — alles mit KI-Unterstützung.</p>
+      </div>
+    </div>
+
+    <h3>Lernziele — Was die Teilnehmerinnen können sollen</h3>
+    <ul class="styled check">
+      <li>Verstehen, was ein Freebie ist und welche Formate es gibt</li>
+      <li>Ein eigenes Freebie-Konzept entwickeln und mit Claude texten</li>
+      <li>Kontakte über moderne Wege sammeln (nicht nur E-Mail)</li>
+      <li>Den Aufbau einer Landingpage verstehen und anwenden</li>
+      <li>Psychologische Elemente kennen die zur Entscheidung führen</li>
+      <li>Eine eigene Landingpage-Struktur mit Claude entwickeln</li>
+    </ul>
+
+    <div class="divider-light"></div>
+
+    <h3>Zeitplan</h3>
+    <div class="grid-2">
+      <div class="card accent-gold">
+        <div class="card-title">Tag 1 · Nachmittag</div>
+        <p><strong>13:00 – 15:00</strong> · Modul 3: Das Freebie<br>Theorie (30 Min) + Hands-on mit Claude (90 Min)</p>
+      </div>
+      <div class="card accent-pink">
+        <div class="card-title">Tag 2 · Vormittag</div>
+        <p><strong>10:00 – 12:30</strong> · Modul 4: Landingpage<br>Aufbau & Psychologie (45 Min) + Umsetzung (105 Min)</p>
+      </div>
+    </div>
+
+    <div class="trainer-note">
+      <div class="trainer-note-icon">💡</div>
+      <div class="trainer-note-body">
+        <div class="trainer-note-label">Wichtige Rahmenbedingung</div>
+        <p>Die Teilnehmerinnen haben am Ende von Tag 2 eine fertige, veröffentlichte Landingpage. Das ist das Versprechen des Workshops. Alles, was du vermittelst, zahlt direkt auf dieses Ergebnis ein. Vermeide Theorie-Exkurse die zu lang werden — bleib immer nah am konkreten Tun.</p>
+      </div>
+    </div>
+
+    <h3>Was du vorbereiten solltest</h3>
+    <ul class="styled">
+      <li>Claude-Account (Claude.ai) auf dem Laptop offen</li>
+      <li>Ein Beispiel-Freebie (fertig) um es live zu zeigen</li>
+      <li>Eine Beispiel-Landingpage mit und ohne Optimierung</li>
+      <li>Die Prompt-Bibliothek aus Seite 7 dieses Dokuments</li>
+    </ul>
+  </div>
+  <div class="page-foot">
+    <span>Die Unverwechselbaren · KI-Workshop 2026</span>
+    <span class="pink">Trainer-Leitfaden · Intern</span>
+  </div>
+</div>
+
+<!-- ===== PAGE 3: SECTION COVER — FREEBIE ===== -->
+<div class="page section-cover">
+  <span class="section-num">01</span>
+  <div class="section-label">Teil 1 von 2</div>
+  <div class="section-title">Das <em>Freebie</em></div>
+  <div class="section-desc">Warum ein Freebie mehr ist als ein Lead-Magnet — und wie du den Teilnehmerinnen beibringst, eines in weniger als 30 Minuten zu erstellen.</div>
+  <div class="section-chips">
+    <div class="section-chip">⏱ 120 Minuten</div>
+    <div class="section-chip">Tag 1 · Nachmittag</div>
+    <div class="section-chip">Hands-on mit Claude</div>
+  </div>
+</div>
+
+<!-- ===== PAGE 4: WAS IST EIN FREEBIE ===== -->
+<div class="page content-page">
+  <div class="page-header">
+    <span class="page-header-title">Modul 3 · Das Freebie</span>
+    <span class="page-header-num">4 / 8</span>
+  </div>
+  <div class="page-body">
+    <div class="time-badge">⏱ 30 Minuten · Theorie-Einstieg</div>
+
+    <h2>Was ist ein <em>Freebie</em>?</h2>
+    <p class="lead">Ein Freebie ist ein kostenloses Angebot, das einen echten Mehrwert liefert — und als Gegenleistung Vertrauen, Kontakt oder Zugehörigkeit schafft. Nicht Aufmerksamkeit kaufen, sondern Vertrauen verdienen.</p>
+
+    <div class="talking">
+      <div class="talking-icon">1</div>
+      <p><strong>Einstieg-Frage ans Plenum:</strong> „Habt ihr selbst schon mal etwas kostenlos heruntergeladen oder euch für etwas kostenlos eingetragen? Was war das und warum habt ihr es gemacht?"</p>
+    </div>
+    <div class="talking">
+      <div class="talking-icon">2</div>
+      <p><strong>Kernaussage herausarbeiten:</strong> Ein Freebie funktioniert, wenn es ein konkretes, unmittelbares Problem löst — oder eine neugierige Frage beantwortet. Nicht Werbung. Echter Wert.</p>
+    </div>
+    <div class="talking">
+      <div class="talking-icon">3</div>
+      <p><strong>Den Zusammenhang erklären:</strong> Das Freebie ist die erste Berührung mit dir. Es zeigt: So arbeite ich. So denke ich. So fühlt es sich an, mit mir zu arbeiten.</p>
+    </div>
+
+    <div class="divider-light"></div>
+    <h3>Freebie-Formate im Überblick</h3>
+    <div class="grid-3">
+      <div class="card accent-gold">
+        <div class="card-title">PDF / Checkliste</div>
+        <p>Schnell erstellbar, einfach teilbar. Perfekt als Einstieg. Löst ein konkretes Problem in 5–10 Minuten.</p>
+      </div>
+      <div class="card accent-pink">
+        <div class="card-title">Challenge</div>
+        <p>5–7 Tage. Täglich ein Impuls. Erzeugt Gewohnheit und schafft tiefe Bindung. Hoher wahrgenommener Wert.</p>
+      </div>
+      <div class="card accent-violet">
+        <div class="card-title">Mini-Kurs / Video</div>
+        <p>Zeigt Expertise. Ideal für Menschen die lieber schauen als lesen. Erfordert mehr Aufwand.</p>
+      </div>
+      <div class="card accent-gold">
+        <div class="card-title">Quiz / Analyse</div>
+        <p>Hohe Interaktion. Die Person bekommt ein persönliches Ergebnis — sehr gute Conversion.</p>
+      </div>
+      <div class="card accent-pink">
+        <div class="card-title">Vorlage / Template</div>
+        <p>Spart Zeit — sofort nutzbar. Besonders beliebt bei Selbstständigen und Coaches.</p>
+      </div>
+      <div class="card accent-violet">
+        <div class="card-title">Community-Zugang</div>
+        <p>Kein klassischer Lead-Magnet — man landet in einer Gruppe, nicht nur in einer E-Mail-Liste.</p>
+      </div>
+    </div>
+
+    <div class="box box-pink">
+      <div class="box-title">Moderations-Tipp</div>
+      <p>Frag die Gruppe: „Was wäre das wertvollste, was ihr eurer Zielgruppe in 10 Minuten beibringen könntet?" — Das ist oft der Kern ihres Freebies. Lass sie kurz schreiben, dann teilen.</p>
+    </div>
+
+    <div class="trainer-note">
+      <div class="trainer-note-icon">🎯</div>
+      <div class="trainer-note-body">
+        <div class="trainer-note-label">Wichtige Differenzierung</div>
+        <p>Ein Freebie muss keine E-Mail-Adresse als Gegenleistung haben. Die Teilnehmerinnen können Interessenten auch in eine WhatsApp-Community, eine Telegram-Gruppe oder eine geschlossene Facebook-Gruppe leiten. Das ist oft persönlicher und baut mehr Vertrauen auf — sprich dies aktiv an.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot">
+    <span>Die Unverwechselbaren · KI-Workshop 2026</span>
+    <span class="pink">Trainer-Leitfaden · Intern</span>
+  </div>
+</div>
+
+<!-- ===== PAGE 5: FREEBIE MIT CLAUDE ERSTELLEN ===== -->
+<div class="page content-page">
+  <div class="page-header">
+    <span class="page-header-title">Modul 3 · Freebie mit Claude erstellen</span>
+    <span class="page-header-num">5 / 8</span>
+  </div>
+  <div class="page-body">
+    <div class="time-badge">⏱ 90 Minuten · Hands-on</div>
+
+    <h2>Schritt für Schritt mit <em>Claude</em></h2>
+    <p class="lead">Die Teilnehmerinnen erstellen ihr Freebie live während des Workshops. Du zeigst es zuerst an deinem Beispiel — dann arbeiten alle selbst.</p>
+
+    <h3>Schritt-für-Schritt Anleitung (live zeigen)</h3>
+    <ol class="styled">
+      <li>Claude.ai öffnen. Neuen Chat starten.</li>
+      <li>Kontext geben: Wer bin ich, wen spreche ich an, was ist das Thema?</li>
+      <li>Freebie-Format wählen lassen oder vorgeben</li>
+      <li>Ersten Entwurf generieren und gemeinsam überarbeiten</li>
+      <li>Titel optimieren (3 Varianten generieren lassen)</li>
+      <li>Ggf. in Canva oder als PDF exportieren</li>
+    </ol>
+
+    <div class="prompt-box">
+      <div class="prompt-label">🤖 Prompt 1 — Freebie-Konzept entwickeln</div>
+      <div class="prompt-text">
+        Ich bin <em>[Berufsbezeichnung]</em> und arbeite mit <em>[Zielgruppe]</em>. Mein größtes Thema ist <em>[Thema]</em>. Entwickle 5 Freebie-Ideen die dieser Zielgruppe sofort helfen. Nenn mir jeweils: Format, Titel, das konkrete Problem das gelöst wird und warum die Person es haben will.
+      </div>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-label">🤖 Prompt 2 — Freebie-Inhalt ausarbeiten</div>
+      <div class="prompt-text">
+        Erstelle jetzt eine vollständige Checkliste mit dem Titel <em>[Titel]</em> für <em>[Zielgruppe]</em>. Die Checkliste soll: 8–12 konkrete, umsetzbare Punkte enthalten, professionell aber persönlich klingen, am Ende eine kurze Einladung zu meinem nächsten Angebot enthalten. Mein Stil ist: <em>[Beschreibung des Stils]</em>.
+      </div>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-label">🤖 Prompt 3 — Titel und Untertitel optimieren</div>
+      <div class="prompt-text">
+        Schreibe 5 verschiedene Titel-Varianten für mein Freebie. Jeder Titel soll: neugierig machen, das konkrete Ergebnis versprechen, nicht länger als 8 Wörter sein. Zielgruppe: <em>[Zielgruppe]</em>. Thema: <em>[Thema]</em>.
+      </div>
+    </div>
+
+    <h3 class="gold">Kontaktgewinnung — Modern denken</h3>
+    <div class="grid-2">
+      <div class="box box-gold">
+        <div class="box-title">Klassisch: E-Mail-Liste</div>
+        <p>Eintragungsformular auf der Landingpage. E-Mail als Gegenleistung für das Freebie. Setzt DSGVO-konformes Tool voraus (z.B. Mailerlite, ActiveCampaign).</p>
+      </div>
+      <div class="box box-violet">
+        <div class="box-title">Modern: Community-Zugang</div>
+        <p>WhatsApp-Community, Telegram-Gruppe, Slack oder geschlossene Facebook-Gruppe. Persönlicher, interaktiver — kein E-Mail-Tool nötig.</p>
+      </div>
+    </div>
+
+    <div class="box box-pink">
+      <div class="box-title">Die Challenge als Freebie — Besonders wirkungsvoll</div>
+      <p>Eine 5-Tage-Challenge gibt täglich einen wertvollen Impuls. Sie erzeugt Gewohnheit, tägliche Berührungspunkte und ein Gefühl von Gemeinschaft. Am Ende der Challenge ist die Person emotional deutlich näher an einem Kauf als nach einem statischen PDF. Zeig den Teilnehmerinnen wie Claude eine komplette Challenge-Serie entwickeln kann.</p>
+    </div>
+  </div>
+  <div class="page-foot">
+    <span>Die Unverwechselbaren · KI-Workshop 2026</span>
+    <span class="pink">Trainer-Leitfaden · Intern</span>
+  </div>
+</div>
+
+<!-- ===== PAGE 6: SECTION COVER — LANDINGPAGE ===== -->
+<div class="page section-cover">
+  <span class="section-num">02</span>
+  <div class="section-label">Teil 2 von 2</div>
+  <div class="section-title">Die <em>Landingpage</em></div>
+  <div class="section-desc">Aufbau, Psychologie und KI-Optimierung — damit die Seite nicht nur schön aussieht, sondern wirklich Interessenten anzieht und zum Handeln bewegt.</div>
+  <div class="section-chips">
+    <div class="section-chip">⏱ 150 Minuten</div>
+    <div class="section-chip">Tag 2 · Vormittag</div>
+    <div class="section-chip">Ergebnis: Live-Seite</div>
+  </div>
+</div>
+
+<!-- ===== PAGE 7: LANDINGPAGE AUFBAU ===== -->
+<div class="page content-page">
+  <div class="page-header">
+    <span class="page-header-title">Modul 4 · Landingpage Aufbau & Psychologie</span>
+    <span class="page-header-num">7 / 8</span>
+  </div>
+  <div class="page-body">
+    <div class="time-badge">⏱ 45 Minuten · Theorie</div>
+
+    <h2>Was eine <em>Landingpage</em> wirklich braucht</h2>
+    <p class="lead">Eine Landingpage hat nur eine Aufgabe: Die Besucherin davon zu überzeugen, jetzt zu handeln. Alles andere ist Ablenkung.</p>
+
+    <h3>Die 7 Must-have Elemente</h3>
+    <ol class="styled">
+      <li><strong>Headline:</strong> Das stärkste Versprechen in einem Satz. Das Ergebnis — nicht der Weg.</li>
+      <li><strong>Subheadline:</strong> Die Brücke zur Zielgruppe. „Für Menschen die..." oder „Damit du..."</li>
+      <li><strong>Hero-Bild / Video:</strong> Ein echtes Foto oder Video der Person. Kein Stock-Bild.</li>
+      <li><strong>Freebie-Vorschau:</strong> Was bekommt die Person genau? Mockup oder Screenshot.</li>
+      <li><strong>Bullet-Points:</strong> Was ändert sich nach dem Download / nach der Anmeldung?</li>
+      <li><strong>Eintragungsformular / CTA:</strong> Maximal 2 Felder (Name + E-Mail oder nur E-Mail).</li>
+      <li><strong>Vertrauen:</strong> Foto, Name, 1 Satz wer du bist. Kein langer Lebenslauf.</li>
+    </ol>
+
+    <div class="divider-light"></div>
+    <h3>Psychologie: Was Menschen zum Handeln bringt</h3>
+    <div class="grid-2">
+      <div class="box box-gold">
+        <div class="box-title">Konkretes Ergebnis versprechen</div>
+        <p>Nicht „Tipps für mehr Sichtbarkeit" — sondern „In 5 Tagen weißt du genau was du postest".</p>
+      </div>
+      <div class="box box-pink">
+        <div class="box-title">Verlust vermeiden (Loss Aversion)</div>
+        <p>„Was du verpasst wenn du es nicht nutzt" wirkt stärker als „Was du gewinnst".</p>
+      </div>
+      <div class="box box-violet">
+        <div class="box-title">Soziale Bewährtheit</div>
+        <p>„Bereits 347 Personen haben sich eingetragen" oder Kommentare/Reaktionen zeigen.</p>
+      </div>
+      <div class="box box-gold">
+        <div class="box-title">Dringlichkeit / Knappheit</div>
+        <p>„Nur diese Woche kostenlos" oder „Challenge startet am Montag" lösen schnelle Entscheidungen aus.</p>
+      </div>
+    </div>
+
+    <h3>Farben & Ansprache</h3>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Farb-Psychologie</div>
+        <p><strong>Gold/Orange:</strong> Premium, Wärme, Erfolg · <strong>Magenta/Pink:</strong> Energie, weiblich, modern · <strong>Dunkelblau/Navy:</strong> Vertrauen, Tiefe · <strong>Weiß/Creme:</strong> Klarheit, Raum</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Ansprache</div>
+        <p>Direkt: „Du" statt „Sie". Konkret: Was ändert sich — nicht was du anbietest. Emotional: Wie fühlt sich das Problem an? Lösungsorientiert: Was ist nach dem Download anders?</p>
+      </div>
+    </div>
+
+    <div class="trainer-note">
+      <div class="trainer-note-icon">🤖</div>
+      <div class="trainer-note-body">
+        <div class="trainer-note-label">KI als Vorreiter — Das sagst du ans Plenum</div>
+        <p>KI-Systeme wie Claude analysieren Millionen von Landingpages und wissen statistisch welche Elemente, Formulierungen und Strukturen bei welchen Zielgruppen funktionieren. Wenn wir Claude fragen „Was konvertiert bei meiner Zielgruppe?" bekommen wir keine Meinung — wir bekommen Muster aus riesigen Datenmengen. Das ist unser unfairer Vorteil.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot">
+    <span>Die Unverwechselbaren · KI-Workshop 2026</span>
+    <span class="pink">Trainer-Leitfaden · Intern</span>
+  </div>
+</div>
+
+<!-- ===== PAGE 8: PROMPTS & RESSOURCEN ===== -->
+<div class="page content-page">
+  <div class="page-header">
+    <span class="page-header-title">Prompt-Bibliothek & Ressourcen</span>
+    <span class="page-header-num">8 / 8</span>
+  </div>
+  <div class="page-body">
+    <h2>Deine <em>Prompt-Bibliothek</em></h2>
+    <p>Diese Prompts kannst du live zeigen und den Teilnehmerinnen als Vorlage mitgeben.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-label">🤖 Landingpage Headline schreiben</div>
+      <div class="prompt-text">
+        Schreibe 7 verschiedene Headlines für meine Landingpage. Ich biete <em>[Freebie/Angebot]</em> für <em>[Zielgruppe]</em>. Das konkrete Ergebnis: <em>[Ergebnis in einem Satz]</em>. Nutze verschiedene Trigger: Neugier, Versprechen, Schmerz-Lösung, Identifikation. Jede Headline max. 10 Wörter.
+      </div>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-label">🤖 Bullet-Points für Landingpage</div>
+      <div class="prompt-text">
+        Schreibe 5 Bullet-Points für meine Landingpage. Jeder Punkt beschreibt was sich für die Person ändert nachdem sie <em>[Freebie]</em> genutzt hat. Format: „Nach diesem [PDF/Kurs/Challenge] wirst du..." Schreibe emotional und konkret — nicht abstrakt.
+      </div>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-label">🤖 Komplette Landingpage-Struktur</div>
+      <div class="prompt-text">
+        Entwickle die komplette Textstruktur für meine Landingpage. Ich bin <em>[Name/Berufsbezeichnung]</em>, arbeite mit <em>[Zielgruppe]</em> und biete <em>[Freebie]</em> als kostenlosen Einstieg. Erstelle: 1) Headline + Subheadline, 2) 5 Bullet-Points, 3) Kurze Über-mich-Sektion (max. 3 Sätze), 4) CTA-Button-Text, 5) Hinweis auf nächsten Schritt.
+      </div>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-label">🤖 Challenge planen</div>
+      <div class="prompt-text">
+        Plane eine 5-Tage-Challenge zum Thema <em>[Thema]</em> für <em>[Zielgruppe]</em>. Jeder Tag bekommt: einen klaren Titel, eine Aufgabe die max. 15 Minuten dauert, einen konkreten Mehrwert. Die Challenge soll am Ende natürlich zu <em>[nächstes Angebot]</em> überleiten.
+      </div>
+    </div>
+
+    <div class="divider-light"></div>
+    <h3>Abschluss-Checkliste für dein Modul</h3>
+    <ul class="styled check">
+      <li>Alle Teilnehmerinnen haben ein Freebie-Konzept entwickelt</li>
+      <li>Mindestens ein erster Claude-generierter Entwurf existiert</li>
+      <li>Jede weiß, wie sie Kontakte sammeln will (E-Mail oder Community)</li>
+      <li>Die Landingpage-Struktur ist verstanden und skizziert</li>
+      <li>Alle Prompts sind gespeichert / als Screenshot gesichert</li>
+    </ul>
+
+    <div class="box box-gold" style="margin-top:4mm">
+      <div class="box-title">Deine drei Coaches · Kontakt & Ressourcen</div>
+      <p><strong>Claudia Conen</strong> · Storytelling & Stimme · claudiaconen@umsatzstimme.de · 016093102073<br>
+      <strong>Gabi Lindemann</strong> · Webdesign & KI · Landingpage-Umsetzung<br>
+      <strong>Ann-Kathrin Andresen</strong> · HeyGen · Avatar-Video<br>
+      Workshop-Seite: ki-workshop.claudiaconen.com · Community: community.claudiaconen.com</p>
+    </div>
+  </div>
+  <div class="page-foot">
+    <span>Die Unverwechselbaren · KI-Workshop 2026 · © Claudia Conen</span>
+    <span class="pink">Trainer-Leitfaden · Intern</span>
+  </div>
+</div>
+
+</body>
+</html>
