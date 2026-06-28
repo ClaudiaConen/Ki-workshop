@@ -11,10 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0A1428;
-    --navy-soft: #131D3B;
-    --navy-mid: #1E2A52;
-    --navy-light: #2A3A6B;
+    --navy: #112040;
+    --navy-soft: #1A2B4A;
+    --navy-mid: #243558;
+    --navy-light: #304068;
     --cream: #FDFCFA;
     --champagne: #FFF1D3;
     --gold: #FFCE3D;
@@ -539,9 +539,54 @@
   section.light .early-bird-text strong { color: #8B6914; }
   section.light .early-bird-spots { color: var(--magenta-deep); }
 
-  /* ========= HERO ========= */
-  .hero { max-width: 1340px; margin: 0 auto; padding: 100px 32px 140px; position: relative; }
-  @media (min-width: 900px) { .hero { padding: 140px 32px 180px; } }
+  /* ========= HERO — LIGHT BANNER VERSION ========= */
+  .hero {
+    background: #FFFFFF;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(10,20,40,.08);
+  }
+  .hero .hero-mesh { display: none; }
+  .hero .hero-video { display: none; }
+
+  /* Banner image */
+  .hero-banner-img-wrap {
+    width: 100%;
+    line-height: 0;
+    overflow: hidden;
+  }
+  .hero-banner-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 580px;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* CTA strip below banner image */
+  .hero-cta-row {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    border-top: 1px solid rgba(10,20,40,.07);
+  }
+  /* btn-ghost needs dark text on white background */
+  .hero .btn-ghost { color: var(--navy); }
+  .hero .btn-ghost::after { background: var(--magenta); }
+
+  /* Hide now-redundant hero text elements */
+  .hero .hero-tag,
+  .hero .hero-headline,
+  .hero .hero-grid { display: none; }
+
+  /* keep the pulse-dot animation */
+  @keyframes hero-spots { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:.6;transform:scale(1.3);} }
 
   .hero-tag {
     display: inline-flex; align-items: center; gap: 14px;
@@ -1773,64 +1818,18 @@
 <main id="main">
 
 <header class="hero">
-  <div class="hero-mesh" aria-hidden="true">
-    <div class="hero-mesh-blob b1"></div>
-    <div class="hero-mesh-blob b2"></div>
-    <div class="hero-mesh-blob b3"></div>
+
+  <!-- ═══ HEADER-BANNER-BILD ═══
+       Lade deine Datei als: images/header-banner.jpg hoch
+       (das Bild das du uns gezeigt hast, mit den drei Coaches)
+  -->
+  <div class="hero-banner-img-wrap">
+    <img src="images/header-banner.jpg"
+         alt="KI-Workshop · Die Unverwechselbaren – 3. & 4. Juli 2026, Ringhotel Witten"
+         loading="eager">
   </div>
 
-  <aside class="hero-video" aria-label="Workshop-Trailer">
-    <div class="hero-video-card">
-      <div class="hero-video-screen">
-        <iframe
-          class="hero-vimeo"
-          src="https://player.vimeo.com/video/1197993365?badge=0&autopause=0&title=0&byline=0&portrait=0&dnt=1"
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-          allowfullscreen
-          title="Workshop-Trailer">
-        </iframe>
-      </div>
-      <div class="hero-video-foot">
-        <div class="hero-video-foot-title">Was in 2 Tagen entsteht</div>
-        <div class="hero-video-foot-sub">3 Coaches · 1 fertige Präsenz</div>
-      </div>
-    </div>
-  </aside>
-
-  <div class="hero-tag">
-    <span class="hero-tag-dot" aria-hidden="true"></span>
-    Der KI-Workshop für Coaches &amp; Selbstständige
-  </div>
-
-  <h1 class="hero-headline">
-    <span class="ki-word">KI</span>-Workshop: in <em>2 Tagen</em>.<br>
-    <span class="ki-word">Unverwechselbar</span> statt unsichtbar.
-  </h1>
-
-  <div class="hero-grid">
-    <p class="hero-lead">
-      Alles im Kopf. Nichts davon sichtbar. Änder das. In <em class="gold">zwei Tagen</em> baust du mit <em class="gold">drei Mentorinnen</em> deine <em class="mag">Landingpage</em>, dein <em class="mag">Freebie</em> und dein erstes <em class="mag">HeyGen-Video</em>. Fertig. Online. Teilbar. Keine KI-Kenntnis? Kein Problem.
-    </p>
-    <div class="hero-meta">
-      <div class="meta-row">
-        <span class="meta-label">Format</span>
-        <span class="meta-value">2 Tage · <em>live & 9 Teilnehmer</em></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Begleitet von</span>
-        <span class="meta-value">3 <em>Expertinnen</em></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Du gehst nach Hause mit</span>
-        <span class="meta-value">Einer <span class="mag">fertigen Präsenz</span></span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">Termin</span>
-        <span class="meta-value"><em>3.7. & 4.7. 2026</em> in Witten</span>
-      </div>
-    </div>
-  </div>
-
+  <!-- CTA-Leiste unter dem Bild -->
   <div class="hero-cta-row">
     <a href="#anmelden" class="btn-primary">
       Jetzt Platz sichern
@@ -1839,7 +1838,12 @@
     <a href="#programm" class="btn-ghost">
       Programm ansehen <span class="arrow" aria-hidden="true">→</span>
     </a>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+      <div style="width:7px;height:7px;background:#FF3FA1;border-radius:50%;box-shadow:0 0 6px rgba(255,63,161,.55);animation:pulse-dot 2s ease-in-out infinite;flex-shrink:0;"></div>
+      <span style="font-family:var(--sans);font-size:12px;font-weight:600;color:#E91E63;letter-spacing:.1em;text-transform:uppercase;">Nur 3 Frühbucherplätze frei</span>
+    </div>
   </div>
+
 </header>
 
 <div class="marquee" aria-hidden="true">
