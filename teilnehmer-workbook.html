@@ -39,30 +39,34 @@
 
   /* ─── COVER PAGE ─── */
   .cover {
-    background: var(--navy);
+    background: #FDFAF6;
     justify-content: flex-start;
     align-items: stretch;
+    border: 1px solid rgba(26,26,46,.06);
   }
 
+  /* Banner-Bild oben (images/header-banner.jpg) */
   .cover-header {
     width: 100%;
-    height: 72mm;
-    position: relative;
+    line-height: 0;
     overflow: hidden;
-    display: flex;
+    background: #EEE9E0;
   }
-  .cover-header img {
-    width: 33.333%;
-    height: 100%;
+  .cover-header img.cover-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 90mm;
     object-fit: cover;
     object-position: center top;
   }
-  .cover-header::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent 45%, var(--navy) 100%),
-                linear-gradient(to right, rgba(6,14,31,.35) 0%, transparent 30%, transparent 70%, rgba(6,14,31,.35) 100%);
+
+  /* Goldene Trennlinie unter dem Bild */
+  .cover-divider {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), #FF8C00, var(--magenta));
+    flex-shrink: 0;
   }
 
   .cover-body {
@@ -71,7 +75,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10mm 18mm 14mm;
+    padding: 8mm 18mm 12mm;
     text-align: center;
   }
 
@@ -81,22 +85,22 @@
     font-weight: 700;
     letter-spacing: .3em;
     text-transform: uppercase;
-    color: rgba(255,206,61,.75);
-    margin-bottom: 7mm;
+    color: #9A6F00;
+    margin-bottom: 5mm;
   }
 
   .cover-title {
     font-family: var(--display);
     font-style: italic;
     font-weight: 300;
-    font-size: 52pt;
-    line-height: .88;
+    font-size: 48pt;
+    line-height: .9;
     letter-spacing: -.02em;
-    color: var(--cream);
-    margin-bottom: 6mm;
+    color: var(--navy);
+    margin-bottom: 5mm;
   }
   .cover-title .grad {
-    background: linear-gradient(120deg, #FFCE3D 10%, #FF8C00 55%, #FF3FA1 100%);
+    background: linear-gradient(120deg, #E5A500 10%, #FF8C00 55%, #FF3FA1 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -106,9 +110,9 @@
   .cover-sub {
     font-family: var(--display);
     font-style: italic;
-    font-size: 14pt;
-    color: rgba(253,252,250,.5);
-    margin-bottom: 9mm;
+    font-size: 13pt;
+    color: rgba(26,26,46,.48);
+    margin-bottom: 7mm;
     line-height: 1.4;
   }
 
@@ -116,24 +120,25 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255,206,61,.12);
-    border: 1px solid rgba(255,206,61,.4);
+    background: rgba(255,206,61,.1);
+    border: 1px solid rgba(255,206,61,.5);
     border-radius: 100px;
     padding: 5px 18px;
     font-family: var(--sans);
     font-size: 8pt;
     font-weight: 700;
-    color: var(--gold);
+    color: #9A6F00;
     letter-spacing: .08em;
-    margin-bottom: 12mm;
+    margin-bottom: 8mm;
   }
 
   .cover-participant-block {
-    border: 1px solid rgba(255,206,61,.28);
+    border: 1.5px solid rgba(26,26,46,.15);
     border-radius: 10px;
-    padding: 6mm 10mm;
+    padding: 5mm 10mm;
     width: 100%;
     max-width: 120mm;
+    background: #fff;
   }
   .cover-participant-label {
     font-family: var(--sans);
@@ -141,11 +146,11 @@
     font-weight: 700;
     letter-spacing: .2em;
     text-transform: uppercase;
-    color: rgba(255,206,61,.55);
+    color: rgba(26,26,46,.38);
     margin-bottom: 4mm;
   }
   .cover-participant-line {
-    border-bottom: 1px solid rgba(255,206,61,.3);
+    border-bottom: 1.5px solid rgba(26,26,46,.15);
     height: 9mm;
     width: 100%;
     margin-bottom: 3mm;
@@ -153,7 +158,7 @@
   .cover-participant-hint {
     font-family: var(--sans);
     font-size: 7pt;
-    color: rgba(253,252,250,.3);
+    color: rgba(26,26,46,.28);
     font-style: italic;
   }
 
@@ -162,19 +167,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid rgba(255,206,61,.18);
+    border-top: 1px solid rgba(26,26,46,.1);
+    background: rgba(255,206,61,.06);
   }
   .cover-footer-left {
     font-family: var(--display);
     font-style: italic;
     font-size: 10pt;
-    color: rgba(253,252,250,.45);
+    color: rgba(26,26,46,.45);
   }
   .cover-footer-right {
     font-family: var(--sans);
     font-size: 7pt;
     font-weight: 600;
-    color: rgba(255,63,161,.65);
+    color: var(--magenta);
     letter-spacing: .1em;
     text-transform: uppercase;
   }
@@ -232,20 +238,21 @@
 
   /* ─── SECTION COVER ─── */
   .section-cover {
-    background: var(--navy);
+    background: #F8F4EE;
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-left: 5px solid var(--gold);
   }
   .section-bg1 {
     position: absolute; top: -60mm; left: -40mm;
     width: 160mm; height: 160mm;
-    background: radial-gradient(ellipse, rgba(255,206,61,.14) 0%, transparent 60%);
+    background: radial-gradient(ellipse, rgba(255,206,61,.10) 0%, transparent 60%);
   }
   .section-bg2 {
     position: absolute; bottom: -50mm; right: -30mm;
     width: 140mm; height: 140mm;
-    background: radial-gradient(ellipse, rgba(255,63,161,.12) 0%, transparent 60%);
+    background: radial-gradient(ellipse, rgba(255,63,161,.07) 0%, transparent 60%);
   }
   .section-inner {
     position: relative;
@@ -258,7 +265,7 @@
     font-weight: 700;
     letter-spacing: .28em;
     text-transform: uppercase;
-    color: rgba(255,63,161,.75);
+    color: var(--magenta);
     margin-bottom: 6mm;
   }
   .section-title {
@@ -268,11 +275,11 @@
     font-size: 46pt;
     line-height: .9;
     letter-spacing: -.02em;
-    color: var(--cream);
+    color: var(--navy);
     margin-bottom: 7mm;
   }
   .section-title .grad {
-    background: linear-gradient(120deg, #FFCE3D 10%, #FF8C00 55%, #FF3FA1 100%);
+    background: linear-gradient(120deg, #E5A500 10%, #FF8C00 55%, #FF3FA1 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -282,15 +289,15 @@
     font-family: var(--display);
     font-style: italic;
     font-size: 13pt;
-    color: rgba(253,252,250,.45);
+    color: rgba(26,26,46,.52);
     line-height: 1.45;
     max-width: 120mm;
     margin: 0 auto 9mm;
   }
   .section-rule {
     width: 40mm;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,206,61,.5), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,206,61,.7), transparent);
     margin: 0 auto;
   }
 
@@ -717,11 +724,11 @@
 
 <!-- ═══ PAGE 1: COVER ═══ -->
 <div class="page cover">
+  <!-- Banner-Bild (lade deine Datei als images/header-banner.jpg hoch) -->
   <div class="cover-header">
-    <img src="images/claudia-conen.jpg" alt="Claudia Conen">
-    <img src="images/gabi-lindemann.jpg" alt="Gabi Lindemann">
-    <img src="images/ann-kathrin-andresen.jpg" alt="Ann-Kathrin Andresen">
+    <img src="images/header-banner.jpg" alt="KI-Workshop · Die Unverwechselbaren" class="cover-banner">
   </div>
+  <div class="cover-divider"></div>
 
   <div class="cover-body">
     <div class="cover-eyebrow">KI-Workshop · Witten · 3. & 4. Juli 2026</div>
