@@ -26,39 +26,35 @@
 
   /* ====== COVER ====== */
   .cover {
-    background: #060E1F;
+    background: #FDFAF6;
     display: flex;
     flex-direction: column;
   }
-  .cover-header-img {
+  /* Banner-Bild oben */
+  .cover-banner-wrap {
     width: 100%;
-    height: 68mm;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-  .cover-coaches {
-    width: 100%;
-    height: 68mm;
-    display: flex;
+    line-height: 0;
     overflow: hidden;
-    background: #0A1428;
+    background: #EEE9E0;
   }
-  .cover-coaches img {
-    width: 33.33%;
-    height: 100%;
+  .cover-banner-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 88mm;
     object-fit: cover;
     object-position: center top;
   }
-  .cover-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 68mm;
-    background: linear-gradient(to bottom, rgba(6,14,31,.3) 0%, rgba(6,14,31,.85) 100%);
+  /* Goldene Trennlinie */
+  .cover-accent-bar {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #FFCE3D, #FF8C00, #FF3FA1);
+    flex-shrink: 0;
   }
   .cover-body {
     flex: 1;
-    padding: 10mm 14mm 10mm;
+    padding: 8mm 14mm 8mm;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,16 +62,16 @@
   }
   .cover-badge {
     display: inline-block;
-    background: rgba(255,63,161,.15);
-    border: 1px solid rgba(255,63,161,.4);
+    background: rgba(255,63,161,.1);
+    border: 1px solid rgba(255,63,161,.35);
     border-radius: 100px;
     padding: 4px 14px;
     font-size: 8px;
     font-weight: 700;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: #FF3FA1;
-    margin-bottom: 6mm;
+    color: #C2185B;
+    margin-bottom: 5mm;
     width: fit-content;
   }
   .cover-eyebrow {
@@ -83,7 +79,7 @@
     font-weight: 700;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: rgba(255,206,61,.7);
+    color: #9A6F00;
     margin-bottom: 4mm;
   }
   .cover-title {
@@ -93,11 +89,11 @@
     font-size: 38px;
     line-height: .92;
     letter-spacing: -.02em;
-    color: #FDFCFA;
+    color: #060E1F;
     margin-bottom: 5mm;
   }
   .cover-title span {
-    background: linear-gradient(120deg, #FFCE3D 10%, #FF8C00 55%, #FF3FA1 100%);
+    background: linear-gradient(120deg, #E5A500 10%, #FF8C00 55%, #FF3FA1 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -106,14 +102,14 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 16px;
-    color: rgba(253,252,250,.45);
-    margin-bottom: 8mm;
+    color: rgba(26,26,46,.48);
+    margin-bottom: 7mm;
   }
   .cover-divider {
     width: 50mm;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(255,206,61,.6), transparent);
-    margin-bottom: 8mm;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255,206,61,.7), transparent);
+    margin-bottom: 7mm;
   }
   .cover-meta {
     display: flex;
@@ -121,19 +117,20 @@
     flex-wrap: wrap;
   }
   .cover-chip {
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(26,26,46,.05);
+    border: 1px solid rgba(26,26,46,.15);
     border-radius: 100px;
     padding: 5px 14px;
     font-size: 9px;
     font-weight: 600;
-    color: rgba(253,252,250,.65);
+    color: rgba(26,26,46,.65);
     letter-spacing: .05em;
   }
-  .cover-chip.gold { background: rgba(255,206,61,.1); border-color: rgba(255,206,61,.35); color: #FFCE3D; }
+  .cover-chip.gold { background: rgba(255,206,61,.12); border-color: rgba(255,206,61,.45); color: #9A6F00; }
   .cover-footer {
-    padding: 6mm 14mm;
-    border-top: 1px solid rgba(255,255,255,.08);
+    padding: 5mm 14mm;
+    border-top: 1px solid rgba(26,26,46,.1);
+    background: rgba(255,206,61,.05);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -142,14 +139,14 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 13px;
-    color: rgba(253,252,250,.3);
+    color: rgba(26,26,46,.4);
   }
   .cover-footer-tag {
     font-size: 8px;
     font-weight: 700;
     letter-spacing: .15em;
     text-transform: uppercase;
-    color: rgba(255,63,161,.5);
+    color: #C2185B;
   }
 
   /* ====== CONTENT PAGES ====== */
@@ -158,8 +155,9 @@
     padding: 0;
   }
   .page-header {
-    background: #060E1F;
-    padding: 6mm 14mm 5mm;
+    background: #F8F4EE;
+    border-bottom: 2px solid #FFCE3D;
+    padding: 5mm 14mm 4mm;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -168,13 +166,13 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 13px;
-    color: rgba(253,252,250,.5);
+    color: rgba(26,26,46,.45);
   }
   .page-header-num {
     font-size: 9px;
     font-weight: 700;
     letter-spacing: .18em;
-    color: rgba(255,206,61,.5);
+    color: #9A6F00;
   }
   .page-body {
     padding: 8mm 14mm 6mm;
@@ -182,7 +180,8 @@
 
   /* Section title pages */
   .section-cover {
-    background: linear-gradient(135deg, #060E1F 0%, #0D1830 100%);
+    background: #F8F4EE;
+    border-left: 5px solid #FFCE3D;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -203,14 +202,14 @@
     position: absolute;
     bottom: -20mm; right: -20mm;
     width: 100mm; height: 100mm;
-    background: radial-gradient(ellipse, rgba(255,63,161,.09) 0%, transparent 60%);
+    background: radial-gradient(ellipse, rgba(255,63,161,.07) 0%, transparent 60%);
     pointer-events: none;
   }
   .section-num {
     font-size: 80px;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    color: rgba(255,206,61,.08);
+    color: rgba(255,206,61,.15);
     position: absolute;
     right: 10mm;
     bottom: 5mm;
@@ -221,7 +220,7 @@
     font-weight: 700;
     letter-spacing: .28em;
     text-transform: uppercase;
-    color: rgba(255,206,61,.65);
+    color: #9A6F00;
     margin-bottom: 5mm;
     position: relative; z-index: 2;
   }
@@ -232,12 +231,12 @@
     font-size: 42px;
     line-height: .9;
     letter-spacing: -.02em;
-    color: #FDFCFA;
+    color: #060E1F;
     margin-bottom: 6mm;
     position: relative; z-index: 2;
   }
   .section-title em {
-    background: linear-gradient(120deg, #FFCE3D 10%, #FF8C00 55%, #FF3FA1 100%);
+    background: linear-gradient(120deg, #E5A500 10%, #FF8C00 55%, #FF3FA1 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -245,7 +244,7 @@
   }
   .section-desc {
     font-size: 12px;
-    color: rgba(253,252,250,.42);
+    color: rgba(26,26,46,.48);
     line-height: 1.6;
     max-width: 120mm;
     position: relative; z-index: 2;
@@ -260,13 +259,13 @@
     position: relative; z-index: 2;
   }
   .section-chip {
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(26,26,46,.05);
+    border: 1px solid rgba(26,26,46,.14);
     border-radius: 100px;
     padding: 4px 12px;
     font-size: 8px;
     font-weight: 600;
-    color: rgba(253,252,250,.55);
+    color: rgba(26,26,46,.55);
     letter-spacing: .06em;
   }
 
@@ -538,12 +537,11 @@
 
 <!-- ===== PAGE 1: COVER ===== -->
 <div class="page cover">
-  <div class="cover-coaches">
-    <img src="images/claudia-conen.jpg" alt="Claudia Conen">
-    <img src="images/ann-kathrin-andresen.jpg" alt="Ann-Kathrin Andresen">
-    <img src="images/gabi-lindemann.jpg" alt="Gabi Lindemann">
+  <!-- Banner-Bild (lade deine Datei als images/header-banner.jpg hoch) -->
+  <div class="cover-banner-wrap">
+    <img src="images/header-banner.jpg" alt="KI-Workshop · Die Unverwechselbaren">
   </div>
-  <div class="cover-overlay"></div>
+  <div class="cover-accent-bar"></div>
 
   <div class="cover-body">
     <div class="cover-badge">Interne Trainer-Unterlagen · Vertraulich</div>
